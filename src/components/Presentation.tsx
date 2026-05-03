@@ -258,7 +258,7 @@ function InteractionRenderer({ type, data }: { type: string, data: any }) {
 
     case 'step_thru':
       return (
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 flex-wrap justify-center">
           {data.steps.map((step: string, i: number) => (
             <React.Fragment key={step}>
               <motion.div 
@@ -267,21 +267,120 @@ function InteractionRenderer({ type, data }: { type: string, data: any }) {
                 transition={{ delay: i * 0.2 }}
                 className="flex flex-col items-center gap-2"
               >
-                <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center font-bold">
+                <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center font-bold shadow-lg shadow-accent/20">
                   {i + 1}
                 </div>
-                <span className="text-xs uppercase tracking-tighter opacity-70">{step}</span>
+                <span className="text-[10px] uppercase tracking-tighter opacity-70 text-center max-w-[60px]">{step}</span>
               </motion.div>
               {i < data.steps.length - 1 && (
                 <motion.div 
                   initial={{ width: 0 }}
-                  animate={{ width: 40 }}
+                  animate={{ width: 20 }}
                   transition={{ delay: i * 0.2 + 0.1 }}
-                  className="h-1 bg-glass-border"
+                  className="h-[2px] bg-glass-border"
                 />
               )}
             </React.Fragment>
           ))}
+        </div>
+      );
+
+    case 'timeline_thaw':
+      return (
+        <div className="w-full max-w-md flex flex-col items-center gap-6">
+          <div className="relative w-full h-24 bg-blue-900/20 border border-blue-500/30 rounded-xl overflow-hidden flex items-center justify-center">
+            <motion.div 
+              style={{ opacity: (inputValue ? parseInt(inputValue) - data.range[0] : 0) / (data.range[1] - data.range[0]) }}
+              className="absolute inset-0 bg-red-500/10 flex items-center justify-center font-mono text-red-400 text-sm p-4 text-center"
+            >
+              [DATA_DECRYPTED]: TOP_SECRET_PROTOCOL_EXPOSED
+            </motion.div>
+            {!inputValue || parseInt(inputValue) < data.range[1] - 2 ? (
+              <div className="text-blue-300/50 font-mono italic">DATA_FROZEN_IN_ENCRYPTION</div>
+            ) : null}
+          </div>
+          <input 
+            type="range" 
+            min={data.range[0]} 
+            max={data.range[1]} 
+            defaultValue={data.range[0]}
+            onChange={(e) => setInputValue(e.target.value)}
+            className="w-full accent-blue-500"
+          />
+          <p className="text-2xl font-black text-blue-400">{inputValue || data.range[0]}</p>
+        </div>
+      );
+
+    case 'comparison_slider':
+      return (
+        <div className="w-full flex flex-col gap-4">
+          <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
+            <span>{data.left}</span>
+            <span>{data.right}</span>
+          </div>
+          <div className="relative h-32 bg-glass border border-glass-border rounded-xl overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center text-3xl font-black opacity-10">RSA-2048</div>
+            <motion.div 
+              className="absolute inset-0 bg-accent/20 backdrop-blur-md border-r-2 border-accent"
+              style={{ width: `${(inputValue ? parseInt(inputValue) : 50)}%` }}
+            >
+              <div className="h-full flex items-center justify-center text-3xl font-black text-accent overflow-hidden whitespace-nowrap px-4">
+                QUANTUM_POWER
+              </div>
+            </motion.div>
+          </div>
+          <input 
+            type="range" min="0" max="100" defaultValue="50"
+            onChange={(e) => setInputValue(e.target.value)}
+            className="w-full accent-accent"
+          />
+        </div>
+      );
+
+    case 'vault_reveal':
+      return (
+        <div className="flex flex-col items-center gap-6">
+          <motion.div 
+            animate={clicked ? { rotateY: 110 } : { rotateY: 0 }}
+            className="w-40 h-40 bg-gray-800 border-4 border-gray-700 rounded-xl relative flex items-center justify-center shadow-2xl"
+            style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+          >
+            <div className="w-24 h-24 border-8 border-gray-600 rounded-full flex items-center justify-center">
+               <div className="w-4 h-4 bg-gray-500 rounded-full" />
+            </div>
+            {clicked && (
+              <div className="absolute inset-0 bg-yellow-500/20 flex items-center justify-center font-black text-yellow-500" style={{ transform: 'translateZ(-10px) rotateY(-110deg)' }}>
+                SECRET_KEY
+              </div>
+            )}
+          </motion.div>
+          <button 
+            onClick={() => { setClicked(!clicked); confetti(); }}
+            style={{ background: 'white', color: 'black', padding: '10px 20px', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}
+          >
+            {clicked ? 'CLOSE VAULT' : data.label}
+          </button>
+        </div>
+      );
+
+    case 'counter':
+      return (
+        <div className="text-center">
+          <p className="text-sm text-gray-500 mb-2">{data.label}</p>
+          <motion.div 
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            className="text-6xl font-black text-accent tabular-nums"
+          >
+            {clicked ? '1,000,000' : '433'}
+          </motion.div>
+          <button 
+            onClick={() => setClicked(true)}
+            className="mt-6 text-xs text-accent hover:underline"
+            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          >
+            Simulate 5 Year Growth
+          </button>
         </div>
       );
 

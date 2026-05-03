@@ -68,9 +68,9 @@
     ],
     "story": "Thieves stealing a locked safe they can't open yet, putting it in a basement, waiting for the tool to arrive in 5 years.",
     "interactivity": {
-      "type": "timeline_slider",
-      "range": [2024, 2030],
-      "label": "Move slider to see data 'thawing' out."
+      "type": "timeline_thaw",
+      "label": "Move slider to see data 'thawing' out.",
+      "range": [2024, 2030]
     },
     "activity": "Think of one corporate secret that must stay secret for at least 10 years.",
     "enterpriseInsight": "If your data is harvested today, it belongs to the future attacker."
@@ -87,8 +87,8 @@
     ],
     "story": "We are building a ship. We check the water, find the leak, and plug it before the storm hits.",
     "interactivity": {
-      "type": "click_map",
-      "nodes": ["The Threat", "The Math", "The Shield"]
+      "type": "step_thru",
+      "steps": ["Physics", "Threats", "New Math", "The Shield"]
     },
     "activity": "Set a timer on your phone for 45 mins. That's our 'Safety Window'.",
     "enterpriseInsight": "Preparedness is the only antidote to Quantum uncertainty."
@@ -124,8 +124,8 @@
     ],
     "story": "Like a shared Netflix account. If you give the password to your cousin, you lose control of who watches.",
     "interactivity": {
-      "type": "drag_drop",
-      "task": "Move the key to the recipient without touching the 'Hacker' icon."
+      "type": "vault_reveal",
+      "label": "Click to share the key"
     },
     "activity": "Imagine sending a physical key to London. How do you do it without anyone copying it?",
     "enterpriseInsight": "Symmetric keys are 'Quantum Resistant' if they are long enough (AES-256)."
@@ -142,8 +142,8 @@
     ],
     "story": "Everyone can put mail in the slot (Public), but only the postman has the key to the back (Private).",
     "interactivity": {
-      "type": "animation",
-      "label": "Click 'Drop Letter' into the Public Box."
+      "type": "step_thru",
+      "steps": ["Lock", "Send", "Verify", "Unlock"]
     },
     "activity": "Your email address is your public key. Your password (should be) part of your private key.",
     "enterpriseInsight": "Asymmetric crypto is the backbone of the web. It is also Quantum's first victim."
@@ -161,7 +161,7 @@
     "story": "It's like a 10-million-piece puzzle of a white cloud. Possible, but you'll be dead before you finish.",
     "interactivity": {
       "type": "counter",
-      "label": "Time to crack RSA-2048: 300 Trillion Years."
+      "label": "Guessing 1 out of 10^300 options..."
     },
     "activity": "Multiply 13 x 17 (Easy). Now, what two primes make 221? (Harder).",
     "enterpriseInsight": "We bet our businesses on the 'Slowness' of machines."
@@ -179,7 +179,7 @@
     "story": "Two spies meeting in a park. They use a secret code to prove identity before swapping microfilm.",
     "interactivity": {
       "type": "step_thru",
-      "steps": ["Hello", "Certificate", "Key Swap", "Secure!"]
+      "steps": ["Client Hello", "Server Cert", "Key Swap", "Secure Session"]
     },
     "activity": "Check the URL of this presentation. Do you see the padlock?",
     "enterpriseInsight": "Without the handshake, there is no e-commerce."
@@ -196,10 +196,9 @@
     ],
     "story": "You have a $10k vault door but leave the key under the 'Welcome' mat.",
     "interactivity": {
-      "type": "quiz",
-      "question": "What is the biggest threat today?",
-      "options": ["Old Math", "Weak Passwords", "Quantum Computers"],
-      "answer": "Weak Passwords"
+      "type": "scenario",
+      "question": "Where is the leak?",
+      "options": ["The Math", "The Person", "The Machine"]
     },
     "activity": "Check your downloads folder. Any 'key.pem' files sitting there?",
     "enterpriseInsight": "Quantum turns a 'Mathematical Strength' into a 'Mathematical Weakness'."
@@ -216,8 +215,9 @@
     ],
     "story": "Checkers vs. 4D Chess on a board made of light.",
     "interactivity": {
-      "type": "visual_switch",
-      "label": "Turn a 'Flat Switch' into a 'Glowing Orb'."
+      "type": "comparison_slider",
+      "left": "CLASSICAL (0 or 1)",
+      "right": "QUANTUM (Superposition)"
     },
     "activity": "Flip a coin. While it's in the air, it's both. That's a Qubit.",
     "enterpriseInsight": "Defending against Quantum requires thinking beyond binary."
@@ -234,8 +234,9 @@
     ],
     "story": "The legendary trio who built the walls we live inside today.",
     "interactivity": {
-      "type": "match_game",
-      "pairs": ["RSA: Primes", "ECC: Curves", "DH: Shared Secret"]
+      "type": "scenario",
+      "question": "Which one protects your browser?",
+      "options": ["RSA", "ECC", "Both"]
     },
     "activity": "Write down the name of one encryption algorithm you've heard of.",
     "enterpriseInsight": "We are standing on the shoulders of giants whose foundations are starting to shake."
@@ -252,9 +253,9 @@
     ],
     "story": "Smashing a glass is easy. Putting it back together molecule by molecule is what RSA does.",
     "interactivity": {
-      "type": "slider_math",
-      "prompt": "Increase Prime Size",
-      "result": "Security Exponentially Increases."
+      "type": "input_feedback",
+      "prompt": "Multiply two primes",
+      "feedback": "Now try factoring them back. Impossible for humans, hard for PCs."
     },
     "activity": "Try to divide 91 by anything other than 1 or 91. (Hint: 7 and 13).",
     "enterpriseInsight": "Your data is protected by the 'difficulty' of factoring."
@@ -271,10 +272,9 @@
     ],
     "story": "RSA is a heavy broadsword. ECC is a sharp scalpel. Both are made of steel.",
     "interactivity": {
-      "type": "comparison",
-      "left": "RSA-3072",
-      "right": "ECC-256",
-      "label": "Equally strong, but ECC is 12x smaller."
+      "type": "comparison_slider",
+      "left": "RSA Key (Huge)",
+      "right": "ECC Key (Tiny but Strong)"
     },
     "activity": "Check your phone's 'FaceID' info. It uses ECC under the hood.",
     "enterpriseInsight": "Efficiency made modern tech possible, but Quantum doesn't care about size."
@@ -291,8 +291,8 @@
     ],
     "story": "Mixing yellow and blue to make green. Everyone sees green, but they can't 'un-mix' it to find your specific shade of yellow.",
     "interactivity": {
-      "type": "color_mixer",
-      "prompt": "Mix two colors to create a secret."
+      "type": "big_button",
+      "label": "Mix Secret Colors"
     },
     "activity": "Try to explain a color to someone without using its name.",
     "enterpriseInsight": "Anonymous key exchange is what keeps your VPN sessions private."
@@ -309,8 +309,9 @@
     ],
     "story": "A thief gets a faster drill every year. Eventually, the vault door is just paper.",
     "interactivity": {
-      "type": "graph",
-      "label": "Compute Power vs. RSA Crackability"
+      "type": "timeline_thaw",
+      "label": "Watch keys expire over time",
+      "range": [2000, 2024]
     },
     "activity": "Guess how many years it took to crack the first RSA challenge? (6 months).",
     "enterpriseInsight": "If you are still on 1024-bit RSA, you are already 'Classical' vulnerable."
@@ -327,8 +328,8 @@
     ],
     "story": "The king's ring pressed into wax. If the wax is cracked, the message is void.",
     "interactivity": {
-      "type": "sign_button",
-      "label": "Sign this Contract"
+      "type": "big_button",
+      "label": "Digitally Sign Document"
     },
     "activity": "Look at a digital receipt. How do you know it wasn't edited?",
     "enterpriseInsight": "Quantum can forge your CEO's signature on a billion-dollar wire transfer."
@@ -345,8 +346,9 @@
     ],
     "story": "A paper shredder that always produces the same pile of dust for the same document.",
     "interactivity": {
-      "type": "hash_generator",
-      "prompt": "Type anything to see its SHA-256 fingerprint."
+      "type": "input_feedback",
+      "prompt": "Enter text to hash",
+      "feedback": "Data turned into unique fingerprint."
     },
     "activity": "Change one letter in your name and see how much the hash changes.",
     "enterpriseInsight": "Hashes are the foundation of integrity, but they need to be 'Wide' for Quantum."
@@ -363,8 +365,8 @@
     ],
     "story": "Moving from a black-and-white TV to a VR headset that spans dimensions.",
     "interactivity": {
-      "type": "visual_transition",
-      "label": "0/1 flickering into a Sphere."
+      "type": "pulse",
+      "prompt": "Evolve to Quantum"
     },
     "activity": "Close your eyes. Imagine being in two places at once.",
     "enterpriseInsight": "The limitations of classical bits are the security of classical crypto. Quantum removes those limits."
@@ -381,8 +383,7 @@
     ],
     "story": "A classical bit is a coin on a table (Heads or Tails). A Qubit is the coin while it's spinning.",
     "interactivity": {
-      "type": "superposition",
-      "label": "Click to STOP the coin."
+      "type": "superposition"
     },
     "activity": "Try to hum two different notes at the exact same time. (Impossible for us, easy for Qubits).",
     "enterpriseInsight": "Qubits allow us to compute in the 'In-Between'."
@@ -399,8 +400,7 @@
     ],
     "story": "Two magic dice. Roll one in New York (lands on 6), the one in Tokyo instantly turns into a 6 too.",
     "interactivity": {
-      "type": "entanglement",
-      "label": "Rotate Qubit A, watch Qubit B mirror it."
+      "type": "entanglement"
     },
     "activity": "Point to your left. Now imagine your twin on the moon pointing to their right at the same time.",
     "enterpriseInsight": "Entanglement is the 'Quantum Internet' in the making."
@@ -417,8 +417,8 @@
     ],
     "story": "Like noise-canceling headphones. They block the 'bad' sound (wrong math) so you only hear the 'good' music (the solution).",
     "interactivity": {
-      "type": "wave_interference",
-      "prompt": "Align the waves to find the peak."
+      "type": "big_button",
+      "label": "Tune the Waves"
     },
     "activity": "Clap your hands. Now imagine two claps perfectly canceling each other out into silence.",
     "enterpriseInsight": "Quantum algorithms don't 'search'; they 'interfere' their way to the truth."
@@ -435,8 +435,7 @@
     ],
     "story": "Classical bits are the North and South poles. Quantum bits can live on the Equator, in Paris, or in the ocean.",
     "interactivity": {
-      "type": "bloch_sphere",
-      "label": "Drag the vector around the sphere."
+      "type": "bloch_sphere"
     },
     "activity": "Point your finger up (0). Point it down (1). Now point it at the clock. That's a Quantum state.",
     "enterpriseInsight": "Visualizing complexity is the first step to securing it."
@@ -453,8 +452,8 @@
     ],
     "story": "The most expensive and sophisticated 'fridge' ever built, keeping atoms still enough to work.",
     "interactivity": {
-      "type": "photo_gallery",
-      "images": ["IBM Quantum", "Google Sycamore", "Rigetti"]
+      "type": "pulse",
+      "prompt": "Power on the Chandelier"
     },
     "activity": "Take a deep breath. The air you just breathed is millions of times 'hotter' than a Quantum chip.",
     "enterpriseInsight": "We aren't just buying PCs; we are buying access to the coldest places in the universe."
@@ -471,9 +470,9 @@
     ],
     "story": "The day a horse-drawn carriage (Classical) was overtaken by a warp-drive starship (Quantum).",
     "interactivity": {
-      "type": "poll",
-      "question": "Is Quantum Supremacy a threat or an opportunity?",
-      "options": ["Threat", "Opportunity", "Both"]
+      "type": "comparison_slider",
+      "left": "10,000 Years (Classical)",
+      "right": "200 Seconds (Quantum)"
     },
     "activity": "Try to solve a Rubik's cube in your head. Now imagine doing a million at once.",
     "enterpriseInsight": "Supremacy proves the tool works. Now we worry about who uses it."
@@ -490,8 +489,8 @@
     ],
     "story": "Building a house of cards in the middle of a hurricane. One sneeze and the 'Quantum' state is gone.",
     "interactivity": {
-      "type": "vibration_sim",
-      "label": "Click to 'Sneeze' and watch the Qubit crash."
+      "type": "pulse",
+      "prompt": "Stabilize Environment"
     },
     "activity": "Try to balance a pen on its tip for 10 seconds.",
     "enterpriseInsight": "We are in the 'NISQ' era—Noisy Intermediate-Scale Quantum. It's the 'Early Internet' phase."
@@ -508,9 +507,9 @@
     ],
     "story": "You don't use a Ferrari to go 10 feet to your mailbox. You use it for the racetrack.",
     "interactivity": {
-      "type": "drag_drop_sort",
-      "categories": ["Classical Task", "Quantum Task"],
-      "items": ["Email", "Simulating Molecules", "Web Browsing", "Breaking RSA"]
+      "type": "scenario",
+      "question": "Which task needs Quantum?",
+      "options": ["Email", "Simulating Drugs", "Watching YouTube"]
     },
     "activity": "What's the hardest task your computer does today? (Likely video or gaming).",
     "enterpriseInsight": "Enterprises won't replace their fleet; they will plug into 'Quantum Clouds'."
@@ -527,8 +526,8 @@
     ],
     "story": "Finding the combination to a vault. Classical turns the dial once per second. Shor's turns every possible dial at once.",
     "interactivity": {
-      "type": "cheat_code_reveal",
-      "prompt": "Click to apply 'Shor's Hack'."
+      "type": "big_button",
+      "label": "Execute Shor's"
     },
     "activity": "Think of a number. Now think of its factors. Now imagine doing that for a 600-digit number.",
     "enterpriseInsight": "Shor's Algorithm is the reason we are all in this room today."
@@ -545,8 +544,7 @@
     ],
     "story": "The Great Wall of China suddenly becoming a bead curtain. You can see through it, walk through it, and ignore it.",
     "interactivity": {
-      "type": "binary_shatter",
-      "label": "Watch RSA keys shatter into pieces."
+      "type": "binary_shatter"
     },
     "activity": "Say 'Goodbye' to the lock icon on your favorite website.",
     "enterpriseInsight": "Our entire identity system is built on these three pillars. They are all failing."
@@ -564,8 +562,8 @@
     "story": "Grover is like a faster bloodhound. It doesn't kill the target, but it finds it much quicker.",
     "interactivity": {
       "type": "comparison_slider",
-      "left": "AES-128 (Weak)",
-      "right": "AES-256 (Quantum Safe)"
+      "left": "AES-128 (Broken)",
+      "right": "AES-256 (Safe)"
     },
     "activity": "Draw a square. Now draw a square with 4x the area. That's the difference.",
     "enterpriseInsight": "AES-256 is our temporary safe haven. Use it everywhere."
@@ -582,8 +580,9 @@
     ],
     "story": "Shor's is a skeleton key for locks. AES is a maze. A fast runner (Quantum) still has to run the maze; they can't just walk through the walls.",
     "interactivity": {
-      "type": "maze_game",
-      "label": "Try to find the exit in under 5 seconds."
+      "type": "scenario",
+      "question": "Is AES safe?",
+      "options": ["Yes, with long keys", "No", "Only for 5 years"]
     },
     "activity": "Write your name scrambled. Now try to un-scramble a random 20-letter string.",
     "enterpriseInsight": "Symmetric encryption survives, provided the key exchange is secure."
@@ -600,8 +599,8 @@
     ],
     "story": "We are building a rocket. We have the engine design (Shor's), we just need enough fuel (Qubits) to reach orbit.",
     "interactivity": {
-      "type": "countdown_timer",
-      "label": "Estimated Q-Day: 2029-2035"
+      "type": "counter",
+      "label": "Current Qubit Count: 433 -> Need 10,000+"
     },
     "activity": "Guess what year we will have 1 million Qubits? (IBM says sooner than you think).",
     "enterpriseInsight": "Waiting for the hardware to arrive before fixing the software is a fatal error."
@@ -618,8 +617,8 @@
     ],
     "story": "The storm is visible on the radar. You don't wait for the first raindrop to fix the roof.",
     "interactivity": {
-      "type": "radar_ping",
-      "label": "Pinging for Quantum Threats..."
+      "type": "pulse",
+      "prompt": "Scan for Risks"
     },
     "activity": "Stand up and stretch. The next 20 slides will show you the 'Damage'."
   },
@@ -635,8 +634,8 @@
     ],
     "story": "Imagine a bank where anyone can sign a check in the CEO's name, and the bank has to say it's valid.",
     "interactivity": {
-      "type": "check_signer",
-      "label": "Click to 'Forge' a Signature."
+      "type": "big_button",
+      "label": "Simulate Fraud Detection"
     },
     "activity": "Check your bank's 'Security' page. Do they mention 'Quantum'?",
     "enterpriseInsight": "Financial institutions are the canary in the coal mine."
@@ -653,8 +652,9 @@
     ],
     "story": "Your health history is like a tattoo. You can't change it. If it's leaked today, it's leaked for your whole life.",
     "interactivity": {
-      "type": "toggle_privacy",
-      "label": "Your Record: [Private] -> [Public]"
+      "type": "text_toggle",
+      "before": "GENOMIC_DATA_LOCKED",
+      "after": "EXPOSED_MEDICAL_HISTORY"
     },
     "activity": "Think of one medical fact you never want your employer to know.",
     "enterpriseInsight": "Data with a 50-year shelf life needs Post-Quantum security *now*."
@@ -672,8 +672,8 @@
     "story": "The 'Red Phone' is no longer secret. Every word is being recorded and waiting for the Quantum key.",
     "interactivity": {
       "type": "scenario",
-      "question": "An adversary decrypts 20 years of diplomatic cables. What happens?",
-      "options": ["War", "Chaos", "Political Realignment"]
+      "question": "Protect the Grid?",
+      "options": ["Update Firewalls", "Move to PQC", "Airgap everything"]
     },
     "activity": "Imagine if every email a politician sent was public tomorrow.",
     "enterpriseInsight": "Governments are already mandating PQC. Are you?"
@@ -691,7 +691,7 @@
     "story": "The Coca-Cola recipe is in a safe. Quantum turns the safe into a glass bowl.",
     "interactivity": {
       "type": "vault_reveal",
-      "label": "Click to see the 'Secret Recipe'."
+      "label": "Reveal Trade Secret"
     },
     "activity": "What is the #1 secret your company owns?",
     "enterpriseInsight": "If your IP is stolen today, it will be cloned the day Q-Day hits."
@@ -708,8 +708,9 @@
     ],
     "story": "A transparent ledger where everyone can see the locks, and Quantum computers have the bolt cutters.",
     "interactivity": {
-      "type": "graph",
-      "label": "Percentage of vulnerable crypto wallets."
+      "type": "text_toggle",
+      "before": "BLOCK_HASH_0x71",
+      "after": "WALLET_COMPROMISED"
     },
     "activity": "Do you own Crypto? Check if your wallet is 'Quantum-Resistant'. (Probably not).",
     "enterpriseInsight": "Blockchain's transparency is its greatest weakness in a Quantum world."
@@ -726,8 +727,8 @@
     ],
     "story": "Living in an apartment building. You lock your door, but the landlord has a master key... and someone just stole the master key.",
     "interactivity": {
-      "type": "cloud_selector",
-      "label": "Select your provider to see their PQC roadmap."
+      "type": "step_thru",
+      "steps": ["User Auth", "API Gateway", "Cloud Storage", "Quantum Wall"]
     },
     "activity": "Ask your cloud provider: 'Where is your PQC whitepaper?'",
     "enterpriseInsight": "The cloud is just someone else's computer. Ensure it's a Quantum-secure one."
@@ -744,8 +745,9 @@
     ],
     "story": "A world where anyone can look like you, talk like you, and sign like you digitally.",
     "interactivity": {
-      "type": "mask_overlay",
-      "label": "Click to swap digital identities."
+      "type": "scenario",
+      "question": "Fix IAM?",
+      "options": ["MFA", "PQC Tokens", "Passwordless"]
     },
     "activity": "Touch your fingerprint sensor. If that data is leaked, you can't change your finger.",
     "enterpriseInsight": "IAM is the front door. Quantum is a battering ram."
@@ -762,8 +764,8 @@
     ],
     "story": "One bad apple (vendor) spoils the whole barrel (your enterprise).",
     "interactivity": {
-      "type": "domino_sim",
-      "label": "Trigger one vendor failure, watch the chain fall."
+      "type": "big_button",
+      "label": "Test Supply Chain"
     },
     "activity": "Count how many third-party apps you used today.",
     "enterpriseInsight": "You are only as secure as your least Quantum-ready vendor."
@@ -780,8 +782,9 @@
     ],
     "story": "Spies in the 70s recording phone calls they couldn't understand, hoping one day they'd find a translator.",
     "interactivity": {
-      "type": "audio_clip",
-      "label": "Play 'Static Noise'. Toggle 'Quantum Filter' to hear a secret message."
+      "type": "text_toggle",
+      "before": "GHOST_SIGNAL_ENCRYPTED",
+      "after": "DECRYPTED_INTEL"
     },
     "activity": "Imagine someone listening to your every word for the last 5 years.",
     "enterpriseInsight": "Silence is not security. Assume your data is already being 'stored'."
@@ -798,8 +801,8 @@
     ],
     "story": "The 'Cyber Olympics'. Thousands of mathematicians entered; only 4 survived the Quantum scrutiny.",
     "interactivity": {
-      "type": "trophy_reveal",
-      "label": "Meet the winners: Kyber, Dilithium, Falcon."
+      "type": "step_thru",
+      "steps": ["80 Submissions", "4 Rounds", "Final Winners", "Global Rollout"]
     },
     "activity": "Can you name a country involved in NIST? (Almost all of them!).",
     "enterpriseInsight": "Standards are the signal in the noise. Follow NIST."
@@ -816,8 +819,8 @@
     ],
     "story": "The Wright brothers' first flight. It only lasted 12 seconds, but it proved humans could fly.",
     "interactivity": {
-      "type": "flight_sim",
-      "label": "Launch the Google Sycamore."
+      "type": "pulse",
+      "prompt": "Initiate Sycamore Run"
     },
     "activity": "How many bits in your phone? (Billions). How many Qubits in Google's best? (Hundreds). See the gap?",
     "enterpriseInsight": "The gap is closing faster than we predicted."
@@ -834,8 +837,9 @@
     ],
     "story": "The smartest kids in the class are already studying for the exam that's 5 years away.",
     "interactivity": {
-      "type": "logo_scroll",
-      "label": "Companies with dedicated Quantum teams."
+      "type": "poll",
+      "question": "Is your bank ready?",
+      "options": ["Yes", "No", "Working on it"]
     },
     "activity": "Does your company have a 'Quantum Task Force'?",
     "enterpriseInsight": "The leaders are already moving. Laggards will pay the price."
@@ -852,8 +856,9 @@
     ],
     "story": "Buying a car today that will still be on the road when Quantum computers are common. If it's not ready now, it's a brick later.",
     "interactivity": {
-      "type": "car_dashboard",
-      "label": "Click to 'Disable' a Smart Car remotely."
+      "type": "scenario",
+      "question": "Can you patch a pacemaker?",
+      "options": ["Yes, via OTA", "No, need surgery", "Maybe"]
     },
     "activity": "Look at a smart device in this room (Thermostat? Projector?). Can it be patched?",
     "enterpriseInsight": "Embedded systems are the biggest long-term risk."
@@ -870,9 +875,9 @@
     ],
     "story": "Y2K was a known date. Q-Day is a moving target. It could be tomorrow, it could be in 10 years.",
     "interactivity": {
-      "type": "comparison_table",
-      "left": "Y2K (Fixed Date)",
-      "right": "Q-Day (Unknown Date)"
+      "type": "comparison_slider",
+      "left": "Y2K (Predictable)",
+      "right": "Q-Day (Ticking Clock)"
     },
     "activity": "Do you remember the Y2K hype? This is bigger, but quieter.",
     "enterpriseInsight": "Planning for Q-Day is the ultimate stress test for your IT agility."
@@ -889,8 +894,8 @@
     ],
     "story": "It's like finding a specific grain of sand in a desert, but the desert has 500 dimensions.",
     "interactivity": {
-      "type": "lattice_grid",
-      "label": "Try to find the origin point in 3D space."
+      "type": "pulse",
+      "prompt": "Enter the Lattice Maze"
     },
     "activity": "Try to imagine a 4th dimension. (Your brain hurts? Good, so does a Quantum computer's in a lattice).",
     "enterpriseInsight": "Lattices are the future of standard encryption."
@@ -907,8 +912,8 @@
     ],
     "story": "Using a stack of one-time-use keys. Once you use one, you burn it.",
     "interactivity": {
-      "type": "burn_key",
-      "label": "Click to 'Use' and 'Burn' a signature."
+      "type": "big_button",
+      "label": "Burn One-Time Key"
     },
     "activity": "Sign your name on a piece of paper. Now rip it up. That's a hash signature.",
     "enterpriseInsight": "Great for firmware updates where security > size."
@@ -925,8 +930,9 @@
     ],
     "story": "A box with a thousand interlocking gears. To open it, you need to turn them all in the perfect sequence.",
     "interactivity": {
-      "type": "gear_spinner",
-      "label": "Align the gears to unlock."
+      "type": "input_feedback",
+      "prompt": "Solve X^2 + Y = 10",
+      "feedback": "Correct. Now do it for 500 variables."
     },
     "activity": "Solve for X: X + Y = 10, X - Y = 2. (Easy). Now do it for 1000 variables.",
     "enterpriseInsight": "Variety in algorithms is our best defense against a single point of failure."
@@ -943,8 +949,9 @@
     ],
     "story": "Speaking in a secret language where you intentionally mumble. Only the person with the 'Filter' understands you.",
     "interactivity": {
-      "type": "slider_noise",
-      "label": "Add noise to a message."
+      "type": "comparison_slider",
+      "left": "Clean Data",
+      "right": "Coded Noise"
     },
     "activity": "Try to talk with your hands over your mouth. Can your neighbor understand you?",
     "enterpriseInsight": "Sometimes the oldest ideas are the most resilient to new threats."
@@ -961,8 +968,8 @@
     ],
     "story": "It's like jumping from one trampoline to another in a room full of thousands of them.",
     "interactivity": {
-      "type": "jump_animation",
-      "label": "Jump between curves."
+      "type": "pulse",
+      "prompt": "Jump between Curves"
     },
     "activity": "Trace a curve on the table with your finger. Now jump to a different one.",
     "enterpriseInsight": "Isogenies are promising but need more 'Baking' time."
@@ -979,8 +986,9 @@
     ],
     "story": "Wearing a belt AND suspenders. If the belt (Classical) snaps, the suspenders (PQC) keep your pants up.",
     "interactivity": {
-      "type": "toggle_hybrid",
-      "label": "Classical [ON] | PQC [ON]"
+      "type": "text_toggle",
+      "before": "CLASSICAL_ONLY",
+      "after": "HYBRID_SHIELD_ON"
     },
     "activity": "Show of hands: Who wears both a belt and suspenders? (Safety first!).",
     "enterpriseInsight": "Don't switch overnight. Run them in parallel."
@@ -997,8 +1005,8 @@
     ],
     "story": "Sending a message on a bubble. If a spy tries to look at it, the bubble pops and the message is gone.",
     "interactivity": {
-      "type": "bubble_pop",
-      "label": "Try to 'Eavesdrop' on the Photon."
+      "type": "big_button",
+      "label": "Transmit Photon"
     },
     "activity": "Blow an imaginary bubble. Now try to touch it without popping it.",
     "enterpriseInsight": "QKD is the ultimate security, but it requires new hardware (fiber/satellites)."
@@ -1015,8 +1023,9 @@
     ],
     "story": "Cleaning out your attic. You need to know what's in the boxes before you can move houses.",
     "interactivity": {
-      "type": "checklist",
-      "items": ["VPN", "Web Servers", "Internal Apps", "IoT"]
+      "type": "poll",
+      "question": "Have you audited your crypto?",
+      "options": ["Yes", "Partial", "What is an audit?"]
     },
     "activity": "List the first 3 apps you'd audit in your company.",
     "enterpriseInsight": "You cannot secure what you do not see."
@@ -1033,8 +1042,8 @@
     ],
     "story": "Building a car where you can swap the engine in 10 minutes, rather than buying a whole new car.",
     "interactivity": {
-      "type": "drag_drop_engine",
-      "label": "Swap 'RSA' for 'Kyber' in the app."
+      "type": "big_button",
+      "label": "Swap RSA for KYBER"
     },
     "activity": "Can you change your phone's wallpaper in 5 seconds? That's agility. Now try to change its OS.",
     "enterpriseInsight": "Agility is the most important architectural feature of the next decade."
@@ -1051,8 +1060,9 @@
     ],
     "story": "Interviewing a babysitter. You don't just ask their name; you ask what they do in an emergency.",
     "interactivity": {
-      "type": "email_template",
-      "label": "Generate an 'Inquiry Email' to a vendor."
+      "type": "input_feedback",
+      "prompt": "Draft vendor email",
+      "feedback": "Email template generated."
     },
     "activity": "If a vendor says 'We don't need Quantum security,' what do you say back? (Hint: 'Goodbye').",
     "enterpriseInsight": "Vendors follow the money. If you demand PQC, they will build it."
@@ -1069,8 +1079,8 @@
     ],
     "story": "Moving an entire city to a new location. You move the hospitals first, then the houses, then the parks.",
     "interactivity": {
-      "type": "roadmap_builder",
-      "label": "Drag phases into order."
+      "type": "step_thru",
+      "steps": ["Inventory", "Pilot", "Deployment", "Monitor"]
     },
     "activity": "Draw a line. Mark where you think your company will be in 2030.",
     "enterpriseInsight": "Start small, but start *somewhere*."
@@ -1087,8 +1097,9 @@
     ],
     "story": "Buying insurance. It feels expensive until the day your house catches fire.",
     "interactivity": {
-      "type": "roi_calculator",
-      "label": "Compare: Cost of PQC vs. Cost of Data Breach."
+      "type": "scenario",
+      "question": "Allocate Budget?",
+      "options": ["Firewalls", "PQC Pilot", "Awareness"]
     },
     "activity": "Think of a number: How much is your company's reputation worth in dollars?",
     "enterpriseInsight": "The 'Quantum Premium' is a small price for 'Quantum Survival'."
@@ -1105,8 +1116,8 @@
     ],
     "story": "You are the hacker (for 60 seconds). Feel the power, then build the shield.",
     "interactivity": {
-      "type": "hack_sim",
-      "label": "Click to 'Shor's Hack' an RSA-512 key."
+      "type": "big_button",
+      "label": "LAUNCH ATTACK"
     },
     "activity": "Did you feel powerful? That's what your adversaries feel.",
     "enterpriseInsight": "Empathy for the attacker builds better defense."
@@ -1123,8 +1134,9 @@
     ],
     "story": "The final exam, but with no grades, only learning.",
     "interactivity": {
-      "type": "multi_quiz",
-      "questions": 3
+      "type": "poll",
+      "question": "SNDL means?",
+      "options": ["Store Now Decrypt Later", "Safe Network Data Link", "Security Not Done Lately"]
     },
     "activity": "Score yourself! 3/3 = Quantum Expert. 1/3 = Keep Learning.",
     "enterpriseInsight": "Knowledge is the first layer of the firewall."
@@ -1141,8 +1153,9 @@
     ],
     "story": "The last few hurdles before the finish line.",
     "interactivity": {
-      "type": "multi_quiz",
-      "questions": 3
+      "type": "poll",
+      "question": "Quantum Safe Math?",
+      "options": ["Lattices", "Primes", "Curves"]
     },
     "activity": "High-five your neighbor if you got these right.",
     "enterpriseInsight": "Sharing knowledge triples its value."
@@ -1159,8 +1172,9 @@
     ],
     "story": "A Choose-Your-Own-Adventure where 'Security' is the only good ending.",
     "interactivity": {
-      "type": "branching_story",
-      "prompt": "The alarm sounds. What is your first move?"
+      "type": "scenario",
+      "question": "Breach detected!",
+      "options": ["Isolate Network", "Deploy PQC Keys", "Call CEO"]
     },
     "activity": "Discuss your choice with the person next to you.",
     "enterpriseInsight": "Incident response changes in the Quantum era."
@@ -1177,8 +1191,9 @@
     ],
     "story": "Writing a letter to your future self in 2030.",
     "interactivity": {
-      "type": "text_input",
-      "prompt": "Write your #1 Quantum takeaway."
+      "type": "input_feedback",
+      "prompt": "Your action plan?",
+      "feedback": "Commitment logged."
     },
     "activity": "Write it on your notepad too.",
     "enterpriseInsight": "Individual commitment leads to organizational resilience."
@@ -1195,8 +1210,8 @@
     ],
     "story": "Quantum isn't just a monster under the bed; it's the light that will cure cancer and solve climate change.",
     "interactivity": {
-      "type": "image_fade",
-      "label": "Matrix -> DNA -> Green Planet"
+      "type": "pulse",
+      "prompt": "View the Horizon"
     },
     "activity": "Close your eyes. Imagine a world with infinite computing power used for good.",
     "enterpriseInsight": "We secure the present to enable the future."
@@ -1213,8 +1228,9 @@
     ],
     "story": "The blacksmith used to make keys. Now we make math. Tomorrow we make atoms.",
     "interactivity": {
-      "type": "tool_evolution",
-      "label": "Stone -> Iron -> Silicon -> Qubit"
+      "type": "comparison_slider",
+      "left": "OLD TOOLS",
+      "right": "QUANTUM TOOLS"
     },
     "activity": "Look at your hands. You are the 'Architect' of this transition.",
     "enterpriseInsight": "Stagnation is the only true security risk."
@@ -1231,8 +1247,8 @@
     ],
     "story": "My journey in Quantum started with a question. I hope today you leave with a hundred more.",
     "interactivity": {
-      "type": "qr_code",
-      "label": "Scan to Connect on LinkedIn"
+      "type": "big_button",
+      "label": "GET CONTACT DETAILS"
     },
     "activity": "Take a photo of this slide.",
     "enterpriseInsight": "Community is our strongest encryption."
@@ -1249,8 +1265,8 @@
     ],
     "story": "The race has started. You don't have to be the fastest, but you can't be sitting down.",
     "interactivity": {
-      "type": "big_button",
-      "label": "I WILL SECURE THE FUTURE"
+      "type": "pulse",
+      "prompt": "START THE RACE"
     },
     "activity": "Give a round of applause for the future of security!",
     "enterpriseInsight": "Action is the only real metric of success."
@@ -1267,8 +1283,8 @@
     ],
     "story": "The screen goes dark, but the lights in your mind are just turning on.",
     "interactivity": {
-      "type": "credits_roll",
-      "label": "Presented by Dr. Syed Muzamil Basha"
+      "type": "big_button",
+      "label": "REPLAY SESSION"
     },
     "activity": "Wait for the Q&A session to start.",
     "enterpriseInsight": "The conversation starts here."
