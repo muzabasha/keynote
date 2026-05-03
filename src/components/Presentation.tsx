@@ -113,65 +113,81 @@ export default function Presentation() {
           <h1 className="slide-title">{slide.title}</h1>
 
           <div className="slide-content">
-            <div className="left-pane">
-              <ul className="bullets-list">
-                {slide.bullets.map((bullet, i) => (
-                  <motion.li 
-                    key={i} 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 + i * 0.1 }}
-                    className="bullet-item"
+            {slide.caseStudy ? (
+              <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 overflow-y-auto max-h-[60vh] pr-4 custom-scrollbar">
+                <div className="flex flex-col gap-6">
+                  <CaseItem icon="📜" title="Problem Background" content={slide.caseStudy.background} />
+                  <CaseItem icon="⚠️" title="Technical Risk" content={slide.caseStudy.technicalRisk} />
+                  <CaseItem icon="🛡️" title="Mitigation Strategy" content={slide.caseStudy.mitigation} />
+                </div>
+                <div className="flex flex-col gap-6">
+                  <CaseItem icon="🧪" title="Experiment Setup" content={slide.caseStudy.experimentSetup} />
+                  <CaseItem icon="💡" title="Post-Quantum Insight" content={slide.caseStudy.insight} color="text-accent" />
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="left-pane">
+                  <ul className="bullets-list">
+                    {slide.bullets.map((bullet, i) => (
+                      <motion.li 
+                        key={i} 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 + i * 0.1 }}
+                        className="bullet-item"
+                      >
+                        {bullet}
+                      </motion.li>
+                    ))}
+                  </ul>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="story-box"
                   >
-                    {bullet}
-                  </motion.li>
-                ))}
-              </ul>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="story-box"
-              >
-                {slide.story}
-              </motion.div>
-            </div>
+                    {slide.story}
+                  </motion.div>
+                </div>
 
-            <div className="right-pane">
-              <div className="interactive-area flex-col !justify-start overflow-y-auto">
-                {slide.math ? (
-                  <div className="w-full flex flex-col gap-8 py-4">
-                    <div className="relative group">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-accent to-accent-secondary rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-                      <div className="relative bg-black/60 p-10 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl flex items-center justify-center min-h-[160px]">
-                        <div className="scale-125 origin-center">
-                          <BlockMath math={slide.math.equation} />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex flex-col gap-4">
-                      <h3 className="text-xs uppercase tracking-widest text-accent font-bold">Mathematical Interpretation</h3>
-                      <div className="grid gap-3">
-                        {slide.math.interpretations.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-4 p-3 bg-white/5 rounded-xl border border-white/5">
-                            <div className="font-mono text-accent whitespace-nowrap">
-                              <InlineMath math={item.term} />
-                            </div>
-                            <div className="text-sm text-gray-400 leading-tight">
-                              {item.meaning}
+                <div className="right-pane">
+                  <div className="interactive-area flex-col !justify-start overflow-y-auto">
+                    {slide.math ? (
+                      <div className="w-full flex flex-col gap-8 py-4">
+                        <div className="relative group">
+                          <div className="absolute -inset-1 bg-gradient-to-r from-accent to-accent-secondary rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                          <div className="relative bg-black/60 p-10 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl flex items-center justify-center min-h-[160px]">
+                            <div className="scale-125 origin-center">
+                              <BlockMath math={slide.math.equation} />
                             </div>
                           </div>
-                        ))}
+                        </div>
+                        
+                        <div className="flex flex-col gap-4">
+                          <h3 className="text-xs uppercase tracking-widest text-accent font-bold">Mathematical Interpretation</h3>
+                          <div className="grid gap-3">
+                            {slide.math.interpretations.map((item, idx) => (
+                              <div key={idx} className="flex items-start gap-4 p-3 bg-white/5 rounded-xl border border-white/5">
+                                <div className="font-mono text-accent whitespace-nowrap">
+                                  <InlineMath math={item.term} />
+                                </div>
+                                <div className="text-sm text-gray-400 leading-tight">
+                                  {item.meaning}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <InteractionRenderer type={slide.interactivity.type} data={slide.interactivity} />
+                    )}
                   </div>
-                ) : (
-                  <InteractionRenderer type={slide.interactivity.type} data={slide.interactivity} />
-                )}
-              </div>
-            </div>
+                </div>
+              </>
+            )}
           </div>
 
           <div className="footer-info">
@@ -196,6 +212,18 @@ export default function Presentation() {
         </button>
       </div>
     </main>
+  );
+}
+
+function CaseItem({ icon, title, content, color = "text-white" }: { icon: string, title: string, content: string, color?: string }) {
+  return (
+    <div className="bg-white/5 p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all">
+      <div className="flex items-center gap-3 mb-2">
+        <span className="text-2xl">{icon}</span>
+        <h4 className="text-sm uppercase tracking-widest text-gray-400 font-bold">{title}</h4>
+      </div>
+      <p className={`text-sm leading-relaxed ${color}`}>{content}</p>
+    </div>
   );
 }
 

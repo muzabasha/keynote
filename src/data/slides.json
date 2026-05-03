@@ -17,368 +17,182 @@
     }
   },
   {
-    "id": 2,
-    "section": "Opening Story",
-    "title": "The Trust Audit",
-    "bullets": ["80% enterprises vulnerable", "Trust expiration", "Quantum audit"],
-    "story": "House key machine copies from a mile away.",
-    "interactivity": { "type": "poll", "question": "Data safety 1-10?", "options": ["1-3", "4-6", "7-8", "9-10"] },
-    "activity": "Look at URL bar lock.",
-    "enterpriseInsight": "Legacy security is a bomb.",
-    "math": {
-      "equation": "T_{\\text{safe}} = \\min(T_{\\text{Q-Day}} - T_{\\text{harvest}}, T_{\\text{shelf-life}})",
-      "interpretations": [
-        { "term": "T_{\\text{safe}}", "meaning": "Remaining window of data safety" },
-        { "term": "T_{\\text{harvest}}", "meaning": "Time when data was captured by adversary" },
-        { "term": "T_{\\text{shelf-life}}", "meaning": "Duration data remains sensitive/valuable" }
-      ]
-    }
-  },
-  {
-    "id": 4,
-    "section": "Opening Story",
-    "title": "Hacked Tomorrow, Stored Today",
-    "bullets": ["SNDL: Store Now, Decrypt Later", "Harvesting happening NOW"],
-    "story": "Thieves stealing a safe to open later.",
-    "interactivity": { "type": "timeline_thaw", "range": [2024, 2030] },
-    "activity": "Think of a 10-year secret.",
-    "enterpriseInsight": "Data stolen today belongs to the future attacker.",
-    "math": {
-      "equation": "S_{SNDL} = \\int_{t_{now}}^{t_{Q-day}} R(t) \\, dt",
-      "interpretations": [
-        { "term": "S_{SNDL}", "meaning": "Total surface area for harvesting attacks" },
-        { "term": "R(t)", "meaning": "Rate of data accumulation by adversaries" },
-        { "term": "t_{Q-day}", "meaning": "Estimated arrival of cryptographically relevant quantum computer" }
-      ]
-    }
-  },
-  {
-    "id": 6,
-    "section": "Basics of Security",
-    "title": "The Art of the Scramble",
-    "bullets": ["Encryption = Chaos", "Secret key is grail"],
-    "story": "Organized chaos.",
-    "interactivity": { "type": "text_toggle", "before": "SECRET", "after": "XJ9!K" },
-    "activity": "Shift letters.",
-    "enterpriseInsight": "Math is the wall.",
-    "math": {
-      "equation": "P(M|C) = P(M)",
-      "interpretations": [
-        { "term": "P(M|C)", "meaning": "Probability of message M given ciphertext C (Perfect Secrecy)" },
-        { "term": "P(M)", "meaning": "A priori probability of message M" },
-        { "term": "Perfect Secrecy", "meaning": "Ciphertext reveals zero information about plaintext" }
-      ]
-    }
-  },
-  {
-    "id": 7,
-    "section": "Basics of Security",
-    "title": "One Key (Symmetric)",
-    "bullets": ["AES standard", "Fast but key sharing hard"],
-    "story": "Shared Netflix account dilemma.",
-    "interactivity": { "type": "vault_reveal", "label": "Share Key" },
-    "activity": "Send key to London.",
-    "enterpriseInsight": "AES-256 is Quantum Resistant.",
-    "math": {
-      "equation": "2^{256} \\xrightarrow{\\text{Grover's}} 2^{128}",
-      "interpretations": [
-        { "term": "2^{256}", "meaning": "Classical brute force search space" },
-        { "term": "2^{128}", "meaning": "Quantum effective security strength" },
-        { "term": "\\xrightarrow{\\text{Grover's}}", "meaning": "Quadratic reduction in attack complexity" }
-      ]
-    }
-  },
-  {
-    "id": 8,
-    "section": "Basics of Security",
-    "title": "The Magic Mailbox (Asymmetric)",
-    "bullets": ["Public: Anyone locks", "Private: Only you open"],
-    "story": "Blue postbox.",
-    "interactivity": { "type": "step_thru", "steps": ["Lock", "Send", "Verify", "Unlock"] },
-    "activity": "Email = public key.",
-    "enterpriseInsight": "Asymmetric is the first victim.",
-    "math": {
-      "equation": "C = m^e \\pmod{n}, \\quad m = c^d \\pmod{n}",
-      "interpretations": [
-        { "term": "e, n", "meaning": "Public Key components (Encryption)" },
-        { "term": "d", "meaning": "Private Key component (Decryption)" },
-        { "term": "m, c", "meaning": "Message and Ciphertext" }
-      ]
-    }
-  },
-  {
-    "id": 13,
-    "section": "Classical Cryptography",
-    "title": "Diffie-Hellman",
-    "bullets": ["Shared secret trick", "40 year standard"],
-    "story": "Legends of the past.",
-    "interactivity": { "type": "scenario", "question": "Protects browser?", "options": ["RSA", "ECC", "Both"] },
-    "activity": "Algorithm name.",
-    "enterpriseInsight": "Shaking foundations.",
-    "math": {
-      "equation": "g^{ab} \\pmod{p}",
-      "interpretations": [
-        { "term": "g, p", "meaning": "Public parameters (Generator and Prime)" },
-        { "term": "a, b", "meaning": "Alice and Bob's private secrets" },
-        { "term": "g^{ab}", "meaning": "Shared key computed without ever sending a or b" }
-      ]
-    }
-  },
-  {
-    "id": 15,
-    "section": "Classical Cryptography",
-    "title": "ECC: The Lean Machine",
-    "bullets": ["Elliptic Curves", "Smaller keys, same strength"],
-    "story": "Broadsword vs Scalpel.",
-    "interactivity": { "type": "comparison_slider", "left": "RSA", "right": "ECC" },
-    "activity": "FaceID check.",
-    "enterpriseInsight": "Quantum doesn't care about efficiency.",
-    "math": {
-      "equation": "Q = kP",
-      "interpretations": [
-        { "term": "P", "meaning": "Base point on the elliptic curve" },
-        { "term": "k", "meaning": "Scalar (The private key)" },
-        { "term": "Q", "meaning": "Point on curve (The public key)" },
-        { "term": "ECDLP", "meaning": "Difficulty of finding k from Q and P" }
-      ]
-    }
-  },
-  {
-    "id": 19,
-    "section": "Classical Cryptography",
-    "title": "The Hash Function",
-    "bullets": ["Fingerprint", "SHA-256"],
-    "story": "Paper shredder.",
-    "interactivity": { "type": "input_feedback", "prompt": "Hash text" },
-    "activity": "Change one letter.",
-    "enterpriseInsight": "Foundation of integrity.",
-    "math": {
-      "equation": "h = \\text{SHA256}(M)",
-      "interpretations": [
-        { "term": "M", "meaning": "Input of any length (The payload)" },
-        { "term": "h", "meaning": "Fixed-size 256-bit output (The digest)" },
-        { "term": "\\text{Collision}", "meaning": "Finding $M_1 \\neq M_2$ such that $H(M_1) = H(M_2)$" }
-      ]
-    }
-  },
-  {
-    "id": 21,
-    "section": "Intro to Quantum",
-    "title": "What is a Qubit?",
-    "bullets": ["Superposition", "Spinning coin"],
-    "story": "Spinning coin.",
-    "interactivity": { "type": "superposition" },
-    "activity": "Hum notes.",
-    "enterpriseInsight": "Compute in-between.",
-    "math": {
-      "equation": "|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle",
-      "interpretations": [
-        { "term": "|\\psi\\rangle", "meaning": "State vector in Hilbert Space" },
-        { "term": "|\\alpha|^2", "meaning": "Probability of measuring state |0⟩" },
-        { "term": "|\\beta|^2", "meaning": "Probability of measuring state |1⟩" }
-      ]
-    }
-  },
-  {
-    "id": 22,
-    "section": "Intro to Quantum",
-    "title": "Entanglement",
-    "bullets": ["Linked across distance", "Einstein's headache"],
-    "story": "Magic dice.",
-    "interactivity": { "type": "entanglement" },
-    "activity": "Point left.",
-    "enterpriseInsight": "Quantum internet backbone.",
-    "math": {
-      "equation": "E(A, B) > \\text{Classical Limit}",
-      "interpretations": [
-        { "term": "E(A, B)", "meaning": "Correlation between particle A and B" },
-        { "term": "\\text{Bell's Inequality}", "meaning": "Proves quantum correlations exceed classical physics" }
-      ]
-    }
-  },
-  {
-    "id": 24,
-    "section": "Intro to Quantum",
-    "title": "The Bloch Sphere",
-    "bullets": ["Visualizing Qubit", "Latitude and Longitude"],
-    "story": "Poles vs Equator.",
-    "interactivity": { "type": "bloch_sphere" },
-    "activity": "Point up/down.",
-    "enterpriseInsight": "Visualizing complexity.",
-    "math": {
-      "equation": "|\\psi\\rangle = \\cos(\\theta/2)|0\\rangle + e^{i\\phi}\\sin(\\theta/2)|1\\rangle",
-      "interpretations": [
-        { "term": "\\theta", "meaning": "Polar angle (Latitude)" },
-        { "term": "\\phi", "meaning": "Azimuthal angle (Longitude/Phase)" },
-        { "term": "e^{i\\phi}", "meaning": "Relative phase of the superposition" }
-      ]
-    }
-  },
-  {
-    "id": 29,
-    "section": "Shor’s Algorithm Impact",
-    "title": "The RSA Killer",
-    "bullets": ["Exponential speedup", "Cheat code"],
-    "story": "All dials at once.",
-    "interactivity": { "type": "big_button" },
-    "activity": "Factor 600 digits.",
-    "enterpriseInsight": "Why we are here.",
-    "math": {
-      "equation": "O(\\log N)^3 \\text{ vs } e^{O(\\sqrt[3]{\\log N})}",
-      "interpretations": [
-        { "term": "O(\\log N)^3", "meaning": "Shor's complexity (Polynomial time)" },
-        { "term": "e^{...}", "meaning": "Best classical complexity (Sub-exponential)" },
-        { "term": "\\text{Exponential Gap}", "meaning": "Why Quantum breaks current asymmetric crypto" }
-      ]
-    }
-  },
-  {
-    "id": 31,
-    "section": "Shor’s Algorithm Impact",
-    "title": "Grover’s Algorithm",
-    "bullets": ["Database search", "Half-Hacker"],
-    "story": "Faster bloodhound.",
-    "interactivity": { "type": "comparison_slider" },
-    "activity": "Draw square.",
-    "enterpriseInsight": "Double key size.",
-    "math": {
-      "equation": "\\text{Iterations} \\approx \\sqrt{2^n}",
-      "interpretations": [
-        { "term": "2^n", "meaning": "Classical search space for n-bit key" },
-        { "term": "\\sqrt{2^n}", "meaning": "Quantum search iterations (2^{n/2})" },
-        { "term": "\\text{Result}", "meaning": "128-bit security effectively becomes 64-bit" }
-      ]
-    }
-  },
-  {
-    "id": 35,
-    "section": "Enterprise Risks",
-    "title": "Banking: $100T Target",
-    "bullets": ["SWIFT transfers", "Digital forgery"],
-    "story": "CEO signing a blank check.",
-    "interactivity": { "type": "big_button", "label": "Fraud Test" },
-    "activity": "Bank security page.",
-    "enterpriseInsight": "Financials are the canary.",
-    "math": {
-      "equation": "\\text{Risk} = \\sum_{i} (V_i \\times P(C_i))",
-      "interpretations": [
-        { "term": "V_i", "meaning": "Value of transaction/asset i" },
-        { "term": "P(C_i)", "meaning": "Probability of compromise (scales with Q-Day proximity)" }
-      ]
-    }
-  },
-  {
-    "id": 39,
-    "section": "Enterprise Risks",
-    "title": "Blockchain Crisis",
-    "bullets": ["Public keys on ledger", "Bitcoin frozen coins"],
-    "story": "Transparent vault with bolt cutters.",
-    "interactivity": { "type": "text_toggle", "before": "WALLET", "after": "DRAINED" },
-    "activity": "Crypto check.",
-    "enterpriseInsight": "Transparency is a weakness.",
-    "math": {
-      "equation": "H(P) = A \\xrightarrow{\\text{Shor's}} P = \\text{Shor}(A)",
-      "interpretations": [
-        { "term": "P", "meaning": "Private Key (User's spend power)" },
-        { "term": "A", "meaning": "Public Address (Visible on chain)" },
-        { "term": "\\text{Shor}(A)", "meaning": "Extracting private key from public data" }
-      ]
-    }
-  },
-  {
-    "id": 49,
-    "section": "Post-Quantum Crypto",
-    "title": "Lattice-Based Math",
-    "bullets": ["Shortest vector problem", "Winner of NIST"],
-    "story": "Grain of sand.",
+    "id": 61,
+    "section": "Case Study #1",
+    "title": "Banking: The SWIFT Collapse",
+    "bullets": ["Global transaction forgery", "Real-time fund drain"],
+    "story": "A ghost in the machine transferring billions.",
     "interactivity": { "type": "pulse" },
-    "activity": "4D brain.",
-    "enterpriseInsight": "Standard of the future.",
-    "math": {
-      "equation": "\\min \\| \\sum a_i b_i \\|",
-      "interpretations": [
-        { "term": "b_i", "meaning": "Basis vectors of the lattice" },
-        { "term": "a_i", "meaning": "Integer coefficients (The secret)" },
-        { "term": "\\text{SVP}", "meaning": "Shortest Vector Problem (Quantum resistant)" }
-      ]
+    "activity": "Simulate a transfer.",
+    "enterpriseInsight": "Transaction integrity is non-negotiable.",
+    "caseStudy": {
+      "background": "The SWIFT network handles trillions in daily cross-border transfers. It relies heavily on RSA/ECC for digital signatures to verify the authenticity of payment instructions.",
+      "technicalRisk": "A cryptographically relevant quantum computer could forge these signatures in seconds, allowing an attacker to inject fake 'High-Value' payment messages that appear perfectly legitimate.",
+      "mitigation": "Implementation of Hash-based signatures (LMS/XMSS) for message integrity and Lattice-based KEMs for session key exchange.",
+      "experimentSetup": "A simulated banking environment using a 'Quantum Adversary' module that attempts to sign transaction headers using Shor's algorithm emulation.",
+      "insight": "Post-Quantum migration for banking is not just about secrecy, but about preventing a global liquidity freeze caused by loss of trust."
     }
   },
   {
-    "id": 50,
-    "section": "Post-Quantum Crypto",
-    "title": "Hash-Based Signatures",
-    "bullets": ["Based on SHA-256", "Robust but large"],
-    "story": "Burn after reading.",
-    "interactivity": { "type": "big_button", "label": "Burn Key" },
-    "activity": "Rip paper.",
-    "enterpriseInsight": "Firmware safety.",
-    "math": {
-      "equation": "y = H(x) \\rightarrow y' = H(y) \\dots",
-      "interpretations": [
-        { "term": "H(x)", "meaning": "One-way hash function application" },
-        { "term": "\\text{Lamport Signature}", "meaning": "Revealing part of a hash chain to sign 1 bit" }
-      ]
+    "id": 62,
+    "section": "Case Study #2",
+    "title": "Healthcare: The Genomic Leak",
+    "bullets": ["Lifetime data exposure", "Insurance discrimination"],
+    "story": "Your DNA is a permanent password that can't be changed.",
+    "interactivity": { "type": "pulse" },
+    "activity": "Check health app.",
+    "enterpriseInsight": "Permanent data requires permanent protection.",
+    "caseStudy": {
+      "background": "Hospitals store patient genomic data (DNA) for personalized medicine. This data remains sensitive for the patient's entire life and across generations.",
+      "technicalRisk": "SNDL (Store Now, Decrypt Later). Adversaries are harvesting genomic databases today, waiting for Q-Day to unlock them. Once leaked, DNA data cannot be 'reset' like a password.",
+      "mitigation": "Retroactive encryption using AES-256 for storage and transitioning to ML-KEM (Kyber) for all data-in-transit by 2026.",
+      "experimentSetup": "Entropy analysis of encrypted genomic sequences to verify that PQC-wrapped data shows zero correlation even under quantum-level heat maps.",
+      "insight": "In healthcare, 'Future Proofing' is a legal and ethical mandate, as a breach in 2035 exposes a child's future in 2090."
     }
   },
   {
-    "id": 54,
-    "section": "Post-Quantum Crypto",
-    "title": "Hybrid Modes",
-    "bullets": ["Classical + PQC", "Belt and suspenders"],
-    "story": "Belt and suspenders.",
-    "interactivity": { "type": "text_toggle" },
-    "activity": "Show hands.",
-    "enterpriseInsight": "Run in parallel.",
-    "math": {
-      "equation": "Key = KDF(S_{ECDH} \\oplus S_{Kyber})",
-      "interpretations": [
-        { "term": "S_{ECDH}", "meaning": "Shared secret from Classical ECC" },
-        { "term": "S_{Kyber}", "meaning": "Shared secret from Post-Quantum Kyber" },
-        { "term": "\\oplus", "meaning": "Safe combination (Hybridization)" }
-      ]
+    "id": 63,
+    "section": "Case Study #3",
+    "title": "Energy: Grid Lockdown",
+    "bullets": ["Smart meter manipulation", "City-wide blackouts"],
+    "story": "A city goes dark because its meters were tricked into 'Sleep' mode.",
+    "interactivity": { "type": "pulse" },
+    "activity": "Switch a light.",
+    "enterpriseInsight": "OT security is physical security.",
+    "caseStudy": {
+      "background": "Modern power grids use automated SCADA systems and billions of IoT smart meters to balance load. These devices use light-weight crypto to verify firmware updates.",
+      "technicalRisk": "Quantum computers can forge firmware signatures, allowing an attacker to send a 'Kill' command or malicious firmware to every smart meter in a country simultaneously.",
+      "mitigation": "Upgrading to stateless PQC signatures (Dilithium/ML-DSA) for secure boot and firmware-over-the-air (FOTA) updates.",
+      "experimentSetup": "A hardware-in-the-loop (HIL) testbed where a simulated quantum attacker tries to bypass a smart meter's secure boot sequence.",
+      "insight": "The grid's biggest vulnerability is the long lifecycle of IoT hardware; we must build 'PQC-Ready' hardware today for devices that will last 20 years."
     }
   },
   {
-    "id": 57,
-    "section": "Enterprise Readiness",
-    "title": "Crypto Agility",
-    "bullets": ["Swapping like tires", "Future proof"],
-    "story": "Engine swap in 10 mins.",
-    "interactivity": { "type": "big_button", "label": "Swap RSA" },
-    "activity": "Change wallpaper.",
-    "enterpriseInsight": "Agility is the goal.",
-    "math": {
-      "equation": "\\text{Agility} = \\frac{\\partial \\text{Security}}{\\partial \\text{Algorithm}} \\approx 0",
-      "interpretations": [
-        { "term": "\\text{Agility}", "meaning": "Ease of algorithm replacement" },
-        { "term": "\\approx 0", "meaning": "Security posture shouldn't break when algorithm changes" }
-      ]
+    "id": 64,
+    "section": "Case Study #4",
+    "title": "Gov: The Satellite Hijack",
+    "bullets": ["Signal spoofing", "Orbital control loss"],
+    "story": "A billion-dollar satellite receiving commands from an unknown source.",
+    "interactivity": { "type": "pulse" },
+    "activity": "Track a satellite.",
+    "enterpriseInsight": "Command and control must be quantum-proof.",
+    "caseStudy": {
+      "background": "Global navigation and communication satellites (GNSS/SATCOM) use encrypted telemetry for orbital maintenance and command relay.",
+      "technicalRisk": "Command-and-Control (C2) links are often protected by legacy asymmetric protocols. A quantum adversary could hijack a satellite's thrusters by breaking the C2 handshake.",
+      "mitigation": "Quantum Key Distribution (QKD) for ground-to-space links and Lattice-based signatures for command authentication.",
+      "experimentSetup": "Simulation of a Doppler-shifted communication link subjected to a 'Man-in-the-Middle' quantum attack on the key exchange phase.",
+      "insight": "Space security is the ultimate high-ground; losing a satellite to quantum forgery is a permanent and expensive defeat."
     }
   },
   {
-    "id": 60,
-    "section": "Enterprise Readiness",
-    "title": "Budget Conversation",
-    "bullets": ["PQC isn't free", "Cost of nothing"],
-    "story": "Insurance logic.",
-    "interactivity": { "type": "scenario", "question": "Allocate?", "options": ["Pilot", "Audit", "Wait"] },
-    "activity": "Reputation value.",
-    "enterpriseInsight": "Quantum Premium.",
-    "math": {
-      "equation": "ROI_{PQC} = \\frac{\\text{Value at Risk} \\times P(\\text{Q-Day})}{Cost_{Migration}}",
-      "interpretations": [
-        { "term": "\\text{Value at Risk}", "meaning": "Total enterprise data value" },
-        { "term": "P(\\text{Q-Day})", "meaning": "Probability of Quantum computer arrival" }
-      ]
+    "id": 65,
+    "section": "Case Study #5",
+    "title": "Auto: The V2V Breach",
+    "bullets": ["Autonomous collision injection", "Fleet-wide hijacking"],
+    "story": "Cars talking to each other, but one is a liar.",
+    "interactivity": { "type": "pulse" },
+    "activity": "Simulate a drive.",
+    "enterpriseInsight": "Safety depends on authenticated signals.",
+    "caseStudy": {
+      "background": "Vehicle-to-Vehicle (V2V) and V2X communication allows autonomous cars to share speed and location to prevent collisions.",
+      "technicalRisk": "Short-range certificates (IEEE 1609.2) rely on ECDSA. A quantum computer could generate fake 'Emergency Braking' signals for every car in a 10-mile radius, causing mass pileups.",
+      "mitigation": "Transitioning to Falcon or Dilithium for certificate signing, optimized for the low-latency requirements of automotive safety.",
+      "experimentSetup": "Traffic simulation where 'ghost' vehicles (quantum forgeries) attempt to force human-operated and AI vehicles into collision paths.",
+      "insight": "In V2X, 'Trust-at-Speed' is essential. PQC signatures must be fast enough to be verified within milliseconds to maintain safety."
+    }
+  },
+  {
+    "id": 66,
+    "section": "Case Study #6",
+    "title": "Pharma: The Formula Theft",
+    "bullets": ["$5B drug recipe stolen", "IP loss for a decade"],
+    "story": "A decade of research walking out the back door in an encrypted file that will soon be cleartext.",
+    "interactivity": { "type": "pulse" },
+    "activity": "View a lab report.",
+    "enterpriseInsight": "IP value is tied to its secrecy duration.",
+    "caseStudy": {
+      "background": "Pharmaceutical companies spend billions on R&D for new drugs. These formulas are stored in highly secure, encrypted R&D vaults.",
+      "technicalRisk": "The 'Harvest Now, Decrypt Later' threat is acute here. Foreign intelligence captures encrypted R&D data in 2024, expecting to decrypt the 'Billion Dollar Molecule' by 2030.",
+      "mitigation": "Immediate re-encryption of all 'Crown Jewel' IP with AES-256 and wrapping data-at-rest in PQC-based digital envelopes.",
+      "experimentSetup": "A 'Time-Lock' simulation where encrypted lab data is evaluated for its vulnerability over a 5, 10, and 15-year horizon.",
+      "insight": "PQC is not an IT cost for Pharma; it is an Asset Protection strategy to preserve the ROI of multi-year clinical trials."
+    }
+  },
+  {
+    "id": 67,
+    "section": "Case Study #7",
+    "title": "Cloud: The Hypervisor Breach",
+    "bullets": ["Cross-tenant data theft", "Master key collapse"],
+    "story": "The walls between your data and your competitor's data just turned into glass.",
+    "interactivity": { "type": "pulse" },
+    "activity": "Switch cloud zones.",
+    "enterpriseInsight": "Isolation is an illusion without crypto.",
+    "caseStudy": {
+      "background": "Cloud providers (AWS/Azure/GCP) use virtualization to isolate data between different companies sharing the same physical hardware.",
+      "technicalRisk": "The 'Root of Trust' for the cloud hypervisor relies on hardware security modules (HSMs). If the HSM's RSA/ECC keys are broken, an attacker can move laterally between any company's data.",
+      "mitigation": "Implementing Hardware-based PQC (Quantum-Safe HSMs) and multi-factor PQC authentication for administrative access.",
+      "experimentSetup": "A 'Blue Team vs Quantum Red Team' exercise where the attacker attempts to extract tenant-level keys using a simulated quantum side-channel.",
+      "insight": "Cloud customers must demand 'Quantum Transparency' from their providers—knowing exactly which layers are PQC-protected."
+    }
+  },
+  {
+    "id": 68,
+    "section": "Case Study #8",
+    "title": "Retail: The Digital Identity Theft",
+    "bullets": ["Mass credit card replay", "Biometric forgery"],
+    "story": "Someone buying a yacht using your face and your digital wallet.",
+    "interactivity": { "type": "pulse" },
+    "activity": "Scan your ID.",
+    "enterpriseInsight": "Identity is the new perimeter.",
+    "caseStudy": {
+      "background": "E-commerce and Retail giants use digital identities (SAML/OIDC) and biometrics for 'One-Click' payments and account access.",
+      "technicalRisk": "The digital certificates that vouch for your identity are vulnerable. A quantum attacker could forge a 'Master Identity' that passes all biometric and cryptographic checks.",
+      "mitigation": "Upgrading FIDO2/WebAuthn keys to include PQC-resistant algorithms and using hybrid signatures for all transaction receipts.",
+      "experimentSetup": "An identity-provider (IdP) test where 1 million login requests are screened for 'Quantum Signature Anomalies' using AI-driven detection.",
+      "insight": "In a post-quantum world, 'Identity' must be reinforced by multiple, independent layers of math (Lattices + Hashes) to remain credible."
+    }
+  },
+  {
+    "id": 69,
+    "section": "Case Study #9",
+    "title": "Defense: The Secure Burst",
+    "bullets": ["Broken battlefield comms", "Strategic blind spots"],
+    "story": "Orders from the General that never came from the General.",
+    "interactivity": { "type": "pulse" },
+    "activity": "Decode a message.",
+    "enterpriseInsight": "Battlefield trust is won with math.",
+    "caseStudy": {
+      "background": "Military units use 'Burst' transmissions to send coordinates and orders. These must be encrypted and signed to prevent enemy spoofing.",
+      "technicalRisk": "Quantum computers could break the 'Order-of-Battle' encryption in real-time, allowing an enemy to issue retreat orders to friendly troops or redirect artillery.",
+      "mitigation": "Deployment of 'One-Time-Pad' (OTP) for critical coordinates and HQC (Hybrid-Code-based) crypto for high-bandwidth tactical data.",
+      "experimentSetup": "A tactical radio field-test where PQC-enabled radios are subjected to 'Quantum Jamming' and 'Quantum Spoofing' attempts.",
+      "insight": "National security is the primary driver of PQC; the first country to achieve 'Quantum Supremacy' in cryptanalysis has a temporary but absolute advantage."
     }
   },
   {
     "id": 70,
+    "section": "Case Study #10",
+    "title": "Supply Chain: The OTA Poisoning",
+    "bullets": ["Contaminated hardware", "Malware in the silicon"],
+    "story": "Your new phone arriving with a spy already living inside its brain.",
+    "interactivity": { "type": "pulse" },
+    "activity": "Track a package.",
+    "enterpriseInsight": "The chain is only as strong as its weakest link.",
+    "caseStudy": {
+      "background": "Global supply chains for microchips use over-the-air (OTA) updates and digital signing for firmware provenance from factory to consumer.",
+      "technicalRisk": "Quantum forgery at the 'Root Certificate' level would allow an adversary to sign malicious microcode for an entire batch of CPUs, creating a hardware back-door.",
+      "mitigation": "Implementing 'Double-Signing' with both Classical and PQC algorithms during the manufacturing and distribution stages.",
+      "experimentSetup": "A supply chain audit simulation where firmware is verified using a 'Quantum-Safe Proof-of-Origin' ledger.",
+      "insight": "Supply chain security is a 'Zero Trust' game; we must verify the math at every hop, from the silicon foundry to the end-user's hand."
+    }
+  },
+  {
+    "id": 71,
     "section": "Closing Story",
     "title": "The End (Or Beginning?)",
     "bullets": ["Thank you", "Questions?", "Stay Quantum"],
     "story": "Lights in your mind turning on.",
-    "interactivity": { "type": "big_button", "label": "Replay" },
+    "interactivity": { "type": "pulse" },
     "activity": "Q&A session.",
     "enterpriseInsight": "Conversation starts here.",
     "math": {

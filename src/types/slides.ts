@@ -28,4 +28,11 @@ export interface SlideData {
       meaning: string;
     }[];
   };
+  caseStudy?: {
+    background: string;
+    technicalRisk: string;
+    mitigation: string;
+    experimentSetup: string;
+    insight: string;
+  };
 }
