@@ -7,25 +7,25 @@ export interface SlideData {
   interactivity: {
     type: string;
     prompt?: string;
+    label?: string;
     action?: string;
     question?: string;
     options?: string[];
-    answer?: string;
-    range?: [number, number];
-    label?: string;
-    nodes?: string[];
-    steps?: string[];
-    pairs?: string[];
-    left?: string;
-    right?: string;
+    feedback?: string;
     before?: string;
     after?: string;
-    task?: string;
+    steps?: string[];
+    range?: [number, number];
     images?: string[];
-    categories?: string[];
     items?: string[];
-    questions?: number;
   };
   activity: string;
   enterpriseInsight: string;
+  math?: {
+    equation: string;
+    interpretations: {
+      term: string;
+      meaning: string;
+    }[];
+  };
 }

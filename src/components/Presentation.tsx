@@ -11,6 +11,9 @@ import Entanglement from './interactions/Entanglement';
 import BlochSphere from './interactions/BlochSphere';
 import BinaryShatter from './interactions/BinaryShatter';
 
+import 'katex/dist/katex.min.css';
+import { BlockMath, InlineMath } from 'react-katex';
+
 export default function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -136,8 +139,32 @@ export default function Presentation() {
             </div>
 
             <div className="right-pane">
-              <div className="interactive-area">
-                <InteractionRenderer type={slide.interactivity.type} data={slide.interactivity} />
+              <div className="interactive-area flex-col !justify-start overflow-y-auto">
+                {slide.math ? (
+                  <div className="w-full flex flex-col gap-8 py-4">
+                    <div className="bg-white/5 p-8 rounded-2xl border border-white/10 shadow-inner">
+                      <BlockMath math={slide.math.equation} />
+                    </div>
+                    
+                    <div className="flex flex-col gap-4">
+                      <h3 className="text-xs uppercase tracking-widest text-accent font-bold">Mathematical Interpretation</h3>
+                      <div className="grid gap-3">
+                        {slide.math.interpretations.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-4 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <div className="font-mono text-accent whitespace-nowrap">
+                              <InlineMath math={item.term} />
+                            </div>
+                            <div className="text-sm text-gray-400 leading-tight">
+                              {item.meaning}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <InteractionRenderer type={slide.interactivity.type} data={slide.interactivity} />
+                )}
               </div>
             </div>
           </div>
