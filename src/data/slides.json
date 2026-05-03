@@ -1,164 +1,181 @@
 [
   {
-    "id": 1,
-    "section": "Opening Story",
-    "title": "The Day the Locks Stopped Working",
+    "id": 1, "section": "Opening Story", "title": "The Day the Locks Stopped Working",
     "bullets": ["Privacy collapse", "Encryption fragile", "Midnight scenario"],
-    "story": "Digital locks vanished. Imagine your house key suddenly fitting every door in the city.",
-    "interactivity": { "type": "pulse" },
-    "activity": "Check keys.",
-    "enterpriseInsight": "Trust is currency.",
-    "math": {
-      "equation": "P(\\text{Security}) \\to 0 \\text{ as } Q_{\\text{bits}} \\to \\infty",
-      "interpretations": [
-        { "term": "P(\\text{Security})", "meaning": "Probability of data remaining secure" },
-        { "term": "Q_{\\text{bits}}", "meaning": "Number of error-corrected Qubits" }
-      ]
-    }
+    "story": "Imagine your house key suddenly fits every door in the city. The concept of 'Locked' just vanished.",
+    "interactivity": { "type": "pulse" }, "activity": "Check keys.", "enterpriseInsight": "Trust is currency.",
+    "math": { "equation": "P(\\text{Security}) \\to 0 \\text{ as } Q_{\\text{bits}} \\to \\infty", "interpretations": [{"term": "P(S)", "meaning": "Safety probability"}] }
   },
   {
-    "id": 2,
-    "section": "Introduction",
-    "title": "Analogy: The Basement Safe",
-    "bullets": ["Harvesting data today", "Patience of a hacker"],
-    "story": "Imagine a thief who steals your locked safe. He can't open it now, but he's happy because he knows his grandson will have a magic drill to open it in 2030.",
-    "interactivity": { "type": "pulse" },
-    "activity": "Think of a 10-year secret.",
-    "enterpriseInsight": "The SNDL threat is real today.",
-    "math": {
-      "equation": "T_{safe} = T_{Qday} - T_{harvest}",
-      "interpretations": [
-        { "term": "T_{safe}", "meaning": "How much time you actually have left" }
-      ]
-    }
+    "id": 2, "section": "Introduction", "title": "Analogy: The Basement Safe",
+    "bullets": ["Harvest Now, Decrypt Later", "The Hacker's Patience"],
+    "story": "A thief steals your safe today, knowing his grandson will have a magic drill to open it in 2030.",
+    "interactivity": { "type": "pulse" }, "activity": "10-year secret.", "enterpriseInsight": "SNDL is a real threat today.",
+    "math": { "equation": "T_{\\text{safe}} = T_{\\text{Q-day}} - T_{\\text{harvest}}", "interpretations": [{"term": "T_{safe}", "meaning": "Safe window"}] }
   },
   {
-    "id": 6,
-    "section": "Basics of Security",
-    "title": "Analogy: The Magic Mailbox",
-    "bullets": ["Public key concept", "Easy to lock, hard to open"],
-    "story": "A blue postbox is like Public Key Encryption. Anyone can slide a letter in (Encrypt), but only the postman with the 'Secret Key' can open the back and read it.",
-    "interactivity": { "type": "pulse" },
-    "activity": "Imagine a keyless lock.",
-    "enterpriseInsight": "Infrastructure is built on this mailbox.",
-    "math": {
-      "equation": "Enc(pk, m) = c",
-      "interpretations": [
-        { "term": "pk", "meaning": "The slot in the mailbox (Public)" }
-      ]
-    }
+    "id": 8, "section": "Basics", "title": "Analogy: The Magic Mailbox",
+    "bullets": ["Public Key Encryption", "Anyone locks, only one opens"],
+    "story": "Anyone can drop a letter in the blue box (Encrypt), but only the postman (Private Key) can read it.",
+    "interactivity": { "type": "pulse" }, "activity": "Imagine keyless lock.", "enterpriseInsight": "Foundation of the web.",
+    "math": { "equation": "C = m^e \\pmod{n}", "interpretations": [{"term": "e, n", "meaning": "Mailbox slot (Public)"}] }
   },
   {
-    "id": 7,
-    "section": "Basics of Security",
-    "title": "One Key (Symmetric)",
-    "bullets": ["AES standard", "Fast but key sharing hard"],
-    "story": "The 'Netflix Password' problem. Sharing one key with everyone is great until you break up with someone.",
-    "interactivity": { "type": "vault_reveal", "label": "Share Key" },
-    "activity": "Send key to London.",
-    "enterpriseInsight": "AES-256 is Quantum Resistant.",
-    "math": {
-      "equation": "2^{256} \\xrightarrow{\\text{Grover's}} 2^{128}",
-      "interpretations": [
-        { "term": "2^{256}", "meaning": "Classical search space" }
-      ]
-    }
+    "id": 20, "section": "Quantum", "title": "Analogy: The Lazy Teenager",
+    "bullets": ["Superposition", "Measurement collapse"],
+    "story": "A Qubit is like a teen in their room: simultaneously 'Gaming' and 'Studying' until you open the door.",
+    "interactivity": { "type": "superposition" }, "activity": "Open the door.", "enterpriseInsight": "Harnessing the 'Both' state.",
+    "math": { "equation": "|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle", "interpretations": [{"term": "|\\psi\\rangle", "meaning": "The messy room"}] }
   },
   {
-    "id": 20,
-    "section": "Intro to Quantum",
-    "title": "Analogy: The Lazy Teenager",
-    "bullets": ["Superposition explained", "Measurement collapse"],
-    "story": "A Qubit is like a teenager in their room. Until you open the door (Measure), they are simultaneously 'Studying' and 'Gaming'. As soon as you walk in, they 'Collapse' into the 'Studying' state.",
-    "interactivity": { "type": "superposition" },
-    "activity": "Open the door.",
-    "enterpriseInsight": "Harnessing the 'Both' state.",
-    "math": {
-      "equation": "|\\psi\\rangle = \\alpha|Gaming\\rangle + \\beta|Studying\\rangle",
-      "interpretations": [
-        { "term": "|\\psi\\rangle", "meaning": "The messy room state" }
-      ]
-    }
+    "id": 28, "section": "Shor's", "title": "Analogy: The Maze Cheat Code",
+    "bullets": ["Shortcutting the math", "Flying over the walls"],
+    "story": "Classic computers crawl through the maze. Shor's Algorithm is a bird that sees the exit from above.",
+    "interactivity": { "type": "pulse" }, "activity": "Imagine flying.", "enterpriseInsight": "Our RSA mazes are now visible.",
+    "math": { "equation": "a^r \\equiv 1 \\pmod{N}", "interpretations": [{"term": "r", "meaning": "The bird's eye view"}] }
   },
   {
-    "id": 21,
-    "section": "Intro to Quantum",
-    "title": "What is a Qubit?",
-    "bullets": ["Superposition", "Spinning coin"],
-    "story": "A spinning coin is neither Heads nor Tails. It's a blur of both. That's a Qubit.",
-    "interactivity": { "type": "superposition" },
-    "activity": "Hum notes.",
-    "enterpriseInsight": "Compute in-between.",
-    "math": {
-      "equation": "|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle",
-      "interpretations": [
-        { "term": "|\\psi\\rangle", "meaning": "State vector" }
-      ]
-    }
+    "id": 48, "section": "PQC", "title": "Analogy: The 500D Haystack",
+    "bullets": ["Lattice Math", "Quantum Resistance"],
+    "story": "Hiding a grain of sand in a 500-dimensional desert. Even a quantum bird can't find it.",
+    "interactivity": { "type": "pulse" }, "activity": "Visualize 500D.", "enterpriseInsight": "The future of security.",
+    "math": { "equation": "L = \\{ \\sum a_i b_i \\}", "interpretations": [{"term": "L", "meaning": "The infinite desert"}] }
   },
   {
-    "id": 28,
-    "section": "Shor’s Algorithm",
-    "title": "Analogy: The Maze Cheat Code",
-    "bullets": ["Finding the period", "Shortcutting the math"],
-    "story": "Classic computers are like a mouse in a maze trying every path. Shor's Algorithm is like a bird that flies above the maze and sees the exit immediately.",
-    "interactivity": { "type": "pulse" },
-    "activity": "Imagine flying.",
-    "enterpriseInsight": "Our mazes (RSA) are now visible from above.",
-    "math": {
-      "equation": "f(x) = a^x \\pmod{N}",
-      "interpretations": [
-        { "term": "f(x)", "meaning": "The repeating pattern of the maze" }
-      ]
-    }
-  },
-  {
-    "id": 48,
-    "section": "Post-Quantum Crypto",
-    "title": "Analogy: The 500D Haystack",
-    "bullets": ["Lattice basics", "NP-Hard problems"],
-    "story": "Classical security was a 3-digit combination lock. Lattice security is like hiding a specific grain of sand in a desert that has 500 different dimensions. Good luck finding it!",
-    "interactivity": { "type": "pulse" },
-    "activity": "Visualize 500D.",
-    "enterpriseInsight": "Quantum computers still can't find that sand.",
-    "math": {
-      "equation": "L = \\sum a_i b_i",
-      "interpretations": [
-        { "term": "L", "meaning": "The infinite desert" }
-      ]
-    }
-  },
-  {
-    "id": 61,
-    "section": "Case Study #1",
-    "title": "Banking: The SWIFT Collapse",
-    "bullets": ["Global transaction forgery", "Real-time fund drain"],
+    "id": 61, "section": "Case Study #1", "title": "Banking: The SWIFT Collapse",
+    "bullets": ["Transaction Forgery", "Post-Quantum Mitigation"],
     "story": "A ghost in the machine transferring billions.",
-    "interactivity": { "type": "pulse" },
-    "activity": "Simulate a transfer.",
-    "enterpriseInsight": "Transaction integrity is non-negotiable.",
     "caseStudy": {
-      "background": "The SWIFT network handles trillions in daily cross-border transfers. It relies heavily on RSA/ECC for digital signatures.",
-      "technicalRisk": "A quantum computer could forge these signatures in seconds.",
-      "mitigation": "Implementation of Hash-based signatures and Lattice-based KEMs.",
-      "experimentSetup": "Simulated banking environment with a 'Quantum Adversary'.",
-      "insight": "Prevention of a global liquidity freeze."
-    }
+      "background": "SWIFT relies on RSA/ECC signatures.",
+      "technicalRisk": "Quantum forgery can inject fake payments.",
+      "mitigation": "Lattice-based KEMs.",
+      "experimentSetup": "Quantum Adversary simulation.",
+      "insight": "Integrity is as vital as secrecy."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Simulate transfer.", "enterpriseInsight": "Non-negotiable integrity."
   },
   {
-    "id": 71,
-    "section": "Closing Story",
-    "title": "The End (Or Beginning?)",
+    "id": 62, "section": "Case Study #2", "title": "Healthcare: The Genomic Leak",
+    "bullets": ["DNA Privacy", "Lifetime Risk"],
+    "story": "Your DNA is a permanent password you can't change.",
+    "caseStudy": {
+      "background": "Hospitals store genomic data for life.",
+      "technicalRisk": "SNDL leaks DNA forever.",
+      "mitigation": "Retroactive AES-256 wrapping.",
+      "experimentSetup": "Entropy analysis.",
+      "insight": "Future-proofing is an ethical mandate."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Check health app.", "enterpriseInsight": "Permanent data protection."
+  },
+  {
+    "id": 63, "section": "Case Study #3", "title": "Energy: Grid Lockdown",
+    "bullets": ["Smart Meter SCADA", "Blackout Risk"],
+    "story": "A city goes dark because its meters were tricked.",
+    "caseStudy": {
+      "background": "Grids use light-weight crypto for meters.",
+      "technicalRisk": "Forged firmware signatures kill the grid.",
+      "mitigation": "Stateless PQC signatures (Dilithium).",
+      "experimentSetup": "HIL secure boot testing.",
+      "insight": "Build PQC-ready hardware today."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Switch light.", "enterpriseInsight": "OT is physical security."
+  },
+  {
+    "id": 64, "section": "Case Study #4", "title": "Gov: The Satellite Hijack",
+    "bullets": ["Orbital Control", "Handshake Forgery"],
+    "story": "A billion-dollar satellite receiving alien commands.",
+    "caseStudy": {
+      "background": "Satellites use asymmetric C2 handshakes.",
+      "technicalRisk": "Thruster hijack via broken DH/ECC.",
+      "mitigation": "QKD + Lattice signatures.",
+      "experimentSetup": "Doppler-shifted link simulation.",
+      "insight": "Space security is the high-ground."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Track satellite.", "enterpriseInsight": "Quantum-proof command."
+  },
+  {
+    "id": 65, "section": "Case Study #5", "title": "Auto: The V2X Breach",
+    "bullets": ["Autonomous Safety", "Signal Spoofing"],
+    "story": "Cars talking to each other, but one is a liar.",
+    "caseStudy": {
+      "background": "V2X relies on ECDSA certificates.",
+      "technicalRisk": "Fake braking signals cause pileups.",
+      "mitigation": "Falcon/Dilithium for low-latency.",
+      "experimentSetup": "Ghost vehicle simulation.",
+      "insight": "Trust-at-speed is essential."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Simulate drive.", "enterpriseInsight": "Safety depends on math."
+  },
+  {
+    "id": 66, "section": "Case Study #6", "title": "Pharma: The Formula Theft",
+    "bullets": ["IP Protection", "R&D Secrecy"],
+    "story": "A decade of research stolen by a future key.",
+    "caseStudy": {
+      "background": "Pharma R&D is a multi-billion IP vault.",
+      "technicalRisk": "SNDL targeting drug molecules.",
+      "mitigation": "PQC-wrapped digital envelopes.",
+      "experimentSetup": "Time-lock vulnerability audit.",
+      "insight": "PQC is asset protection."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "View lab report.", "enterpriseInsight": "IP value lifespan."
+  },
+  {
+    "id": 67, "section": "Case Study #7", "title": "Cloud: The Hypervisor Breach",
+    "bullets": ["Cross-Tenant Isolation", "HSM Collapse"],
+    "story": "The walls between tenants just turned into glass.",
+    "caseStudy": {
+      "background": "Cloud relies on hypervisor isolation.",
+      "technicalRisk": "Lateral movement via broken RSA roots.",
+      "mitigation": "Quantum-Safe HSM deployment.",
+      "experimentSetup": "Side-channel extraction test.",
+      "insight": "Demand Quantum Transparency."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Switch zones.", "enterpriseInsight": "Isolation via crypto."
+  },
+  {
+    "id": 68, "section": "Case Study #8", "title": "Retail: Identity Theft",
+    "bullets": ["Digital Wallet", "Biometric Forgery"],
+    "story": "Someone buying a yacht using your face.",
+    "caseStudy": {
+      "background": "Retail uses SAML/OIDC certificates.",
+      "technicalRisk": "Master identity forgery.",
+      "mitigation": "Hybrid FIDO2/WebAuthn.",
+      "experimentSetup": "Anomaly detection screen.",
+      "insight": "Reinforce identity with math."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Scan ID.", "enterpriseInsight": "Identity is the perimeter."
+  },
+  {
+    "id": 69, "section": "Case Study #9", "title": "Defense: Secure Burst",
+    "bullets": ["Battlefield Comms", "Signal Integrity"],
+    "story": "Orders that never came from the General.",
+    "caseStudy": {
+      "background": "Tactical units use burst transmissions.",
+      "technicalRisk": "Real-time order-of-battle hijacking.",
+      "mitigation": "One-Time-Pad + HQC.",
+      "experimentSetup": "Tactical radio field-test.",
+      "insight": "National security is the driver."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Decode message.", "enterpriseInsight": "Trust is won with math."
+  },
+  {
+    "id": 70, "section": "Case Study #10", "title": "Supply Chain: OTA Poisoning",
+    "bullets": ["Firmware Provenance", "Hardware Backdoors"],
+    "story": "Your phone with a spy living in its brain.",
+    "caseStudy": {
+      "background": "Chips use OTA signing for provenance.",
+      "technicalRisk": "Root cert forgery for malicious microcode.",
+      "mitigation": "Double-Signing (Classical + PQC).",
+      "experimentSetup": "Supply chain audit simulation.",
+      "insight": "Zero Trust in hardware."
+    },
+    "interactivity": { "type": "pulse" }, "activity": "Track package.", "enterpriseInsight": "Weakest link risk."
+  },
+  {
+    "id": 71, "section": "Closing Story", "title": "The End (Or Beginning?)",
     "bullets": ["Thank you", "Questions?", "Stay Quantum"],
-    "story": "Lights in your mind turning on. Like a new world appearing as the mist clears.",
-    "interactivity": { "type": "pulse" },
-    "activity": "Q&A session.",
-    "enterpriseInsight": "Conversation starts here.",
-    "math": {
-      "equation": "\\infty \\text{ Possibilities} = \\sum \\text{Action}_i",
-      "interpretations": [
-        { "term": "\\infty", "meaning": "Potential for a secure quantum future" }
-      ]
-    }
+    "story": "Lights in your mind turning on.",
+    "interactivity": { "type": "pulse" }, "activity": "Q&A session.", "enterpriseInsight": "Conversation starts here.",
+    "math": { "equation": "\\infty = \\sum \\text{Action}", "interpretations": [{"term": "\\infty", "meaning": "Secure future"}] }
   }
 ]
