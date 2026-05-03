@@ -17,55 +17,129 @@
     }
   },
   {
+    "id": 2,
+    "section": "Opening Story",
+    "title": "The Trust Audit",
+    "bullets": ["80% enterprises vulnerable", "Trust expiration", "Quantum audit"],
+    "story": "House key machine copies from a mile away.",
+    "interactivity": { "type": "poll", "question": "Data safety 1-10?", "options": ["1-3", "4-6", "7-8", "9-10"] },
+    "activity": "Look at URL bar lock.",
+    "enterpriseInsight": "Legacy security is a bomb.",
+    "math": {
+      "equation": "T_{\\text{safe}} = \\min(T_{\\text{Q-Day}} - T_{\\text{harvest}}, T_{\\text{shelf-life}})",
+      "interpretations": [
+        { "term": "T_{\\text{safe}}", "meaning": "Remaining window of data safety" },
+        { "term": "T_{\\text{harvest}}", "meaning": "Time when data was captured by adversary" },
+        { "term": "T_{\\text{shelf-life}}", "meaning": "Duration data remains sensitive/valuable" }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "section": "Opening Story",
+    "title": "Hacked Tomorrow, Stored Today",
+    "bullets": ["SNDL: Store Now, Decrypt Later", "Harvesting happening NOW"],
+    "story": "Thieves stealing a safe to open later.",
+    "interactivity": { "type": "timeline_thaw", "range": [2024, 2030] },
+    "activity": "Think of a 10-year secret.",
+    "enterpriseInsight": "Data stolen today belongs to the future attacker.",
+    "math": {
+      "equation": "S_{SNDL} = \\int_{t_{now}}^{t_{Q-day}} R(t) \\, dt",
+      "interpretations": [
+        { "term": "S_{SNDL}", "meaning": "Total surface area for harvesting attacks" },
+        { "term": "R(t)", "meaning": "Rate of data accumulation by adversaries" },
+        { "term": "t_{Q-day}", "meaning": "Estimated arrival of cryptographically relevant quantum computer" }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "section": "Basics of Security",
+    "title": "The Art of the Scramble",
+    "bullets": ["Encryption = Chaos", "Secret key is grail"],
+    "story": "Organized chaos.",
+    "interactivity": { "type": "text_toggle", "before": "SECRET", "after": "XJ9!K" },
+    "activity": "Shift letters.",
+    "enterpriseInsight": "Math is the wall.",
+    "math": {
+      "equation": "P(M|C) = P(M)",
+      "interpretations": [
+        { "term": "P(M|C)", "meaning": "Probability of message M given ciphertext C (Perfect Secrecy)" },
+        { "term": "P(M)", "meaning": "A priori probability of message M" },
+        { "term": "Perfect Secrecy", "meaning": "Ciphertext reveals zero information about plaintext" }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "section": "Basics of Security",
+    "title": "One Key (Symmetric)",
+    "bullets": ["AES standard", "Fast but key sharing hard"],
+    "story": "Shared Netflix account dilemma.",
+    "interactivity": { "type": "vault_reveal", "label": "Share Key" },
+    "activity": "Send key to London.",
+    "enterpriseInsight": "AES-256 is Quantum Resistant.",
+    "math": {
+      "equation": "2^{256} \\xrightarrow{\\text{Grover's}} 2^{128}",
+      "interpretations": [
+        { "term": "2^{256}", "meaning": "Classical brute force search space" },
+        { "term": "2^{128}", "meaning": "Quantum effective security strength" },
+        { "term": "\\xrightarrow{\\text{Grover's}}", "meaning": "Quadratic reduction in attack complexity" }
+      ]
+    }
+  },
+  {
     "id": 8,
     "section": "Basics of Security",
-    "title": "The Magic Mailbox",
-    "bullets": ["Public Key Encryption", "Blue Postbox analogy"],
-    "story": "Anyone can lock, only one can open.",
+    "title": "The Magic Mailbox (Asymmetric)",
+    "bullets": ["Public: Anyone locks", "Private: Only you open"],
+    "story": "Blue postbox.",
     "interactivity": { "type": "step_thru", "steps": ["Lock", "Send", "Verify", "Unlock"] },
-    "activity": "Email address = public key.",
-    "enterpriseInsight": "Backbone of the web.",
+    "activity": "Email = public key.",
+    "enterpriseInsight": "Asymmetric is the first victim.",
     "math": {
-      "equation": "C = E_{pk}(M), \\quad M = D_{sk}(C)",
+      "equation": "C = m^e \\pmod{n}, \\quad m = c^d \\pmod{n}",
       "interpretations": [
-        { "term": "pk, sk", "meaning": "Public Key and Secret (Private) Key pair" },
-        { "term": "E_{pk}, D_{sk}", "meaning": "Encryption and Decryption functions" },
-        { "term": "M, C", "meaning": "Message (Plaintext) and Ciphertext" }
+        { "term": "e, n", "meaning": "Public Key components (Encryption)" },
+        { "term": "d", "meaning": "Private Key component (Decryption)" },
+        { "term": "m, c", "meaning": "Message and Ciphertext" }
       ]
     }
   },
   {
     "id": 13,
     "section": "Classical Cryptography",
-    "title": "Diffie-Hellman Key Exchange",
-    "bullets": ["Giant of the past", "Standard for 40 years"],
-    "story": "Legends who built our walls.",
-    "interactivity": { "type": "scenario", "question": "Which one protects your browser?", "options": ["RSA", "ECC", "Both"] },
-    "activity": "Write an algorithm name.",
-    "enterpriseInsight": "Foundations are shaking.",
+    "title": "Diffie-Hellman",
+    "bullets": ["Shared secret trick", "40 year standard"],
+    "story": "Legends of the past.",
+    "interactivity": { "type": "scenario", "question": "Protects browser?", "options": ["RSA", "ECC", "Both"] },
+    "activity": "Algorithm name.",
+    "enterpriseInsight": "Shaking foundations.",
     "math": {
-      "equation": "K = (g^b \\pmod{p})^a \\equiv (g^a \\pmod{p})^b \\pmod{p}",
+      "equation": "g^{ab} \\pmod{p}",
       "interpretations": [
-        { "term": "g, p", "meaning": "Public generator and large prime modulus" },
-        { "term": "a, b", "meaning": "Alice and Bob's private exponents" },
-        { "term": "K", "meaning": "The resulting shared secret key" }
+        { "term": "g, p", "meaning": "Public parameters (Generator and Prime)" },
+        { "term": "a, b", "meaning": "Alice and Bob's private secrets" },
+        { "term": "g^{ab}", "meaning": "Shared key computed without ever sending a or b" }
       ]
     }
   },
   {
-    "id": 14,
+    "id": 15,
     "section": "Classical Cryptography",
-    "title": "RSA: Prime Numbers",
-    "bullets": ["Multiplying easy", "Factoring hard"],
-    "story": "One-way door.",
-    "interactivity": { "type": "input_feedback", "prompt": "Multiply primes" },
-    "activity": "Divide 91.",
-    "enterpriseInsight": "Factoring is safety.",
+    "title": "ECC: The Lean Machine",
+    "bullets": ["Elliptic Curves", "Smaller keys, same strength"],
+    "story": "Broadsword vs Scalpel.",
+    "interactivity": { "type": "comparison_slider", "left": "RSA", "right": "ECC" },
+    "activity": "FaceID check.",
+    "enterpriseInsight": "Quantum doesn't care about efficiency.",
     "math": {
-      "equation": "n = p \\times q",
+      "equation": "Q = kP",
       "interpretations": [
-        { "term": "n", "meaning": "Public Modulus used for encryption" },
-        { "term": "p, q", "meaning": "Two distinct large prime numbers" }
+        { "term": "P", "meaning": "Base point on the elliptic curve" },
+        { "term": "k", "meaning": "Scalar (The private key)" },
+        { "term": "Q", "meaning": "Point on curve (The public key)" },
+        { "term": "ECDLP", "meaning": "Difficulty of finding k from Q and P" }
       ]
     }
   },
@@ -73,17 +147,17 @@
     "id": 19,
     "section": "Classical Cryptography",
     "title": "The Hash Function",
-    "bullets": ["Fingerprint for data", "SHA-256 gold standard"],
-    "story": "Fixed length paper shredder.",
-    "interactivity": { "type": "input_feedback", "prompt": "Enter text" },
+    "bullets": ["Fingerprint", "SHA-256"],
+    "story": "Paper shredder.",
+    "interactivity": { "type": "input_feedback", "prompt": "Hash text" },
     "activity": "Change one letter.",
     "enterpriseInsight": "Foundation of integrity.",
     "math": {
-      "equation": "h = H(M)",
+      "equation": "h = \\text{SHA256}(M)",
       "interpretations": [
-        { "term": "H", "meaning": "Cryptographic Hash Function (One-way)" },
-        { "term": "M", "meaning": "Input message of arbitrary length" },
-        { "term": "h", "meaning": "Digest/Hash of fixed length (e.g., 256 bits)" }
+        { "term": "M", "meaning": "Input of any length (The payload)" },
+        { "term": "h", "meaning": "Fixed-size 256-bit output (The digest)" },
+        { "term": "\\text{Collision}", "meaning": "Finding $M_1 \\neq M_2$ such that $H(M_1) = H(M_2)$" }
       ]
     }
   },
@@ -100,7 +174,43 @@
       "equation": "|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle",
       "interpretations": [
         { "term": "|\\psi\\rangle", "meaning": "State vector in Hilbert Space" },
-        { "term": "\\alpha, \\beta", "meaning": "Probability amplitudes ($|\\alpha|^2 + |\\beta|^2 = 1$)" }
+        { "term": "|\\alpha|^2", "meaning": "Probability of measuring state |0⟩" },
+        { "term": "|\\beta|^2", "meaning": "Probability of measuring state |1⟩" }
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "section": "Intro to Quantum",
+    "title": "Entanglement",
+    "bullets": ["Linked across distance", "Einstein's headache"],
+    "story": "Magic dice.",
+    "interactivity": { "type": "entanglement" },
+    "activity": "Point left.",
+    "enterpriseInsight": "Quantum internet backbone.",
+    "math": {
+      "equation": "E(A, B) > \\text{Classical Limit}",
+      "interpretations": [
+        { "term": "E(A, B)", "meaning": "Correlation between particle A and B" },
+        { "term": "\\text{Bell's Inequality}", "meaning": "Proves quantum correlations exceed classical physics" }
+      ]
+    }
+  },
+  {
+    "id": 24,
+    "section": "Intro to Quantum",
+    "title": "The Bloch Sphere",
+    "bullets": ["Visualizing Qubit", "Latitude and Longitude"],
+    "story": "Poles vs Equator.",
+    "interactivity": { "type": "bloch_sphere" },
+    "activity": "Point up/down.",
+    "enterpriseInsight": "Visualizing complexity.",
+    "math": {
+      "equation": "|\\psi\\rangle = \\cos(\\theta/2)|0\\rangle + e^{i\\phi}\\sin(\\theta/2)|1\\rangle",
+      "interpretations": [
+        { "term": "\\theta", "meaning": "Polar angle (Latitude)" },
+        { "term": "\\phi", "meaning": "Azimuthal angle (Longitude/Phase)" },
+        { "term": "e^{i\\phi}", "meaning": "Relative phase of the superposition" }
       ]
     }
   },
@@ -108,17 +218,17 @@
     "id": 29,
     "section": "Shor’s Algorithm Impact",
     "title": "The RSA Killer",
-    "bullets": ["Peter Shor (1994)", "Cheat code"],
+    "bullets": ["Exponential speedup", "Cheat code"],
     "story": "All dials at once.",
     "interactivity": { "type": "big_button" },
     "activity": "Factor 600 digits.",
     "enterpriseInsight": "Why we are here.",
     "math": {
-      "equation": "a^r \\equiv 1 \\pmod{N}",
+      "equation": "O(\\log N)^3 \\text{ vs } e^{O(\\sqrt[3]{\\log N})}",
       "interpretations": [
-        { "term": "N", "meaning": "Composite number (The RSA modulus)" },
-        { "term": "r", "meaning": "Period of the modular exponentiation" },
-        { "term": "a", "meaning": "Random integer coprime to N" }
+        { "term": "O(\\log N)^3", "meaning": "Shor's complexity (Polynomial time)" },
+        { "term": "e^{...}", "meaning": "Best classical complexity (Sub-exponential)" },
+        { "term": "\\text{Exponential Gap}", "meaning": "Why Quantum breaks current asymmetric crypto" }
       ]
     }
   },
@@ -126,17 +236,52 @@
     "id": 31,
     "section": "Shor’s Algorithm Impact",
     "title": "Grover’s Algorithm",
-    "bullets": ["Database search", "Affects Symmetric crypto"],
+    "bullets": ["Database search", "Half-Hacker"],
     "story": "Faster bloodhound.",
     "interactivity": { "type": "comparison_slider" },
     "activity": "Draw square.",
-    "enterpriseInsight": "AES-256 is safe haven.",
+    "enterpriseInsight": "Double key size.",
     "math": {
-      "equation": "T \\approx \\frac{\\pi}{4}\\sqrt{N}",
+      "equation": "\\text{Iterations} \\approx \\sqrt{2^n}",
       "interpretations": [
-        { "term": "T", "meaning": "Number of iterations needed" },
-        { "term": "N", "meaning": "Search space size" },
-        { "term": "\\sqrt{N}", "meaning": "Quadratic speedup over classical $O(N)$" }
+        { "term": "2^n", "meaning": "Classical search space for n-bit key" },
+        { "term": "\\sqrt{2^n}", "meaning": "Quantum search iterations (2^{n/2})" },
+        { "term": "\\text{Result}", "meaning": "128-bit security effectively becomes 64-bit" }
+      ]
+    }
+  },
+  {
+    "id": 35,
+    "section": "Enterprise Risks",
+    "title": "Banking: $100T Target",
+    "bullets": ["SWIFT transfers", "Digital forgery"],
+    "story": "CEO signing a blank check.",
+    "interactivity": { "type": "big_button", "label": "Fraud Test" },
+    "activity": "Bank security page.",
+    "enterpriseInsight": "Financials are the canary.",
+    "math": {
+      "equation": "\\text{Risk} = \\sum_{i} (V_i \\times P(C_i))",
+      "interpretations": [
+        { "term": "V_i", "meaning": "Value of transaction/asset i" },
+        { "term": "P(C_i)", "meaning": "Probability of compromise (scales with Q-Day proximity)" }
+      ]
+    }
+  },
+  {
+    "id": 39,
+    "section": "Enterprise Risks",
+    "title": "Blockchain Crisis",
+    "bullets": ["Public keys on ledger", "Bitcoin frozen coins"],
+    "story": "Transparent vault with bolt cutters.",
+    "interactivity": { "type": "text_toggle", "before": "WALLET", "after": "DRAINED" },
+    "activity": "Crypto check.",
+    "enterpriseInsight": "Transparency is a weakness.",
+    "math": {
+      "equation": "H(P) = A \\xrightarrow{\\text{Shor's}} P = \\text{Shor}(A)",
+      "interpretations": [
+        { "term": "P", "meaning": "Private Key (User's spend power)" },
+        { "term": "A", "meaning": "Public Address (Visible on chain)" },
+        { "term": "\\text{Shor}(A)", "meaning": "Extracting private key from public data" }
       ]
     }
   },
@@ -145,16 +290,33 @@
     "section": "Post-Quantum Crypto",
     "title": "Lattice-Based Math",
     "bullets": ["Shortest vector problem", "Winner of NIST"],
-    "story": "Specific grain of sand.",
+    "story": "Grain of sand.",
     "interactivity": { "type": "pulse" },
     "activity": "4D brain.",
-    "enterpriseInsight": "Future standard.",
+    "enterpriseInsight": "Standard of the future.",
     "math": {
-      "equation": "\\min_{v \\in L \\setminus \\{0\\}} \\|v\\|",
+      "equation": "\\min \\| \\sum a_i b_i \\|",
       "interpretations": [
-        { "term": "L", "meaning": "The discrete lattice points" },
-        { "term": "\\|v\\|", "meaning": "The Euclidean length of vector v" },
-        { "term": "\\min", "meaning": "Shortest Vector Problem (SVP) - NP-Hard" }
+        { "term": "b_i", "meaning": "Basis vectors of the lattice" },
+        { "term": "a_i", "meaning": "Integer coefficients (The secret)" },
+        { "term": "\\text{SVP}", "meaning": "Shortest Vector Problem (Quantum resistant)" }
+      ]
+    }
+  },
+  {
+    "id": 50,
+    "section": "Post-Quantum Crypto",
+    "title": "Hash-Based Signatures",
+    "bullets": ["Based on SHA-256", "Robust but large"],
+    "story": "Burn after reading.",
+    "interactivity": { "type": "big_button", "label": "Burn Key" },
+    "activity": "Rip paper.",
+    "enterpriseInsight": "Firmware safety.",
+    "math": {
+      "equation": "y = H(x) \\rightarrow y' = H(y) \\dots",
+      "interpretations": [
+        { "term": "H(x)", "meaning": "One-way hash function application" },
+        { "term": "\\text{Lamport Signature}", "meaning": "Revealing part of a hash chain to sign 1 bit" }
       ]
     }
   },
@@ -168,11 +330,62 @@
     "activity": "Show hands.",
     "enterpriseInsight": "Run in parallel.",
     "math": {
-      "equation": "K = H(K_{classic} \\parallel K_{pqc})",
+      "equation": "Key = KDF(S_{ECDH} \\oplus S_{Kyber})",
       "interpretations": [
-        { "term": "\\parallel", "meaning": "Concatenation of two keys" },
-        { "term": "H", "meaning": "Key Derivation Function (KDF)" },
-        { "term": "K", "meaning": "Final Hybrid Secret Key" }
+        { "term": "S_{ECDH}", "meaning": "Shared secret from Classical ECC" },
+        { "term": "S_{Kyber}", "meaning": "Shared secret from Post-Quantum Kyber" },
+        { "term": "\\oplus", "meaning": "Safe combination (Hybridization)" }
+      ]
+    }
+  },
+  {
+    "id": 57,
+    "section": "Enterprise Readiness",
+    "title": "Crypto Agility",
+    "bullets": ["Swapping like tires", "Future proof"],
+    "story": "Engine swap in 10 mins.",
+    "interactivity": { "type": "big_button", "label": "Swap RSA" },
+    "activity": "Change wallpaper.",
+    "enterpriseInsight": "Agility is the goal.",
+    "math": {
+      "equation": "\\text{Agility} = \\frac{\\partial \\text{Security}}{\\partial \\text{Algorithm}} \\approx 0",
+      "interpretations": [
+        { "term": "\\text{Agility}", "meaning": "Ease of algorithm replacement" },
+        { "term": "\\approx 0", "meaning": "Security posture shouldn't break when algorithm changes" }
+      ]
+    }
+  },
+  {
+    "id": 60,
+    "section": "Enterprise Readiness",
+    "title": "Budget Conversation",
+    "bullets": ["PQC isn't free", "Cost of nothing"],
+    "story": "Insurance logic.",
+    "interactivity": { "type": "scenario", "question": "Allocate?", "options": ["Pilot", "Audit", "Wait"] },
+    "activity": "Reputation value.",
+    "enterpriseInsight": "Quantum Premium.",
+    "math": {
+      "equation": "ROI_{PQC} = \\frac{\\text{Value at Risk} \\times P(\\text{Q-Day})}{Cost_{Migration}}",
+      "interpretations": [
+        { "term": "\\text{Value at Risk}", "meaning": "Total enterprise data value" },
+        { "term": "P(\\text{Q-Day})", "meaning": "Probability of Quantum computer arrival" }
+      ]
+    }
+  },
+  {
+    "id": 70,
+    "section": "Closing Story",
+    "title": "The End (Or Beginning?)",
+    "bullets": ["Thank you", "Questions?", "Stay Quantum"],
+    "story": "Lights in your mind turning on.",
+    "interactivity": { "type": "big_button", "label": "Replay" },
+    "activity": "Q&A session.",
+    "enterpriseInsight": "Conversation starts here.",
+    "math": {
+      "equation": "\\infty \\text{ Possibilities} = \\sum_{i=1}^{n} \\text{Action}_i",
+      "interpretations": [
+        { "term": "\\infty", "meaning": "Potential for a secure quantum future" },
+        { "term": "\\text{Action}", "meaning": "Steps you take after this presentation" }
       ]
     }
   }

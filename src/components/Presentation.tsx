@@ -142,8 +142,13 @@ export default function Presentation() {
               <div className="interactive-area flex-col !justify-start overflow-y-auto">
                 {slide.math ? (
                   <div className="w-full flex flex-col gap-8 py-4">
-                    <div className="bg-white/5 p-8 rounded-2xl border border-white/10 shadow-inner">
-                      <BlockMath math={slide.math.equation} />
+                    <div className="relative group">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-accent to-accent-secondary rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                      <div className="relative bg-black/60 p-10 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl flex items-center justify-center min-h-[160px]">
+                        <div className="scale-125 origin-center">
+                          <BlockMath math={slide.math.equation} />
+                        </div>
+                      </div>
                     </div>
                     
                     <div className="flex flex-col gap-4">
