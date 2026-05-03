@@ -6,6 +6,10 @@ import { ChevronLeft, ChevronRight, Play, CheckCircle, Lightbulb, Activity, Arro
 import confetti from 'canvas-confetti';
 import slidesData from '@/data/slides.json';
 import { SlideData } from '@/types/slides';
+import Superposition from './interactions/Superposition';
+import Entanglement from './interactions/Entanglement';
+import BlochSphere from './interactions/BlochSphere';
+import BinaryShatter from './interactions/BinaryShatter';
 
 export default function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -280,6 +284,18 @@ function InteractionRenderer({ type, data }: { type: string, data: any }) {
           ))}
         </div>
       );
+
+    case 'superposition':
+      return <Superposition />;
+    
+    case 'entanglement':
+      return <Entanglement />;
+    
+    case 'bloch_sphere':
+      return <BlochSphere />;
+    
+    case 'binary_shatter':
+      return <BinaryShatter />;
 
     default:
       return (

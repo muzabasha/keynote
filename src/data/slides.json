@@ -381,7 +381,7 @@
     ],
     "story": "A classical bit is a coin on a table (Heads or Tails). A Qubit is the coin while it's spinning.",
     "interactivity": {
-      "type": "spinning_coin",
+      "type": "superposition",
       "label": "Click to STOP the coin."
     },
     "activity": "Try to hum two different notes at the exact same time. (Impossible for us, easy for Qubits).",
@@ -399,7 +399,7 @@
     ],
     "story": "Two magic dice. Roll one in New York (lands on 6), the one in Tokyo instantly turns into a 6 too.",
     "interactivity": {
-      "type": "pair_animation",
+      "type": "entanglement",
       "label": "Rotate Qubit A, watch Qubit B mirror it."
     },
     "activity": "Point to your left. Now imagine your twin on the moon pointing to their right at the same time.",
@@ -435,7 +435,7 @@
     ],
     "story": "Classical bits are the North and South poles. Quantum bits can live on the Equator, in Paris, or in the ocean.",
     "interactivity": {
-      "type": "bloch_sphere_rotate",
+      "type": "bloch_sphere",
       "label": "Drag the vector around the sphere."
     },
     "activity": "Point your finger up (0). Point it down (1). Now point it at the clock. That's a Quantum state.",
@@ -545,7 +545,7 @@
     ],
     "story": "The Great Wall of China suddenly becoming a bead curtain. You can see through it, walk through it, and ignore it.",
     "interactivity": {
-      "type": "binary_fall",
+      "type": "binary_shatter",
       "label": "Watch RSA keys shatter into pieces."
     },
     "activity": "Say 'Goodbye' to the lock icon on your favorite website.",
