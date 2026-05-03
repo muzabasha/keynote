@@ -244,8 +244,11 @@
     "activity": "Compare brute vs quantum.",
     "enterpriseInsight": "Major risk",
     "math": {
-      "equation": "a^r \\equiv 1 \\pmod{N}",
-      "interpretations": [{ "term": "r", "meaning": "Period" }]
+      "equation": "\\begin{aligned} &\\textbf{Shor's Algorithm:} \\\\ &1. \\text{ Choose random } a < n \\\\ &2. \\text{ Find period } r \\text{ of } a^x \\bmod n \\\\ &3. \\text{ If } r \\text{ is even, compute:} \\\\ &\\quad p, q = \\gcd(a^{r/2} \\pm 1, n) \\\\ &4. \\text{ RSA Private Key recovered!} \\end{aligned}",
+      "interpretations": [
+        { "term": "r", "meaning": "The Quantum Period (Hard for classical)" },
+        { "term": "\\gcd", "meaning": "Greatest Common Divisor" }
+      ]
     }
   },
   {
@@ -376,7 +379,15 @@
     "story": "Finding a needle in a 500D haystack.",
     "interactivity": { "type": "pulse", "prompt": "Lattice test" },
     "activity": "Visualize 500D.",
-    "enterpriseInsight": "Gold standard"
+    "enterpriseInsight": "Gold standard",
+    "math": {
+      "equation": "\\begin{aligned} &\\textbf{Kyber & LWE (Learning With Errors)} \\\\ &\\mathbf{t} = A\\mathbf{s} + \\mathbf{e} \\pmod{q} \\\\ &\\textbf{1. Encapsulate:} \\\\ &\\quad u = A^T r + e_1 \\\\ &\\quad v = t^T r + e_2 + m \\\\ &\\textbf{2. Decapsulate:} \\\\ &\\quad m' = v - s^T u \\approx m \\end{aligned}",
+      "interpretations": [
+        { "term": "A\\mathbf{s} + \\mathbf{e}", "meaning": "The LWE hard problem (Math bedrock)" },
+        { "term": "\\mathbf{e}", "meaning": "Small noise that hides the secret" },
+        { "term": "v - s^T u", "meaning": "Error correction to recover message" }
+      ]
+    }
   },
   {
     "id": 31,
