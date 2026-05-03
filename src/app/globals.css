@@ -60,12 +60,13 @@ body {
 }
 
 .slide-title {
-  font-size: 3.5rem;
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
   font-weight: 800;
   background: linear-gradient(to right, #fff, #94a3b8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.1;
+  margin-bottom: 0.5rem;
 }
 
 .slide-content {
@@ -196,4 +197,101 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .slide-card {
+    padding: 32px;
+    min-height: auto;
+    height: calc(100vh - 120px);
+    margin-top: 60px;
+  }
+  
+  .slide-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto; /* Allow scrolling on small screens if content overflows */
+  }
+
+  .presentation-container {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 16px 100px 16px;
+    justify-content: flex-start;
+  }
+
+  .slide-card {
+    width: 100%;
+    padding: 24px;
+    min-height: auto;
+    height: auto;
+    gap: 16px;
+    margin-top: 0;
+  }
+
+  .slide-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .bullet-item {
+    font-size: 1rem;
+  }
+
+  .story-box {
+    font-size: 0.95rem;
+    padding: 16px;
+  }
+
+  .footer-info {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .insight-box {
+    text-align: left;
+  }
+
+  .nav-controls {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    justify-content: space-between;
+  }
+
+  .nav-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .slide-number {
+    top: 24px;
+    right: 24px;
+    font-size: 1.1rem;
+  }
+
+  /* Hide conference location on mobile to save space */
+  .conf-location {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-title {
+    font-size: 1.8rem;
+  }
+  
+  .slide-section {
+    font-size: 0.75rem;
+  }
+
+  .interactive-area {
+    padding: 16px;
+    min-height: 150px;
+  }
 }
