@@ -1,133 +1,32 @@
 [
-  {
-    "id": 1, "section": "Module 1: Classical vs Quantum", "title": "Bits vs Qubits",
-    "bullets": ["Classical Bit: 0 or 1", "Quantum Qubit: 0 and 1", "Analogy: Dimmer switch vs Toggle"],
-    "story": "A light switch can only be ON or OFF. A Qubit is like a dimmer switch that can be anywhere in between, and sometimes both.",
-    "interactivity": { "type": "superposition" }, "activity": "Toggle the state.", "enterpriseInsight": "Information density increases exponentially.",
-    "math": { "equation": "|\\psi\\rangle \\in \\mathbb{C}^2", "interpretations": [{"term": "|\\psi\\rangle", "meaning": "State vector in a 2-dimensional Hilbert space"}] }
-  },
-  {
-    "id": 2, "section": "Module 1: Classical vs Quantum", "title": "Superposition",
-    "bullets": ["Being in multiple states", "The Lazy Teenager analogy", "Quantum Parallelism foundation"],
-    "story": "Remember the teen both gaming and studying? That's superposition. It's not a secret choice; it's a genuine existence in both states.",
-    "interactivity": { "type": "superposition" }, "activity": "Observe the particle.", "enterpriseInsight": "Computing all solutions at once.",
-    "math": { "equation": "|\\psi\\rangle = a|0\\rangle + b|1\\rangle", "interpretations": [{"term": "a, b", "meaning": "Probability amplitudes"}] }
-  },
-  {
-    "id": 10, "section": "Module 2: Mathematical Foundations", "title": "Complex Vector Spaces",
-    "bullets": ["Hilbert Space", "Linear combinations", "Inner products"],
-    "story": "Think of Hilbert space as a massive map where every possible outcome is a coordinate.",
-    "interactivity": { "type": "pulse" }, "activity": "Calculate inner product.", "enterpriseInsight": "The language of quantum reality.",
-    "math": { "equation": "\\langle \\psi | \\phi \\rangle", "interpretations": [{"term": "\\langle \\psi |", "meaning": "Bra (dual vector)"}, {"term": "| \\phi \\rangle", "meaning": "Ket (vector)"}] }
-  },
-  {
-    "id": 11, "section": "Module 2: Mathematical Foundations", "title": "The Qubit Representation",
-    "bullets": ["State ket notation", "Normalization condition", "Conservation of probability"],
-    "story": "The math ensures that no matter how weird it gets, the chances of finding the particle *somewhere* always add up to 100%.",
-    "interactivity": { "type": "pulse" }, "activity": "Verify 100%.", "enterpriseInsight": "Statistical certainty in quantum uncertainty.",
-    "math": { "equation": "|a|^2 + |b|^2 = 1", "interpretations": [{"term": "|a|^2", "meaning": "Probability of measuring state 0"}, {"term": "|b|^2", "meaning": "Probability of measuring state 1"}] }
-  },
-  {
-    "id": 20, "section": "Module 3: Quantum Mechanics", "title": "The Bloch Sphere",
-    "bullets": ["Visualizing the Qubit", "State representation on a sphere", "Phase and Amplitude"],
-    "story": "If a Qubit is a world, the Bloch Sphere is the globe. Latitude is the '0 or 1' state, and longitude is the 'Phase'.",
-    "interactivity": { "type": "bloch_sphere" }, "activity": "Rotate the globe.", "enterpriseInsight": "Geometric control of computation.",
-    "math": { "equation": "|\\psi\\rangle = \\cos(\\theta/2)|0\\rangle + e^{i\\phi}\\sin(\\theta/2)|1\\rangle", "interpretations": [{"term": "\\theta", "meaning": "Polar angle"}, {"term": "\\phi", "meaning": "Phase angle"}] }
-  },
-  {
-    "id": 21, "section": "Module 3: Quantum Mechanics", "title": "Measurement Collapse",
-    "bullets": ["Observation changes reality", "Irreversible process", "Projective measurement"],
-    "story": "Like a soap bubble: beautiful while it lasts, but touch it (measure it) and it pops into a single drop of water.",
-    "interactivity": { "type": "pulse" }, "activity": "Pop the bubble.", "enterpriseInsight": "The observer effect in security.",
-    "math": { "equation": "P(i) = |\\langle i | \\psi \\rangle|^2", "interpretations": [{"term": "P(i)", "meaning": "Probability of collapsing to state i"}] }
-  },
-  {
-    "id": 22, "section": "Module 3: Quantum Mechanics", "title": "No-Cloning Theorem",
-    "bullets": ["Quantum data cannot be copied", "Unbreakable physical security", "Perfect for currency"],
-    "story": "You can't have two identical quantum snowflakes. If you try to copy one, you destroy the original.",
-    "interactivity": { "type": "pulse" }, "activity": "Try to copy.", "enterpriseInsight": "The physical root of anti-counterfeiting.",
-    "math": { "equation": "U(|\\psi\\rangle |s\\rangle) \\neq |\\psi\\rangle |\\psi\\rangle", "interpretations": [{"term": "U", "meaning": "Unitary cloning operator (impossible)"}] }
-  },
-  {
-    "id": 30, "section": "Module 4: Multi-Qubit Systems", "title": "Tensor Products",
-    "bullets": ["Combining systems", "Exponential state growth", "Scaling the power"],
-    "story": "One Qubit is a coin. Two Qubits is a dice. 300 Qubits is more states than atoms in the visible universe.",
-    "interactivity": { "type": "pulse" }, "activity": "Combine Qubits.", "enterpriseInsight": "Exponential scaling of compute power.",
-    "math": { "equation": "|\\psi\\rangle \\otimes |\\phi\\rangle", "interpretations": [{"term": "\\otimes", "meaning": "Tensor product operator"}] }
-  },
-  {
-    "id": 31, "section": "Module 4: Multi-Qubit Systems", "title": "Entanglement",
-    "bullets": ["Linked states", "Spooky action at a distance", "EPR pairs"],
-    "story": "Two magic dice that always show the same number, even if they are in different galaxies.",
-    "interactivity": { "type": "entanglement" }, "activity": "Sync the states.", "enterpriseInsight": "The backbone of the Quantum Internet.",
-    "math": { "equation": "|\\Phi^+\\rangle = \\frac{1}{\\sqrt{2}}(|00\\rangle + |11\\rangle)", "interpretations": [{"term": "|\\Phi^+\\rangle", "meaning": "Maximum entanglement state"}] }
-  },
-  {
-    "id": 40, "section": "Module 5: Gates & Circuits", "title": "The Hadamard Gate (H)",
-    "bullets": ["Creating superposition", "The mixer gate", "Uniform probability"],
-    "story": "The Hadamard gate is the ultimate blender. It takes a solid 0 or 1 and spins it into a perfect 50/50 mix.",
-    "interactivity": { "type": "pulse" }, "activity": "Apply H-Gate.", "enterpriseInsight": "Entry point for all quantum algorithms.",
-    "math": { "equation": "H = \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}", "interpretations": [{"term": "H", "meaning": "Hadamard matrix representation"}] }
-  },
-  {
-    "id": 41, "section": "Module 5: Gates & Circuits", "title": "The CNOT Gate",
-    "bullets": ["Controlled-NOT", "Quantum IF-THEN", "Generating Entanglement"],
-    "story": "If the first Qubit is 1, flip the second. If it's in superposition, it flips *and* doesn't flip, creating entanglement.",
-    "interactivity": { "type": "pulse" }, "activity": "Apply CNOT.", "enterpriseInsight": "The fundamental building block of logic.",
-    "math": { "equation": "CNOT |x, y\\rangle = |x, x \\oplus y\\rangle", "interpretations": [{"term": "\\oplus", "meaning": "Modulo-2 addition (XOR)"}] }
-  },
-  {
-    "id": 50, "section": "Module 6: Quantum Algorithms", "title": "Deutsch Algorithm",
-    "bullets": ["Evaluating functions", "Querying the oracle", "Efficiency over classical"],
-    "story": "Classic needs to check the function twice to see if it's constant. Quantum only needs one look. It's like knowing a coin is fair just by looking at its edge.",
-    "interactivity": { "type": "pulse" }, "activity": "Query Oracle.", "enterpriseInsight": "The first proof of quantum advantage.",
-    "math": { "equation": "U_f |x\\rangle |y\\rangle = |x\\rangle |y \\oplus f(x)\\rangle", "interpretations": [{"term": "U_f", "meaning": "Quantum Oracle (Black box)"}] }
-  },
-  {
-    "id": 51, "section": "Module 6: Quantum Algorithms", "title": "Quantum Parallelism",
-    "bullets": ["Vast search spaces", "Interference of amplitudes", "Winning the game"],
-    "story": "Parallelism is like trying every key in a lock at the exact same time and only the one that works stays in your hand.",
-    "interactivity": { "type": "pulse" }, "activity": "Search all states.", "enterpriseInsight": "Solving the unsolvable.",
-    "math": { "equation": "\\sum_{x} f(x) |x\\rangle", "interpretations": [{"term": "\\sum", "meaning": "Coherent summation over all inputs"}] }
-  },
-  {
-    "id": 60, "section": "Module 7: Fourier Transform", "title": "DFT vs QFT",
-    "bullets": ["Discrete vs Quantum", "Exponential speedup (Again!)", "Phase encoding"],
-    "story": "DFT is like a piano tuner listening to one string at a time. QFT hears the whole orchestra and knows every out-of-tune note instantly.",
-    "interactivity": { "type": "pulse" }, "activity": "Transform Signal.", "enterpriseInsight": "The secret engine behind Shor's Algorithm.",
-    "math": { "equation": "|j\\rangle \\to \\frac{1}{\\sqrt{N}} \\sum_{k=0}^{N-1} e^{2\\pi i jk/N} |k\\rangle", "interpretations": [{"term": "e^{2\\pi i...}", "meaning": "The phase rotation"}] }
-  },
-  {
-    "id": 71, "section": "Case Study #1", "title": "Banking: The SWIFT Collapse",
-    "bullets": ["Transaction Forgery", "Post-Quantum Mitigation"],
-    "story": "A ghost in the machine transferring billions.",
-    "caseStudy": {
-      "background": "SWIFT relies on RSA/ECC signatures.",
-      "technicalRisk": "Quantum forgery can inject fake payments.",
-      "mitigation": "Lattice-based KEMs.",
-      "experimentSetup": "Quantum Adversary simulation.",
-      "insight": "Integrity is as vital as secrecy."
-    },
-    "interactivity": { "type": "pulse" }, "activity": "Simulate transfer.", "enterpriseInsight": "Non-negotiable integrity."
-  },
-  {
-    "id": 72, "section": "Case Study #2", "title": "Healthcare: Genomic Leak",
-    "bullets": ["DNA Privacy", "Lifetime Risk"],
-    "story": "Your DNA is a permanent password you can't change.",
-    "caseStudy": {
-      "background": "Hospitals store genomic data for life.",
-      "technicalRisk": "SNDL leaks DNA forever.",
-      "mitigation": "Retroactive AES-256 wrapping.",
-      "experimentSetup": "Entropy analysis.",
-      "insight": "Future-proofing is an ethical mandate."
-    },
-    "interactivity": { "type": "pulse" }, "activity": "Check health app.", "enterpriseInsight": "Permanent data protection."
-  },
-  {
-    "id": 81, "section": "Closing", "title": "The Quantum Roadmap",
-    "bullets": ["Audit your crypto", "Train your teams", "Start today"],
-    "story": "The tide is coming. Don't wait for the water to hit your knees before you start building the wall.",
-    "interactivity": { "type": "pulse" }, "activity": "Start Roadmap.", "enterpriseInsight": "Early adoption is a competitive edge.",
-    "math": { "equation": "\\text{Security} = \\text{Math} + \\text{Agility}", "interpretations": [{"term": "Agility", "meaning": "The ability to switch algorithms fast"}] }
-  }
+  { "id": 1, "section": "Module 1", "title": "Classical vs Quantum Computing", "bullets": ["Information units", "Processing power"], "story": "Bits are like switches; Qubits are like dimmers.", "interactivity": { "type": "superposition" }, "activity": "Toggle state.", "enterpriseInsight": "Quantum is a new paradigm.", "math": { "equation": "|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle", "interpretations": [{"term": "|\\psi\\rangle", "meaning": "State vector"}] } },
+  { "id": 2, "section": "Module 1", "title": "Bits vs Qubits", "bullets": ["0/1 vs Superposition", "Energy efficiency"], "story": "Imagine a world where you don't have to choose between yes or no.", "interactivity": { "type": "superposition" }, "activity": "Measure.", "enterpriseInsight": "Data capacity scales.", "math": { "equation": "2^n", "interpretations": [{"term": "n", "meaning": "Number of Qubits"}] } },
+  { "id": 3, "section": "Module 1", "title": "Superposition", "bullets": ["Both states at once", "Parallel existence"], "story": "The spinning coin analogy.", "interactivity": { "type": "superposition" }, "activity": "Spin coin.", "enterpriseInsight": "Massive parallel search.", "math": { "equation": "\\frac{1}{\\sqrt{2}}(|0\\rangle + |1\\rangle)", "interpretations": [{"term": "1/\\sqrt{2}", "meaning": "Equal prob"}] } },
+  { "id": 4, "section": "Module 1", "title": "Measurement", "bullets": ["Collapsing the wave", "Probability to Reality"], "story": "Opening the box to see the cat.", "interactivity": { "type": "pulse" }, "activity": "Click to measure.", "enterpriseInsight": "Data is probabilistic.", "math": { "equation": "P(x) = |\\alpha_x|^2", "interpretations": [{"term": "P(x)", "meaning": "Prob of outcome"}] } },
+  { "id": 11, "section": "Module 2", "title": "Complex Vector Spaces", "bullets": ["Hilbert Space", "Linear Algebra base"], "story": "Math is the language.", "interactivity": { "type": "pulse" }, "activity": "View space.", "enterpriseInsight": "Mathematical rigor.", "math": { "equation": "\\mathbb{C}^n", "interpretations": [{"term": "C", "meaning": "Complex space"}] } },
+  { "id": 12, "section": "Module 2", "title": "Qubit representation", "bullets": ["Ket notation", "State vectors"], "story": "Writing down the mystery.", "interactivity": { "type": "pulse" }, "activity": "Write ket.", "enterpriseInsight": "Standardized notation.", "math": { "equation": "|\\psi\\rangle = a|0\\rangle + b|1\\rangle", "interpretations": [{"term": "a, b", "meaning": "Amplitudes"}] } },
+  { "id": 13, "section": "Module 2", "title": "Normalization condition", "bullets": ["Prob sum is 1", "Unit length vectors"], "story": "Reality must add up.", "interactivity": { "type": "pulse" }, "activity": "Check sum.", "enterpriseInsight": "Statistical integrity.", "math": { "equation": "|a|^2 + |b|^2 = 1", "interpretations": [{"term": "|a|^2", "meaning": "Outcome 0 prob"}] } },
+  { "id": 21, "section": "Module 3", "title": "Bloch Sphere", "bullets": ["Geometry of Qubits", "Visualizing states"], "story": "Mapping the quantum world.", "interactivity": { "type": "bloch_sphere" }, "activity": "Rotate sphere.", "enterpriseInsight": "Visual diagnostics.", "math": { "equation": "(\\theta, \\phi)", "interpretations": [{"term": "\\theta", "meaning": "Polar angle"}] } },
+  { "id": 22, "section": "Module 3", "title": "Measurement collapse", "bullets": ["Wavefunction pop", "Information gain"], "story": "Soap bubble popping.", "interactivity": { "type": "pulse" }, "activity": "Observe.", "enterpriseInsight": "Security via physics.", "math": { "equation": "|\\psi\\rangle \\to |0\\rangle", "interpretations": [{"term": "\\to", "meaning": "Collapse"}] } },
+  { "id": 23, "section": "Module 3", "title": "No-Cloning Theorem", "bullets": ["Impossible to copy", "Quantum uniqueness"], "story": "Original snowflakes.", "interactivity": { "type": "pulse" }, "activity": "Try copy.", "enterpriseInsight": "Absolute anti-forgery.", "math": { "equation": "U(|\\psi\\rangle|0\\rangle) \\neq |\\psi\\rangle|\\psi\\rangle", "interpretations": [{"term": "U", "meaning": "Unitary op"}] } },
+  { "id": 31, "section": "Module 4", "title": "Tensor products", "bullets": ["System combination", "Scaling up"], "story": "Combining forces.", "interactivity": { "type": "pulse" }, "activity": "Expand.", "enterpriseInsight": "Hardware scaling.", "math": { "equation": "V \\otimes W", "interpretations": [{"term": "\\otimes", "meaning": "Kronecker product"}] } },
+  { "id": 32, "section": "Module 4", "title": "Entanglement", "bullets": ["Spooky correlation", "Bell states"], "story": "Magic dice.", "interactivity": { "type": "entanglement" }, "activity": "Sync.", "enterpriseInsight": "Quantum network.", "math": { "equation": "\\frac{1}{\\sqrt{2}}(|00\\rangle + |11\\rangle)", "interpretations": [{"term": "|00\\rangle", "meaning": "Correlated"}] } },
+  { "id": 41, "section": "Module 5", "title": "Hadamard gate", "bullets": ["Superposition creator", "H-gate"], "story": "The quantum blender.", "interactivity": { "type": "pulse" }, "activity": "Apply H.", "enterpriseInsight": "Algorithm entry.", "math": { "equation": "H|0\\rangle = |+\\rangle", "interpretations": [{"term": "|+\\rangle", "meaning": "Plus state"}] } },
+  { "id": 42, "section": "Module 5", "title": "CNOT gate", "bullets": ["Conditioned flip", "Entangling gate"], "story": "If-then for quantum.", "interactivity": { "type": "pulse" }, "activity": "Apply CNOT.", "enterpriseInsight": "Logic building.", "math": { "equation": "|c\\rangle|t\\rangle \\to |c\\rangle|c \\oplus t\\rangle", "interpretations": [{"term": "\\oplus", "meaning": "XOR"}] } },
+  { "id": 43, "section": "Module 5", "title": "Circuit model", "bullets": ["Wiring Qubits", "Algorithm logic"], "story": "Building the machine.", "interactivity": { "type": "pulse" }, "activity": "Run circuit.", "enterpriseInsight": "Systematic design.", "math": { "equation": "U = G_n \\dots G_1", "interpretations": [{"term": "G", "meaning": "Quantum Gate"}] } },
+  { "id": 51, "section": "Module 6", "title": "Deutsch Algorithm", "bullets": ["Function analysis", "First advantage"], "story": "Knowing a coin's edge.", "interactivity": { "type": "pulse" }, "activity": "Test Oracle.", "enterpriseInsight": "Proof of concept.", "math": { "equation": "f: \\{0,1\\} \\to \\{0,1\\}", "interpretations": [{"term": "f", "meaning": "Blackbox function"}] } },
+  { "id": 52, "section": "Module 6", "title": "Quantum Parallelism", "bullets": ["Interference", "Massive search"], "story": "Every key at once.", "interactivity": { "type": "pulse" }, "activity": "Compute.", "enterpriseInsight": "Speed optimization.", "math": { "equation": "\\sum |x\\rangle f(x)", "interpretations": [{"term": "\\sum", "meaning": "Coherent sum"}] } },
+  { "id": 61, "section": "Module 7", "title": "Quantum Fourier Transform", "bullets": ["Phase encoding", "Frequency domain"], "story": "The orchestra tuner.", "interactivity": { "type": "pulse" }, "activity": "Transform.", "enterpriseInsight": "Signal dominance.", "math": { "equation": "QFT|j\\rangle", "interpretations": [{"term": "j", "meaning": "Basis state"}] } },
+  { "id": 62, "section": "Module 7", "title": "DFT vs QFT", "bullets": ["Classical vs Quantum", "Exponential speedup"], "story": "Broadband vs Dial-up.", "interactivity": { "type": "pulse" }, "activity": "Compare.", "enterpriseInsight": "Computational gap.", "math": { "equation": "O(n 2^n) \\text{ vs } O(n^2)", "interpretations": [{"term": "n^2", "meaning": "QFT complexity"}] } },
+  { "id": 71, "section": "Case Studies", "title": "Banking: SWIFT Forgery", "bullets": ["Transaction risk", "PQC fix"], "story": "Ghost transfers.", "caseStudy": { "background": "SWIFT uses RSA.", "technicalRisk": "Quantum signature forgery.", "mitigation": "Lattice KEMs.", "experimentSetup": "Attacker sim.", "insight": "Integrity is life." }, "interactivity": { "type": "pulse" }, "activity": "Audit.", "enterpriseInsight": "Trust first." },
+  { "id": 72, "section": "Case Studies", "title": "Healthcare: DNA Theft", "bullets": ["SNDL Risk", "Lifetime Privacy"], "story": "DNA leak.", "caseStudy": { "background": "Genomic storage.", "technicalRisk": "Permanent exposure.", "mitigation": "AES-256 + PQC.", "experimentSetup": "Entropy audit.", "insight": "Ethical safety." }, "interactivity": { "type": "pulse" }, "activity": "Protect.", "enterpriseInsight": "Lifetime data." },
+  { "id": 73, "section": "Case Studies", "title": "Energy: Grid Blackout", "bullets": ["SCADA Risk", "Meter Hack"], "story": "City blackout.", "caseStudy": { "background": "Smart grids.", "technicalRisk": "Firmware forgery.", "mitigation": "Stateless PQC.", "experimentSetup": "HIL testing.", "insight": "Physical safety." }, "interactivity": { "type": "pulse" }, "activity": "Secure.", "enterpriseInsight": "OT security." },
+  { "id": 74, "section": "Case Studies", "title": "Gov: Satellite Control", "bullets": ["Handshake risk", "Thruster hijack"], "story": "Lost satellite.", "caseStudy": { "background": "Satellite C2.", "technicalRisk": "DH broken.", "mitigation": "QKD.", "experimentSetup": "Link sim.", "insight": "Space ground." }, "interactivity": { "type": "pulse" }, "activity": "Link.", "enterpriseInsight": "Strategic comms." },
+  { "id": 75, "section": "Case Studies", "title": "Auto: V2X Crash", "bullets": ["Signal spoof", "Safety risk"], "story": "Fleet crash.", "caseStudy": { "background": "V2V comms.", "technicalRisk": "Fake braking.", "mitigation": "Falcon.", "experimentSetup": "V2X sim.", "insight": "Speed matters." }, "interactivity": { "type": "pulse" }, "activity": "Brake.", "enterpriseInsight": "Life at speed." },
+  { "id": 76, "section": "Case Studies", "title": "Pharma: IP Theft", "bullets": ["R&D Risk", "Molecule theft"], "story": "Secret stolen.", "caseStudy": { "background": "Drug R&D.", "technicalRisk": "SNDL IP theft.", "mitigation": "PQC envelopes.", "experimentSetup": "Audit sim.", "insight": "IP protection." }, "interactivity": { "type": "pulse" }, "activity": "Vault.", "enterpriseInsight": "Value preservation." },
+  { "id": 77, "section": "Case Studies", "title": "Cloud: Tenant Leak", "bullets": ["Isolation break", "HSM risk"], "story": "Glass walls.", "caseStudy": { "background": "Hypervisors.", "technicalRisk": "RSA root break.", "mitigation": "PQC HSM.", "experimentSetup": "Key extraction sim.", "insight": "Transparency." }, "interactivity": { "type": "pulse" }, "activity": "Isolate.", "enterpriseInsight": "Data privacy." },
+  { "id": 78, "section": "Case Studies", "title": "Retail: Identity Forgery", "bullets": ["FIDO risk", "Master ID hack"], "story": "Stolen face.", "caseStudy": { "background": "Retail IdP.", "technicalRisk": "Signature forgery.", "mitigation": "Hybrid FIDO2.", "experimentSetup": "Login audit.", "insight": "Identity core." }, "interactivity": { "type": "pulse" }, "activity": "Verify.", "enterpriseInsight": "ID perimeter." },
+  { "id": 79, "section": "Case Studies", "title": "Defense: Order Spoofing", "bullets": ["Tactical risk", "Battlefield hack"], "story": "Fake orders.", "caseStudy": { "background": "Battlefield comms.", "technicalRisk": "Burst forgery.", "mitigation": "OTP + HQC.", "experimentSetup": "Field test.", "insight": "National safety." }, "interactivity": { "type": "pulse" }, "activity": "Radio.", "enterpriseInsight": "Math trust." },
+  { "id": 80, "section": "Case Studies", "title": "Supply Chain: OTA Malware", "bullets": ["Firmware risk", "Hardware backdoor"], "story": "Phone spy.", "caseStudy": { "background": "Chip OTA.", "technicalRisk": "Root cert forgery.", "mitigation": "Double-Sign.", "experimentSetup": "Audit sim.", "insight": "Zero trust." }, "interactivity": { "type": "pulse" }, "activity": "Scan.", "enterpriseInsight": "Chain strength." },
+  { "id": 81, "section": "Closing", "title": "The Quantum Roadmap", "bullets": ["Audit", "Action", "Stay Ready"], "story": "Building the wall.", "interactivity": { "type": "pulse" }, "activity": "End.", "enterpriseInsight": "Future is now.", "math": { "equation": "\\text{Final}", "interpretations": [{"term": "F", "meaning": "Finish"}] } }
 ]
