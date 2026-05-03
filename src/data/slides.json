@@ -1,32 +1,476 @@
 [
-  { "id": 1, "section": "Module 1", "title": "Classical vs Quantum Computing", "bullets": ["Information units", "Processing power"], "story": "Bits are like switches; Qubits are like dimmers.", "interactivity": { "type": "superposition" }, "activity": "Toggle state.", "enterpriseInsight": "Quantum is a new paradigm.", "math": { "equation": "|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle", "interpretations": [{"term": "|\\psi\\rangle", "meaning": "State vector"}] } },
-  { "id": 2, "section": "Module 1", "title": "Bits vs Qubits", "bullets": ["0/1 vs Superposition", "Energy efficiency"], "story": "Imagine a world where you don't have to choose between yes or no.", "interactivity": { "type": "superposition" }, "activity": "Measure.", "enterpriseInsight": "Data capacity scales.", "math": { "equation": "2^n", "interpretations": [{"term": "n", "meaning": "Number of Qubits"}] } },
-  { "id": 3, "section": "Module 1", "title": "Superposition", "bullets": ["Both states at once", "Parallel existence"], "story": "The spinning coin analogy.", "interactivity": { "type": "superposition" }, "activity": "Spin coin.", "enterpriseInsight": "Massive parallel search.", "math": { "equation": "\\frac{1}{\\sqrt{2}}(|0\\rangle + |1\\rangle)", "interpretations": [{"term": "1/\\sqrt{2}", "meaning": "Equal prob"}] } },
-  { "id": 4, "section": "Module 1", "title": "Measurement", "bullets": ["Collapsing the wave", "Probability to Reality"], "story": "Opening the box to see the cat.", "interactivity": { "type": "pulse" }, "activity": "Click to measure.", "enterpriseInsight": "Data is probabilistic.", "math": { "equation": "P(x) = |\\alpha_x|^2", "interpretations": [{"term": "P(x)", "meaning": "Prob of outcome"}] } },
-  { "id": 11, "section": "Module 2", "title": "Complex Vector Spaces", "bullets": ["Hilbert Space", "Linear Algebra base"], "story": "Math is the language.", "interactivity": { "type": "pulse" }, "activity": "View space.", "enterpriseInsight": "Mathematical rigor.", "math": { "equation": "\\mathbb{C}^n", "interpretations": [{"term": "C", "meaning": "Complex space"}] } },
-  { "id": 12, "section": "Module 2", "title": "Qubit representation", "bullets": ["Ket notation", "State vectors"], "story": "Writing down the mystery.", "interactivity": { "type": "pulse" }, "activity": "Write ket.", "enterpriseInsight": "Standardized notation.", "math": { "equation": "|\\psi\\rangle = a|0\\rangle + b|1\\rangle", "interpretations": [{"term": "a, b", "meaning": "Amplitudes"}] } },
-  { "id": 13, "section": "Module 2", "title": "Normalization condition", "bullets": ["Prob sum is 1", "Unit length vectors"], "story": "Reality must add up.", "interactivity": { "type": "pulse" }, "activity": "Check sum.", "enterpriseInsight": "Statistical integrity.", "math": { "equation": "|a|^2 + |b|^2 = 1", "interpretations": [{"term": "|a|^2", "meaning": "Outcome 0 prob"}] } },
-  { "id": 21, "section": "Module 3", "title": "Bloch Sphere", "bullets": ["Geometry of Qubits", "Visualizing states"], "story": "Mapping the quantum world.", "interactivity": { "type": "bloch_sphere" }, "activity": "Rotate sphere.", "enterpriseInsight": "Visual diagnostics.", "math": { "equation": "(\\theta, \\phi)", "interpretations": [{"term": "\\theta", "meaning": "Polar angle"}] } },
-  { "id": 22, "section": "Module 3", "title": "Measurement collapse", "bullets": ["Wavefunction pop", "Information gain"], "story": "Soap bubble popping.", "interactivity": { "type": "pulse" }, "activity": "Observe.", "enterpriseInsight": "Security via physics.", "math": { "equation": "|\\psi\\rangle \\to |0\\rangle", "interpretations": [{"term": "\\to", "meaning": "Collapse"}] } },
-  { "id": 23, "section": "Module 3", "title": "No-Cloning Theorem", "bullets": ["Impossible to copy", "Quantum uniqueness"], "story": "Original snowflakes.", "interactivity": { "type": "pulse" }, "activity": "Try copy.", "enterpriseInsight": "Absolute anti-forgery.", "math": { "equation": "U(|\\psi\\rangle|0\\rangle) \\neq |\\psi\\rangle|\\psi\\rangle", "interpretations": [{"term": "U", "meaning": "Unitary op"}] } },
-  { "id": 31, "section": "Module 4", "title": "Tensor products", "bullets": ["System combination", "Scaling up"], "story": "Combining forces.", "interactivity": { "type": "pulse" }, "activity": "Expand.", "enterpriseInsight": "Hardware scaling.", "math": { "equation": "V \\otimes W", "interpretations": [{"term": "\\otimes", "meaning": "Kronecker product"}] } },
-  { "id": 32, "section": "Module 4", "title": "Entanglement", "bullets": ["Spooky correlation", "Bell states"], "story": "Magic dice.", "interactivity": { "type": "entanglement" }, "activity": "Sync.", "enterpriseInsight": "Quantum network.", "math": { "equation": "\\frac{1}{\\sqrt{2}}(|00\\rangle + |11\\rangle)", "interpretations": [{"term": "|00\\rangle", "meaning": "Correlated"}] } },
-  { "id": 41, "section": "Module 5", "title": "Hadamard gate", "bullets": ["Superposition creator", "H-gate"], "story": "The quantum blender.", "interactivity": { "type": "pulse" }, "activity": "Apply H.", "enterpriseInsight": "Algorithm entry.", "math": { "equation": "H|0\\rangle = |+\\rangle", "interpretations": [{"term": "|+\\rangle", "meaning": "Plus state"}] } },
-  { "id": 42, "section": "Module 5", "title": "CNOT gate", "bullets": ["Conditioned flip", "Entangling gate"], "story": "If-then for quantum.", "interactivity": { "type": "pulse" }, "activity": "Apply CNOT.", "enterpriseInsight": "Logic building.", "math": { "equation": "|c\\rangle|t\\rangle \\to |c\\rangle|c \\oplus t\\rangle", "interpretations": [{"term": "\\oplus", "meaning": "XOR"}] } },
-  { "id": 43, "section": "Module 5", "title": "Circuit model", "bullets": ["Wiring Qubits", "Algorithm logic"], "story": "Building the machine.", "interactivity": { "type": "pulse" }, "activity": "Run circuit.", "enterpriseInsight": "Systematic design.", "math": { "equation": "U = G_n \\dots G_1", "interpretations": [{"term": "G", "meaning": "Quantum Gate"}] } },
-  { "id": 51, "section": "Module 6", "title": "Deutsch Algorithm", "bullets": ["Function analysis", "First advantage"], "story": "Knowing a coin's edge.", "interactivity": { "type": "pulse" }, "activity": "Test Oracle.", "enterpriseInsight": "Proof of concept.", "math": { "equation": "f: \\{0,1\\} \\to \\{0,1\\}", "interpretations": [{"term": "f", "meaning": "Blackbox function"}] } },
-  { "id": 52, "section": "Module 6", "title": "Quantum Parallelism", "bullets": ["Interference", "Massive search"], "story": "Every key at once.", "interactivity": { "type": "pulse" }, "activity": "Compute.", "enterpriseInsight": "Speed optimization.", "math": { "equation": "\\sum |x\\rangle f(x)", "interpretations": [{"term": "\\sum", "meaning": "Coherent sum"}] } },
-  { "id": 61, "section": "Module 7", "title": "Quantum Fourier Transform", "bullets": ["Phase encoding", "Frequency domain"], "story": "The orchestra tuner.", "interactivity": { "type": "pulse" }, "activity": "Transform.", "enterpriseInsight": "Signal dominance.", "math": { "equation": "QFT|j\\rangle", "interpretations": [{"term": "j", "meaning": "Basis state"}] } },
-  { "id": 62, "section": "Module 7", "title": "DFT vs QFT", "bullets": ["Classical vs Quantum", "Exponential speedup"], "story": "Broadband vs Dial-up.", "interactivity": { "type": "pulse" }, "activity": "Compare.", "enterpriseInsight": "Computational gap.", "math": { "equation": "O(n 2^n) \\text{ vs } O(n^2)", "interpretations": [{"term": "n^2", "meaning": "QFT complexity"}] } },
-  { "id": 71, "section": "Case Studies", "title": "Banking: SWIFT Forgery", "bullets": ["Transaction risk", "PQC fix"], "story": "Ghost transfers.", "caseStudy": { "background": "SWIFT uses RSA.", "technicalRisk": "Quantum signature forgery.", "mitigation": "Lattice KEMs.", "experimentSetup": "Attacker sim.", "insight": "Integrity is life." }, "interactivity": { "type": "pulse" }, "activity": "Audit.", "enterpriseInsight": "Trust first." },
-  { "id": 72, "section": "Case Studies", "title": "Healthcare: DNA Theft", "bullets": ["SNDL Risk", "Lifetime Privacy"], "story": "DNA leak.", "caseStudy": { "background": "Genomic storage.", "technicalRisk": "Permanent exposure.", "mitigation": "AES-256 + PQC.", "experimentSetup": "Entropy audit.", "insight": "Ethical safety." }, "interactivity": { "type": "pulse" }, "activity": "Protect.", "enterpriseInsight": "Lifetime data." },
-  { "id": 73, "section": "Case Studies", "title": "Energy: Grid Blackout", "bullets": ["SCADA Risk", "Meter Hack"], "story": "City blackout.", "caseStudy": { "background": "Smart grids.", "technicalRisk": "Firmware forgery.", "mitigation": "Stateless PQC.", "experimentSetup": "HIL testing.", "insight": "Physical safety." }, "interactivity": { "type": "pulse" }, "activity": "Secure.", "enterpriseInsight": "OT security." },
-  { "id": 74, "section": "Case Studies", "title": "Gov: Satellite Control", "bullets": ["Handshake risk", "Thruster hijack"], "story": "Lost satellite.", "caseStudy": { "background": "Satellite C2.", "technicalRisk": "DH broken.", "mitigation": "QKD.", "experimentSetup": "Link sim.", "insight": "Space ground." }, "interactivity": { "type": "pulse" }, "activity": "Link.", "enterpriseInsight": "Strategic comms." },
-  { "id": 75, "section": "Case Studies", "title": "Auto: V2X Crash", "bullets": ["Signal spoof", "Safety risk"], "story": "Fleet crash.", "caseStudy": { "background": "V2V comms.", "technicalRisk": "Fake braking.", "mitigation": "Falcon.", "experimentSetup": "V2X sim.", "insight": "Speed matters." }, "interactivity": { "type": "pulse" }, "activity": "Brake.", "enterpriseInsight": "Life at speed." },
-  { "id": 76, "section": "Case Studies", "title": "Pharma: IP Theft", "bullets": ["R&D Risk", "Molecule theft"], "story": "Secret stolen.", "caseStudy": { "background": "Drug R&D.", "technicalRisk": "SNDL IP theft.", "mitigation": "PQC envelopes.", "experimentSetup": "Audit sim.", "insight": "IP protection." }, "interactivity": { "type": "pulse" }, "activity": "Vault.", "enterpriseInsight": "Value preservation." },
-  { "id": 77, "section": "Case Studies", "title": "Cloud: Tenant Leak", "bullets": ["Isolation break", "HSM risk"], "story": "Glass walls.", "caseStudy": { "background": "Hypervisors.", "technicalRisk": "RSA root break.", "mitigation": "PQC HSM.", "experimentSetup": "Key extraction sim.", "insight": "Transparency." }, "interactivity": { "type": "pulse" }, "activity": "Isolate.", "enterpriseInsight": "Data privacy." },
-  { "id": 78, "section": "Case Studies", "title": "Retail: Identity Forgery", "bullets": ["FIDO risk", "Master ID hack"], "story": "Stolen face.", "caseStudy": { "background": "Retail IdP.", "technicalRisk": "Signature forgery.", "mitigation": "Hybrid FIDO2.", "experimentSetup": "Login audit.", "insight": "Identity core." }, "interactivity": { "type": "pulse" }, "activity": "Verify.", "enterpriseInsight": "ID perimeter." },
-  { "id": 79, "section": "Case Studies", "title": "Defense: Order Spoofing", "bullets": ["Tactical risk", "Battlefield hack"], "story": "Fake orders.", "caseStudy": { "background": "Battlefield comms.", "technicalRisk": "Burst forgery.", "mitigation": "OTP + HQC.", "experimentSetup": "Field test.", "insight": "National safety." }, "interactivity": { "type": "pulse" }, "activity": "Radio.", "enterpriseInsight": "Math trust." },
-  { "id": 80, "section": "Case Studies", "title": "Supply Chain: OTA Malware", "bullets": ["Firmware risk", "Hardware backdoor"], "story": "Phone spy.", "caseStudy": { "background": "Chip OTA.", "technicalRisk": "Root cert forgery.", "mitigation": "Double-Sign.", "experimentSetup": "Audit sim.", "insight": "Zero trust." }, "interactivity": { "type": "pulse" }, "activity": "Scan.", "enterpriseInsight": "Chain strength." },
-  { "id": 81, "section": "Closing", "title": "The Quantum Roadmap", "bullets": ["Audit", "Action", "Stay Ready"], "story": "Building the wall.", "interactivity": { "type": "pulse" }, "activity": "End.", "enterpriseInsight": "Future is now.", "math": { "equation": "\\text{Final}", "interpretations": [{"term": "F", "meaning": "Finish"}] } }
+  {
+    "id": 1,
+    "section": "SECTION 1: HOOK & CONTEXT",
+    "title": "The Big Question",
+    "bullets": [
+      "Is your data safe for the next 10 years?",
+      "Encryption protects everything today",
+      "But future threats are evolving"
+    ],
+    "story": "Like locking your house with a lock that expires tomorrow.",
+    "interactivity": { "type": "pulse", "prompt": "Raise hands – Who trusts current encryption?" },
+    "activity": "Think of one sensitive data you store.",
+    "enterpriseInsight": "Long-term data = long-term risk",
+    "math": {
+      "equation": "T_{safe} = T_{Qday} - T_{harvest}",
+      "interpretations": [{ "term": "T_{safe}", "meaning": "Safety window" }]
+    }
+  },
+  {
+    "id": 2,
+    "section": "SECTION 1: HOOK & CONTEXT",
+    "title": "Why This Talk Matters",
+    "bullets": [
+      "Enterprises rely on encryption",
+      "Digital economy depends on trust",
+      "Quantum computing disrupts security"
+    ],
+    "story": "Imagine ATM PINs becoming public.",
+    "interactivity": { "type": "poll", "question": "Will security break in future?", "options": ["Yes", "No", "Maybe"] },
+    "activity": "List systems using encryption.",
+    "enterpriseInsight": "Banking & telecom highly exposed"
+  },
+  {
+    "id": 3,
+    "section": "SECTION 1: HOOK & CONTEXT",
+    "title": "Everyday Security",
+    "bullets": [
+      "WhatsApp messages encrypted",
+      "Online banking secured",
+      "Emails protected"
+    ],
+    "story": "Your messages are like sealed envelopes.",
+    "interactivity": { "type": "scenario", "question": "Which app do you trust most?", "options": ["WhatsApp", "Banking", "Email"] },
+    "activity": "Identify encrypted apps you use.",
+    "enterpriseInsight": "Consumer tech = enterprise risk"
+  },
+  {
+    "id": 4,
+    "section": "SECTION 1: HOOK & CONTEXT",
+    "title": "Problem Statement",
+    "bullets": [
+      "Encryption relies on hard math",
+      "Quantum computers solve it faster"
+    ],
+    "story": "Solving a maze instantly vs walking through.",
+    "interactivity": { "type": "pulse", "prompt": "Guess time to break password" },
+    "activity": "Use weak password mentally.",
+    "enterpriseInsight": "Legacy systems vulnerable"
+  },
+  {
+    "id": 5,
+    "section": "SECTION 1: HOOK & CONTEXT",
+    "title": "Session Roadmap",
+    "bullets": [
+      "Basics → Quantum → Risks → Solutions"
+    ],
+    "story": "Journey from lock to lock-breaker.",
+    "interactivity": { "type": "pulse", "prompt": "Choose what you want to learn" },
+    "activity": "Set expectation.",
+    "enterpriseInsight": "Strategic planning needed"
+  },
+  {
+    "id": 6,
+    "section": "SECTION 2: SECURITY BASICS",
+    "title": "What is Encryption?",
+    "bullets": [
+      "Converts readable → unreadable",
+      "Ensures confidentiality"
+    ],
+    "story": "Secret language between friends.",
+    "interactivity": { "type": "text_toggle", "before": "HELLO", "after": "SGVsbG8=" },
+    "activity": "Create your own code.",
+    "enterpriseInsight": "Data protection backbone"
+  },
+  {
+    "id": 7,
+    "section": "SECTION 2: SECURITY BASICS",
+    "title": "Types of Encryption",
+    "bullets": [
+      "Symmetric (same key)",
+      "Asymmetric (public/private)"
+    ],
+    "story": "Locker vs mailbox.",
+    "interactivity": { "type": "vault_reveal", "label": "Unlock Secret" },
+    "activity": "Identify example.",
+    "enterpriseInsight": "Used in SSL/TLS"
+  },
+  {
+    "id": 8,
+    "section": "SECTION 2: SECURITY BASICS",
+    "title": "Public Key Concept",
+    "bullets": [
+      "Anyone can encrypt",
+      "Only owner decrypts"
+    ],
+    "story": "Open mailbox, only owner opens letters.",
+    "interactivity": { "type": "pulse", "prompt": "Role-play encryption" },
+    "activity": "Share vs protect info.",
+    "enterpriseInsight": "Used in secure transactions"
+  },
+  {
+    "id": 9,
+    "section": "SECTION 2: SECURITY BASICS",
+    "title": "RSA Basics",
+    "bullets": [
+      "Based on prime factorization",
+      "Hard problem for classical computers"
+    ],
+    "story": "Multiplying easy, reverse hard.",
+    "interactivity": { "type": "input_feedback", "prompt": "Try breaking 15 = ?" },
+    "activity": "Small number factorization.",
+    "enterpriseInsight": "Widely used",
+    "math": {
+      "equation": "n = p \\times q",
+      "interpretations": [{ "term": "n", "meaning": "Public Key Modulus" }]
+    }
+  },
+  {
+    "id": 10,
+    "section": "SECTION 2: SECURITY BASICS",
+    "title": "Why It Works Today",
+    "bullets": [
+      "Classical computers slow at factoring"
+    ],
+    "story": "Searching needle in haystack.",
+    "interactivity": { "type": "pulse", "prompt": "Estimate search time" },
+    "activity": "Compare brute force.",
+    "enterpriseInsight": "Security assumption"
+  },
+  {
+    "id": 11,
+    "section": "SECTION 3: QUANTUM COMPUTING",
+    "title": "What is Quantum Computing?",
+    "bullets": [
+      "Uses qubits",
+      "Parallel computation"
+    ],
+    "story": "Coin spinning vs fixed.",
+    "interactivity": { "type": "superposition" },
+    "activity": "Visualize probability.",
+    "enterpriseInsight": "Disruptive tech"
+  },
+  {
+    "id": 12,
+    "section": "SECTION 3: QUANTUM COMPUTING",
+    "title": "Qubits Explained",
+    "bullets": [
+      "0 and 1 simultaneously"
+    ],
+    "story": "Student attending two classes at once.",
+    "interactivity": { "type": "pulse", "prompt": "Choose correct analogy" },
+    "activity": "Think dual states.",
+    "enterpriseInsight": "Speed advantage"
+  },
+  {
+    "id": 13,
+    "section": "SECTION 3: QUANTUM COMPUTING",
+    "title": "Superposition",
+    "bullets": [
+      "Multiple states at once"
+    ],
+    "story": "Multitasking at extreme level.",
+    "interactivity": { "type": "superposition" },
+    "activity": "Compare classical.",
+    "enterpriseInsight": "Exponential power",
+    "math": {
+      "equation": "|\\psi\\rangle = a|0\\rangle + b|1\\rangle",
+      "interpretations": [{ "term": "|\\psi\\rangle", "meaning": "Quantum State" }]
+    }
+  },
+  {
+    "id": 14,
+    "section": "SECTION 3: QUANTUM COMPUTING",
+    "title": "Entanglement",
+    "bullets": [
+      "Linked qubits"
+    ],
+    "story": "Twin telepathy.",
+    "interactivity": { "type": "entanglement" },
+    "activity": "Pair concept.",
+    "enterpriseInsight": "Secure communication potential"
+  },
+  {
+    "id": 15,
+    "section": "SECTION 3: QUANTUM COMPUTING",
+    "title": "Quantum Speed",
+    "bullets": [
+      "Faster problem solving"
+    ],
+    "story": "Shortcut vs long road.",
+    "interactivity": { "type": "pulse", "prompt": "Time comparison" },
+    "activity": "Estimate difference.",
+    "enterpriseInsight": "Threat to cryptography"
+  },
+  {
+    "id": 16,
+    "section": "SECTION 3: QUANTUM COMPUTING",
+    "title": "Current Status",
+    "bullets": [
+      "Early stage but growing"
+    ],
+    "story": "Like early internet.",
+    "interactivity": { "type": "pulse", "prompt": "Predict timeline" },
+    "activity": "Research company.",
+    "enterpriseInsight": "Prepare early"
+  },
+  {
+    "id": 17,
+    "section": "SECTION 4: THE THREAT",
+    "title": "What Changes?",
+    "bullets": [
+      "Hard problems become easy"
+    ],
+    "story": "Puzzle solved instantly.",
+    "interactivity": { "type": "poll", "question": "Reaction poll", "options": ["Scared", "Excited", "Unsure"] },
+    "activity": "Identify weak system.",
+    "enterpriseInsight": "Security collapse"
+  },
+  {
+    "id": 18,
+    "section": "SECTION 4: THE THREAT",
+    "title": "Shor’s Algorithm",
+    "bullets": [
+      "Breaks RSA efficiently"
+    ],
+    "story": "Cheat code in game.",
+    "interactivity": { "type": "pulse", "prompt": "Guess impact" },
+    "activity": "Compare brute vs quantum.",
+    "enterpriseInsight": "Major risk",
+    "math": {
+      "equation": "a^r \\equiv 1 \\pmod{N}",
+      "interpretations": [{ "term": "r", "meaning": "Period" }]
+    }
+  },
+  {
+    "id": 19,
+    "section": "SECTION 4: THE THREAT",
+    "title": "Encryption Break Timeline",
+    "bullets": [
+      "Minutes vs years"
+    ],
+    "story": "Safe cracked instantly.",
+    "interactivity": { "type": "pulse", "prompt": "Estimate time" },
+    "activity": "Think future scenario.",
+    "enterpriseInsight": "Urgency"
+  },
+  {
+    "id": 20,
+    "section": "SECTION 4: THE THREAT",
+    "title": "Harvest Now, Decrypt Later",
+    "bullets": [
+      "Data stolen today",
+      "Decrypted in future"
+    ],
+    "story": "Recording conversation for later decoding.",
+    "interactivity": { "type": "pulse", "prompt": "Case scenario" },
+    "activity": "Identify sensitive data.",
+    "enterpriseInsight": "Long-term risk"
+  },
+  {
+    "id": 21,
+    "section": "SECTION 4: THE THREAT",
+    "title": "Industries at Risk",
+    "bullets": [
+      "Banking, healthcare, defense"
+    ],
+    "story": "Hospital data leak.",
+    "interactivity": { "type": "pulse", "prompt": "Match industry-risk" },
+    "activity": "Rank risk.",
+    "enterpriseInsight": "Critical sectors"
+  },
+  {
+    "id": 22,
+    "section": "SECTION 4: THE THREAT",
+    "title": "Enterprise Exposure",
+    "bullets": [
+      "Legacy systems",
+      "Weak migration"
+    ],
+    "story": "Old lock on new door.",
+    "interactivity": { "type": "pulse", "prompt": "Identify outdated systems" },
+    "activity": "Audit mentally.",
+    "enterpriseInsight": "Upgrade required"
+  },
+  {
+    "id": 23,
+    "section": "SECTION 5: APPLICATIONS & IMPACT",
+    "title": "Cloud Security Risk",
+    "bullets": ["Virtualization collapse", "Data leakage"],
+    "story": "Walls turning into glass.",
+    "interactivity": { "type": "pulse", "prompt": "Cloud test" },
+    "activity": "Audit cloud deps.",
+    "enterpriseInsight": "Cloud is shared risk"
+  },
+  {
+    "id": 24,
+    "section": "SECTION 5: APPLICATIONS & IMPACT",
+    "title": "IoT Vulnerability",
+    "bullets": ["Smart home/factory hacks", "Device control"],
+    "story": "Your coffee machine is a spy.",
+    "interactivity": { "type": "pulse", "prompt": "IoT scan" },
+    "activity": "List IoT devices.",
+    "enterpriseInsight": "Unmanaged edge risk"
+  },
+  {
+    "id": 25,
+    "section": "SECTION 5: APPLICATIONS & IMPACT",
+    "title": "Telecom Infrastructure",
+    "bullets": ["BGP/SS7 hijacking", "Call interception"],
+    "story": "Tapping into every wire at once.",
+    "interactivity": { "type": "pulse", "prompt": "Network test" },
+    "activity": "Check signal.",
+    "enterpriseInsight": "Backbone vulnerability"
+  },
+  {
+    "id": 26,
+    "section": "SECTION 5: APPLICATIONS & IMPACT",
+    "title": "Banking Systems",
+    "bullets": ["SWIFT forgery", "Ledger fraud"],
+    "story": "Ceo signing blank checks.",
+    "interactivity": { "type": "pulse", "prompt": "Bank sim" },
+    "activity": "Track funds.",
+    "enterpriseInsight": "Financial trust collapse"
+  },
+  {
+    "id": 27,
+    "section": "SECTION 5: APPLICATIONS & IMPACT",
+    "title": "Government Data",
+    "bullets": ["National secrets", "Classified leaks"],
+    "story": "Top secret becomes top trending.",
+    "interactivity": { "type": "pulse", "prompt": "Gov audit" },
+    "activity": "ID secrets.",
+    "enterpriseInsight": "National security threat"
+  },
+  {
+    "id": 28,
+    "section": "SECTION 5: APPLICATIONS & IMPACT",
+    "title": "Supply Chain Systems",
+    "bullets": ["OTA poisoning", "Fake provenance"],
+    "story": "Poison in the well.",
+    "interactivity": { "type": "pulse", "prompt": "Chain test" },
+    "activity": "Audit vendors.",
+    "enterpriseInsight": "Ecosystem risk"
+  },
+  {
+    "id": 29,
+    "section": "SECTION 6: SOLUTIONS",
+    "title": "Post-Quantum Cryptography",
+    "bullets": ["Math quantum computers can't solve"],
+    "story": "Maze instead of straight path.",
+    "interactivity": { "type": "pulse", "prompt": "Compare RSA vs PQC" },
+    "activity": "Learn new math.",
+    "enterpriseInsight": "Migration essential"
+  },
+  {
+    "id": 30,
+    "section": "SECTION 6: SOLUTIONS",
+    "title": "Lattice-Based Crypto",
+    "bullets": ["NIST winner", "Shortest vector problem"],
+    "story": "Finding a needle in a 500D haystack.",
+    "interactivity": { "type": "pulse", "prompt": "Lattice test" },
+    "activity": "Visualize 500D.",
+    "enterpriseInsight": "Gold standard"
+  },
+  {
+    "id": 31,
+    "section": "SECTION 6: SOLUTIONS",
+    "title": "Hash-Based Crypto",
+    "bullets": ["SHA-256 roots", "Stateless signatures"],
+    "story": "One-way street with no U-turn.",
+    "interactivity": { "type": "pulse", "prompt": "Hash test" },
+    "activity": "Compute hash.",
+    "enterpriseInsight": "Robust and proven"
+  },
+  {
+    "id": 32,
+    "section": "SECTION 6: SOLUTIONS",
+    "title": "Code-Based Crypto",
+    "bullets": ["McEliece system", "Error correction"],
+    "story": "Fixing the radio static.",
+    "interactivity": { "type": "pulse", "prompt": "Code test" },
+    "activity": "Fix errors.",
+    "enterpriseInsight": "Strong history"
+  },
+  {
+    "id": 33,
+    "section": "SECTION 6: SOLUTIONS",
+    "title": "Crypto Agility",
+    "bullets": ["Swap algorithms fast"],
+    "story": "Replacing tires mid-race.",
+    "interactivity": { "type": "pulse", "prompt": "Swap test" },
+    "activity": "Inventory crypto.",
+    "enterpriseInsight": "Essential design"
+  },
+  {
+    "id": 34,
+    "section": "SECTION 6: SOLUTIONS",
+    "title": "Hybrid Cryptography",
+    "bullets": ["Classical + PQC"],
+    "story": "Belt and suspenders.",
+    "interactivity": { "type": "pulse", "prompt": "Combine modes" },
+    "activity": "Dual test.",
+    "enterpriseInsight": "Safe migration"
+  },
+  {
+    "id": 35,
+    "section": "SECTION 7: ENTERPRISE READINESS",
+    "title": "Risk Assessment",
+    "bullets": ["Impact vs Likelihood"],
+    "story": "Renovating house before storm.",
+    "interactivity": { "type": "pulse", "prompt": "Checklist" },
+    "activity": "Self-audit.",
+    "enterpriseInsight": "Strategic roadmap"
+  },
+  {
+    "id": 36,
+    "section": "SECTION 7: ENTERPRISE READINESS",
+    "title": "Crypto Inventory",
+    "bullets": ["Knowing where keys are"],
+    "story": "Audit your vault.",
+    "interactivity": { "type": "pulse", "prompt": "Search keys" },
+    "activity": "Map assets.",
+    "enterpriseInsight": "Visibility is key"
+  },
+  {
+    "id": 37,
+    "section": "SECTION 7: ENTERPRISE READINESS",
+    "title": "Migration Strategy",
+    "bullets": ["Phased approach"],
+    "story": "Moving a mountain.",
+    "interactivity": { "type": "pulse", "prompt": "Plan steps" },
+    "activity": "Set dates.",
+    "enterpriseInsight": "Long term commitment"
+  },
+  {
+    "id": 38,
+    "section": "SECTION 7: ENTERPRISE READINESS",
+    "title": "Infrastructure Needs",
+    "bullets": ["Compute/Memory upgrades"],
+    "story": "New engine for new fuel.",
+    "interactivity": { "type": "pulse", "prompt": "Upgrade sim" },
+    "activity": "Hardware check.",
+    "enterpriseInsight": "Budgeting required"
+  },
+  {
+    "id": 39,
+    "section": "SECTION 8: CLOSING",
+    "title": "Final Quiz",
+    "bullets": ["5 questions recap"],
+    "story": "Reflecting on the journey.",
+    "interactivity": { "type": "scenario", "question": "Final Q: What is the biggest risk?", "options": ["SNDL", "RSA Break", "Hardware Cost"] },
+    "activity": "Reflect.",
+    "enterpriseInsight": "Immediate action required"
+  },
+  {
+    "id": 40,
+    "section": "SECTION 8: CLOSING",
+    "title": "Call to Action",
+    "bullets": ["Start now", "Upgrade security"],
+    "story": "Upgrade lock before thief upgrades tools.",
+    "interactivity": { "type": "poll", "question": "What will you do tomorrow?", "options": ["Audit", "Training", "Wait"] },
+    "activity": "Take first step.",
+    "enterpriseInsight": "Legacy is the enemy"
+  }
 ]
