@@ -122,8 +122,13 @@
     "activity": "Small number factorization.",
     "enterpriseInsight": "Widely used",
     "math": {
-      "equation": "n = p \\times q",
-      "interpretations": [{ "term": "n", "meaning": "Public Key Modulus" }]
+      "equation": "\\begin{aligned} &\\textbf{1. Key Gen:} \\\\ &n = p \\times q \\\\ &\\phi(n) = (p-1)(q-1) \\\\ &d \\equiv e^{-1} \\pmod{\\phi(n)} \\\\ &\\textbf{2. Encrypt:} \\\\ &C = M^e \\bmod n \\\\ &\\textbf{3. Decrypt:} \\\\ &M = C^d \\bmod n \\end{aligned}",
+      "interpretations": [
+        { "term": "p, q", "meaning": "Secret Large Primes" },
+        { "term": "e, n", "meaning": "Public Key" },
+        { "term": "d", "meaning": "Private Key (The Secret)" },
+        { "term": "C, M", "meaning": "Ciphertext and Message" }
+      ]
     }
   },
   {
