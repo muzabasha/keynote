@@ -64,9 +64,20 @@ export default function Presentation() {
 
   return (
     <main className="presentation-container">
-      <div className="progress-bar" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }} />
+      {/* Conference Header */}
+      <div className="absolute top-0 left-0 right-0 py-3 px-8 text-center border-b border-white/5 bg-black/40 backdrop-blur-md z-[101]">
+        <div className="text-[10px] uppercase tracking-[0.3em] text-accent font-bold mb-1">
+          International Conference on Signal, Systems, and Computing for Next-Gen Automation (ICSSCNA - 2026)
+        </div>
+        <div className="text-[9px] text-gray-400 flex justify-center gap-6 font-mono">
+          <span>📅 4-6 May 2026</span>
+          <span>🏛️ Organized by: Ramachandra College of Engineering (RCE), Eluru Dt., A.P., India</span>
+        </div>
+      </div>
+
+      <div className="progress-bar" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%`, top: '56px' }} />
       
-      <div className="absolute top-8 right-8 z-50 flex items-center gap-4">
+      <div className="absolute top-20 right-8 z-50 flex items-center gap-4">
         <a 
           href="https://scholar-sparkle-web.lovable.app/" 
           target="_blank" 
