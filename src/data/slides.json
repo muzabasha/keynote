@@ -5,16 +5,16 @@
     "title": "The Big Question",
     "bullets": [
       "Is your data safe for the next 10 years?",
-      "Encryption protects everything today",
-      "But future threats are evolving"
+      "Mosca's Theorem: T_exp + T_mig > T_qc",
+      "Quantum computers threaten the shelf-life of encrypted data"
     ],
     "story": "Like locking your house with a lock that expires tomorrow.",
-    "interactivity": { "type": "pulse", "prompt": "Who trusts current encryption?" },
+    "interactivity": { "type": "pulse", "prompt": "Calculate your data's T_shelf-life" },
     "activity": "Think of one sensitive data you store.",
-    "enterpriseInsight": "Long-term data = long-term risk",
+    "enterpriseInsight": "Data with >10 year value is already at risk from SNDL attacks.",
     "math": {
-      "equation": "P(t) = e^{-\\lambda t}",
-      "interpretations": [{ "term": "P(t)", "meaning": "Probability of data staying secure over time t" }]
+      "equation": "T_{safe} = T_{Q-day} - T_{harvest}",
+      "interpretations": [{ "term": "T_{harvest}", "meaning": "Time when an adversary captures your encrypted data" }]
     }
   },
   {
@@ -22,111 +22,115 @@
     "section": "SECTION 1: HOOK & CONTEXT",
     "title": "Why This Talk Matters",
     "bullets": [
-      "Enterprises rely on encryption",
-      "Digital economy depends on trust",
-      "Quantum computing disrupts security"
+      "RSA-2048 is the industry standard for identity and key exchange",
+      "Quantum computers perform integer factorization in polynomial time",
+      "The entire PKI (Public Key Infrastructure) depends on these math traps"
     ],
     "story": "Imagine ATM PINs becoming public.",
-    "interactivity": { "type": "poll", "question": "Will security break in future?", "options": ["Yes", "No", "Maybe"] },
-    "activity": "List systems using encryption.",
-    "enterpriseInsight": "Banking & telecom highly exposed"
+    "interactivity": { "type": "poll", "question": "When will Q-Day happen?", "options": ["<5 yrs", "5-10 yrs", "10+ yrs"] },
+    "activity": "List systems using RSA/ECC.",
+    "enterpriseInsight": "Banking and Telecom rely on trust-at-distance; quantum breaks that distance."
   },
   {
     "id": 3,
     "section": "SECTION 1: HOOK & CONTEXT",
     "title": "Everyday Security",
     "bullets": [
-      "WhatsApp messages encrypted",
-      "Online banking secured",
-      "Emails protected"
+      "TLS 1.2/1.3: The handshake protocol of the internet",
+      "End-to-End Encryption (E2EE) relies on Diffie-Hellman",
+      "Digital Signatures: Verifying code and identities"
     ],
     "story": "Your messages are like sealed envelopes.",
-    "interactivity": { "type": "scenario", "question": "Which app do you trust most?", "options": ["WhatsApp", "Banking", "Email"] },
-    "activity": "Identify encrypted apps you use.",
-    "enterpriseInsight": "Consumer tech = enterprise risk"
+    "interactivity": { "type": "scenario", "question": "Which uses ECC?", "options": ["WhatsApp", "Bank App", "Both"] },
+    "activity": "Check the padlock icon in your browser.",
+    "enterpriseInsight": "Consumer tech vulnerabilities often bleed into corporate VPNs."
   },
   {
     "id": 4,
     "section": "SECTION 1: HOOK & CONTEXT",
     "title": "Problem Statement",
     "bullets": [
-      "Encryption relies on hard math",
-      "Quantum computers solve it faster"
+      "Classical computers: 2^n complexity for search",
+      "Quantum computers: Shor's algorithm reduces 2^n to polynomial complexity",
+      "Bit-security levels are being halved (AES-128 becomes AES-64 effective)"
     ],
     "story": "Solving a maze instantly vs walking through.",
-    "interactivity": { "type": "pulse", "prompt": "Guess time to break RSA-2048" },
-    "activity": "Use weak password mentally.",
-    "enterpriseInsight": "Legacy systems vulnerable"
+    "interactivity": { "type": "pulse", "prompt": "Compare 2^256 vs 2^128" },
+    "activity": "Use a complex password mentally.",
+    "enterpriseInsight": "Legacy systems cannot simply be patched; they must be re-architected."
   },
   {
     "id": 5,
     "section": "SECTION 1: HOOK & CONTEXT",
     "title": "Session Roadmap",
     "bullets": [
-      "Basics → Quantum → Risks → Solutions"
+      "Technical Foundations: From Bits to Qubits",
+      "The Threat Model: Shor's and Grover's Algorithms",
+      "Strategic Response: NIST PQC Standards (ML-KEM, ML-DSA)"
     ],
     "story": "Journey from lock to lock-breaker.",
-    "interactivity": { "type": "step_thru", "steps": ["Basics", "Quantum", "Risks", "Solutions"] },
-    "activity": "Set expectation.",
-    "enterpriseInsight": "Strategic planning needed"
+    "interactivity": { "type": "step_thru", "steps": ["Theory", "The Break", "The Fix", "The Future"] },
+    "activity": "Identify your key learning goal.",
+    "enterpriseInsight": "Quantum readiness is a 5-year project; start now."
   },
   {
     "id": 6,
     "section": "SECTION 2: SECURITY BASICS",
     "title": "What is Encryption?",
     "bullets": [
-      "Converts readable → unreadable",
-      "Ensures confidentiality"
+      "Confidentiality: Hiding the data",
+      "Integrity: Detecting changes (Hash functions)",
+      "Availability: Accessing the data"
     ],
     "story": "Secret language between friends.",
-    "interactivity": { "type": "text_toggle", "before": "SECRET_PLAN", "after": "x8f2d9a1..." },
-    "activity": "Create your own code.",
-    "enterpriseInsight": "Data protection backbone"
+    "interactivity": { "type": "text_toggle", "before": "CONFIDENTIAL", "after": "dGhlIHF1YW50dW0..." },
+    "activity": "Create a simple Caesar cipher.",
+    "enterpriseInsight": "Encryption is the primary control for Data Privacy (GDPR/HIPAA)."
   },
   {
     "id": 7,
     "section": "SECTION 2: SECURITY BASICS",
     "title": "Types of Encryption",
     "bullets": [
-      "Symmetric (same key)",
-      "Asymmetric (public/private)"
+      "Symmetric: AES-256 (GCM/CBC Modes)",
+      "Asymmetric: RSA, ECC (Curve25519)",
+      "Hybrid: RSA for keys, AES for data"
     ],
     "story": "Locker vs mailbox.",
-    "interactivity": { "type": "vault_reveal", "label": "Unlock AES-256 Vault" },
-    "activity": "Identify example.",
-    "enterpriseInsight": "Used in SSL/TLS"
+    "interactivity": { "type": "vault_reveal", "label": "Extract AES Session Key" },
+    "activity": "Identify where you use public keys.",
+    "enterpriseInsight": "Most enterprises use hybrid models; only the handshake is quantum-vulnerable."
   },
   {
     "id": 8,
     "section": "SECTION 2: SECURITY BASICS",
     "title": "Public Key Concept",
     "bullets": [
-      "Anyone can encrypt",
-      "Only owner decrypts"
+      "One-Way Functions: f(x) is easy, f^-1(y) is hard",
+      "Trapdoor Functions: Easy with a 'secret' hint",
+      "Key Exchange (Diffie-Hellman) vs Signatures (RSA)"
     ],
     "story": "Open mailbox, only owner opens letters.",
-    "interactivity": { "type": "pulse", "prompt": "Role-play Encryption Handshake" },
-    "activity": "Share vs protect info.",
-    "enterpriseInsight": "Used in secure transactions"
+    "interactivity": { "type": "pulse", "prompt": "Perform DH Handshake" },
+    "activity": "Think of a physical one-way function.",
+    "enterpriseInsight": "Public keys are published; your adversary already has them."
   },
   {
     "id": 9,
     "section": "SECTION 2: SECURITY BASICS",
     "title": "RSA Basics",
     "bullets": [
-      "Based on prime factorization",
-      "Hard problem for classical computers"
+      "Prime selection: p and q must be large (>1024 bits)",
+      "Modular Exponentiation: C = M^e mod n",
+      "Complexity: Based on Integer Factorization Problem (IFP)"
     ],
     "story": "Multiplying easy, reverse hard.",
-    "interactivity": { "type": "input_feedback", "prompt": "Break 15 into primes", "feedback": "3 x 5 = 15. Easy for small numbers, impossible for 2048-bit!" },
-    "activity": "Small number factorization.",
-    "enterpriseInsight": "Widely used",
+    "interactivity": { "type": "input_feedback", "prompt": "Factor 143", "feedback": "11 x 13. Classical computers take centuries for 2048-bit numbers." },
+    "activity": "Multiply two 2-digit primes.",
+    "enterpriseInsight": "RSA is the bedrock of corporate SSH and code signing.",
     "math": {
-      "equation": "\\begin{aligned} &\\textbf{RSA Algorithm} \\\\ &n = p \\times q \\\\ &C = M^e \\bmod n \\\\ &M = C^d \\bmod n \\end{aligned}",
-      "interpretations": [
-        { "term": "p, q", "meaning": "Secret Large Primes" },
-        { "term": "e, n", "meaning": "Public Key" }
-      ]
+      "equation": "n = p \\times q \\quad \\phi(n) = (p-1)(q-1)",
+      "interpretations": [{ "term": "n", "meaning": "The modulus shared with the world" }]
     }
   },
   {
@@ -134,52 +138,59 @@
     "section": "SECTION 2: SECURITY BASICS",
     "title": "Why It Works Today",
     "bullets": [
-      "Classical computers slow at factoring"
+      "Number Field Sieve (NFS): The fastest classical algorithm",
+      "Sub-exponential complexity: O(exp((log n)^(1/3)))",
+      "Resource gap: Classical hardware cannot scale to factor 2048-bit keys"
     ],
     "story": "Searching needle in haystack.",
-    "interactivity": { "type": "counter", "label": "Classical Brute Force (Years)" },
-    "activity": "Compare brute force.",
-    "enterpriseInsight": "Security assumption"
+    "interactivity": { "type": "counter", "label": "Years to factor RSA-2048 (Classical)" },
+    "activity": "Calculate complexity for n=1024.",
+    "enterpriseInsight": "We are safe from classical hackers, but quantum hackers play by different rules."
   },
   {
     "id": 11,
     "section": "SECTION 3: QUANTUM COMPUTING",
     "title": "What is Quantum Computing?",
     "bullets": [
-      "Uses qubits",
-      "Parallel computation"
+      "Qubits: Superconducting loops or Trapped ions",
+      "Coherence: Maintaining the quantum state (T1/T2 times)",
+      "Gate Fidelity: Accuracy of quantum operations (>99.9% target)"
     ],
     "story": "Coin spinning vs fixed.",
     "interactivity": { "type": "superposition" },
-    "activity": "Visualize probability.",
-    "enterpriseInsight": "Disruptive tech"
+    "activity": "Visualize a 3D Bloch Sphere.",
+    "enterpriseInsight": "Quantum is not a faster CPU; it's a completely different logic engine."
   },
   {
     "id": 12,
     "section": "SECTION 3: QUANTUM COMPUTING",
     "title": "Qubits Explained",
     "bullets": [
-      "0 and 1 simultaneously"
+      "Linear Combination: |ψ⟩ = a|0⟩ + b|1⟩",
+      "Probability Amplitudes: a and b are complex numbers",
+      "Information Capacity: 2^n states with n qubits"
     ],
     "story": "Student attending two classes at once.",
     "interactivity": { "type": "binary_shatter" },
-    "activity": "Think dual states.",
-    "enterpriseInsight": "Speed advantage"
+    "activity": "Compare 2 bits vs 2 qubits.",
+    "enterpriseInsight": "Information density is the quantum advantage."
   },
   {
     "id": 13,
     "section": "SECTION 3: QUANTUM COMPUTING",
     "title": "Superposition",
     "bullets": [
-      "Multiple states at once"
+      "Interference: Constructive (increase prob) vs Destructive (decrease prob)",
+      "Quantum Algorithms: Manipulation of interference to find 'correct' answer",
+      "Wave-particle duality at the compute level"
     ],
     "story": "Multitasking at extreme level.",
     "interactivity": { "type": "superposition" },
-    "activity": "Compare classical.",
-    "enterpriseInsight": "Exponential power",
+    "activity": "Imagine a wave canceling another wave.",
+    "enterpriseInsight": "Quantum computers 'see' all possibilities simultaneously through interference.",
     "math": {
-      "equation": "|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle",
-      "interpretations": [{ "term": "|\\psi\\rangle", "meaning": "The Qubit state vector" }]
+      "equation": "|\\psi\\rangle = \\frac{1}{\\sqrt{2}}(|0\\rangle + |1\\rangle)",
+      "interpretations": [{ "term": "|\\psi\\rangle", "meaning": "The 'Plus' state (Perfect 50/50 superposition)" }]
     }
   },
   {
@@ -187,63 +198,73 @@
     "section": "SECTION 3: QUANTUM COMPUTING",
     "title": "Entanglement",
     "bullets": [
-      "Linked qubits"
+      "Non-locality: Correlation beyond the speed of light",
+      "Bell States: Maximally entangled pairs (|00⟩ + |11⟩)",
+      "Quantum Key Distribution (QKD): Using entanglement for absolute security"
     ],
     "story": "Twin telepathy.",
     "interactivity": { "type": "entanglement" },
-    "activity": "Pair concept.",
-    "enterpriseInsight": "Secure communication potential"
+    "activity": "Try to separate the 'twins'.",
+    "enterpriseInsight": "Entanglement allows for tamper-evident data transmission."
   },
   {
     "id": 15,
     "section": "SECTION 3: QUANTUM COMPUTING",
     "title": "Quantum Speed",
     "bullets": [
-      "Faster problem solving"
+      "Polynomial vs Exponential Speedup",
+      "Database Search: Grover's Algorithm (O(√N))",
+      "Optimization: Quantum Annealing vs Universal Gate"
     ],
     "story": "Shortcut vs long road.",
-    "interactivity": { "type": "comparison_slider", "left": "Classical", "right": "Quantum" },
-    "activity": "Estimate difference.",
-    "enterpriseInsight": "Threat to cryptography"
+    "interactivity": { "type": "comparison_slider", "left": "O(N)", "right": "O(√N)" },
+    "activity": "Find a name in a 1M entry phonebook.",
+    "enterpriseInsight": "Symmetric keys (AES) must be doubled in length to stay safe."
   },
   {
     "id": 16,
     "section": "SECTION 3: QUANTUM COMPUTING",
     "title": "Current Status",
     "bullets": [
-      "Early stage but growing"
+      "NISQ Era: Noisy Intermediate-Scale Quantum",
+      "Quantum Supremacy: Google Sycamore (53 qubits)",
+      "Road to Fault Tolerance: Error Correction (QEC)"
     ],
     "story": "Like early internet.",
-    "interactivity": { "type": "pulse", "prompt": "Predict Q-Day (Year)" },
-    "activity": "Research company.",
-    "enterpriseInsight": "Prepare early"
+    "interactivity": { "type": "pulse", "prompt": "Check IBM Quantum Roadmap" },
+    "activity": "Search for 'Quantum Volume' metric.",
+    "enterpriseInsight": "We are currently in the 'pre-browser' phase of quantum computing."
   },
   {
     "id": 17,
     "section": "SECTION 4: THE THREAT",
     "title": "What Changes?",
     "bullets": [
-      "Hard problems become easy"
+      "Mathematical hardness is no longer a barrier",
+      "Discrete Logarithm Problem (DLP) and IFP collapse",
+      "The 'One-Way' nature of current crypto vanishes"
     ],
     "story": "Puzzle solved instantly.",
-    "interactivity": { "type": "poll", "question": "Are you worried?", "options": ["Yes", "No", "Prepared"] },
-    "activity": "Identify weak system.",
-    "enterpriseInsight": "Security collapse"
+    "interactivity": { "type": "poll", "question": "Biggest fear?", "options": ["Privacy", "Financials", "Identity"] },
+    "activity": "Imagine a world with no digital secrets.",
+    "enterpriseInsight": "Encryption becomes a checkbox that no longer provides security."
   },
   {
     "id": 18,
     "section": "SECTION 4: THE THREAT",
     "title": "Shor’s Algorithm",
     "bullets": [
-      "Breaks RSA efficiently"
+      "The Quantum period-finding subroutine",
+      "Complexity: O((log n)^3) - Fully polynomial",
+      "Target: RSA, ECC, Diffie-Hellman"
     ],
     "story": "Cheat code in game.",
-    "interactivity": { "type": "pulse", "prompt": "Run Shor's Simulation" },
-    "activity": "Compare brute vs quantum.",
-    "enterpriseInsight": "Major risk",
+    "interactivity": { "type": "pulse", "prompt": "Trigger Quantum Factorization" },
+    "activity": "Compare O(log n)^3 vs O(exp(n^(1/3))).",
+    "enterpriseInsight": "Shor's is the 'Doomsday' algorithm for classical asymmetric crypto.",
     "math": {
-      "equation": "\\begin{aligned} &\\textbf{Shor's Algorithm} \\\\ &1. \\text{ Random } a < n \\\\ &2. \\text{ Quantum: Find period } r \\\\ &3. \\text{ Factor } n = \\gcd(a^{r/2} \\pm 1, n) \\end{aligned}",
-      "interpretations": [{ "term": "r", "meaning": "The period (Exponentially faster)" }]
+      "equation": "P = \\text{poly}(\\log N)",
+      "interpretations": [{ "term": "P", "meaning": "Time complexity (Polynomial = Fast)" }]
     }
   },
   {
@@ -251,171 +272,177 @@
     "section": "SECTION 4: THE THREAT",
     "title": "Encryption Break Timeline",
     "bullets": [
-      "Minutes vs years"
+      "RSA-2048 Break: Estimate ~20M noisy qubits or ~10k logical qubits",
+      "Current state-of-the-art: ~1k noisy qubits (IBM Condor)",
+      "The 'Quantum Leap': From labs to server rooms"
     ],
     "story": "Safe cracked instantly.",
-    "interactivity": { "type": "comparison_slider", "left": "Year 1", "right": "Q-Day" },
-    "activity": "Think future scenario.",
-    "enterpriseInsight": "Urgency"
+    "interactivity": { "type": "comparison_slider", "left": "Noisy Qubits", "right": "Logical Qubits" },
+    "activity": "Calculate qubits needed for RSA-4096.",
+    "enterpriseInsight": "We are one breakthrough in error-correction away from total exposure."
   },
   {
     "id": 20,
     "section": "SECTION 4: THE THREAT",
     "title": "Harvest Now, Decrypt Later",
     "bullets": [
-      "Data stolen today",
-      "Decrypted in future"
+      "SNDL: Store Now, Decrypt Later (Passive Harvesting)",
+      "Retroactive decryption of today's captured traffic",
+      "Long-term data sensitivity (Genomic, National Secrets)"
     ],
     "story": "Recording conversation for later decoding.",
-    "interactivity": { "type": "timeline_thaw", "range": [2024, 2030] },
-    "activity": "Identify sensitive data.",
-    "enterpriseInsight": "Long-term risk"
+    "interactivity": { "type": "timeline_thaw", "range": [2024, 2035] },
+    "activity": "Identify data that must remain secret for 30 years.",
+    "enterpriseInsight": "Today's 'Safe' traffic is tomorrow's 'Cleartext' database."
   },
   {
     "id": 21,
     "section": "SECTION 4: THE THREAT",
     "title": "Industries at Risk",
     "bullets": [
-      "Banking, healthcare, defense"
+      "Banking: SWIFT, IBAN, Digital Wallets",
+      "Healthcare: Patient DNA, Multi-generational history",
+      "Government: Intelligence, Military Telemetry"
     ],
     "story": "Hospital data leak.",
-    "interactivity": { "type": "scenario", "question": "Which sector falls first?", "options": ["Banking", "Gov", "Healthcare"] },
-    "activity": "Rank risk.",
-    "enterpriseInsight": "Critical sectors"
+    "interactivity": { "type": "scenario", "question": "High-Value Target?", "options": ["Central Bank", "Pentagon", "Mayo Clinic"] },
+    "activity": "Rank industries by data 'shelf-life'.",
+    "enterpriseInsight": "Critical infrastructure is the primary target for quantum-armed nation-states."
   },
   {
     "id": 22,
     "section": "SECTION 4: THE THREAT",
     "title": "Enterprise Exposure",
     "bullets": [
-      "Legacy systems",
-      "Weak migration"
+      "Hard-coded keys in IoT/Firmware",
+      "Legacy Root-CAs (Certificate Authorities)",
+      "Embedded systems with 20-year lifecycles"
     ],
     "story": "Old lock on new door.",
-    "interactivity": { "type": "pulse", "prompt": "Audit Legacy Roots" },
-    "activity": "Audit mentally.",
-    "enterpriseInsight": "Upgrade required"
+    "interactivity": { "type": "pulse", "prompt": "Scan Enterprise PKI Root" },
+    "activity": "Audit the oldest server in your data center.",
+    "enterpriseInsight": "The weakest link in your supply chain is likely a legacy RSA key."
   },
   {
     "id": 23,
     "section": "SECTION 5: APPLICATIONS & IMPACT",
     "title": "Cloud Security Risk",
-    "bullets": ["Virtualization collapse", "Data leakage"],
+    "bullets": ["Virtualization collapse", "TLS Handshake exposure"],
     "story": "Walls turning into glass.",
     "caseStudy": {
-      "background": "Cloud providers rely on HSMs and shared virtualization security.",
-      "technicalRisk": "Quantum break of hypervisor keys allows lateral movement.",
-      "mitigation": "Quantum-Safe HSMs and multi-tenant isolation audit.",
-      "experimentSetup": "Cross-tenant data extraction via simulated side-channel.",
-      "insight": "Cloud isolation is only as strong as its crypto."
+      "background": "AWS, Azure, and GCP rely on RSA/ECC for hypervisor management and tenant isolation.",
+      "technicalRisk": "Breaking the hypervisor's Root-of-Trust allows cross-tenant memory access.",
+      "mitigation": "Quantum-Safe Hardware Security Modules (HSMs) and ML-KEM encapsulation.",
+      "experimentSetup": "Intercepting the key exchange between a Cloud Edge and a Client.",
+      "insight": "Cloud data-at-rest is safe (AES), but data-in-transit is the primary quantum target."
     },
-    "activity": "Audit cloud deps.",
-    "enterpriseInsight": "Cloud is shared risk"
+    "activity": "Audit your cloud shared-responsibility model.",
+    "enterpriseInsight": "Cloud providers are early adopters; verify their PQC roadmap."
   },
   {
     "id": 24,
     "section": "SECTION 5: APPLICATIONS & IMPACT",
     "title": "IoT Vulnerability",
-    "bullets": ["Smart home/factory hacks", "Device control"],
+    "bullets": ["FOTA (Firmware Over The Air) poisoning", "Resource constraints"],
     "story": "Your coffee machine is a spy.",
     "caseStudy": {
-      "background": "Billions of low-power IoT devices use old ECC certs.",
-      "technicalRisk": "Massive firmware poisoning via forged signatures.",
-      "mitigation": "Stateless PQC signatures (Dilithium) for FOTA.",
-      "experimentSetup": "Fleet-wide malicious update injection simulation.",
-      "insight": "IoT devices are the new front-door for attackers."
+      "background": "Billions of smart meters and industrial sensors use fixed ECC certificates.",
+      "technicalRisk": "A single forged Root Cert can update a billion devices with malicious firmware.",
+      "mitivity": "Stateless PQC signatures like SLH-DSA (Sphincs+) for offline verification.",
+      "experimentSetup": "Injecting a signed malicious payload into a smart grid meter.",
+      "insight": "IoT devices lack the memory for large PQC keys; optimization is critical."
     },
-    "activity": "List IoT devices.",
-    "enterpriseInsight": "Unmanaged edge risk"
+    "activity": "Check the update protocol of your office smart-bulbs.",
+    "enterpriseInsight": "Managed IoT is an enterprise perimeter; unmanaged IoT is a hole."
   },
   {
     "id": 25,
     "section": "SECTION 5: APPLICATIONS & IMPACT",
     "title": "Telecom Infrastructure",
-    "bullets": ["BGP/SS7 hijacking", "Call interception"],
+    "bullets": ["BGP/SS7 hijacking", "LTE/5G Authentication"],
     "story": "Tapping into every wire at once.",
     "caseStudy": {
-      "background": "Core telecom protocols use legacy PKI for signal routing.",
-      "technicalRisk": "Full interception of voice and SMS via broken exchange keys.",
-      "mitigation": "Hybrid (Classical+Lattice) key exchange for cell towers.",
-      "experimentSetup": "A 'Man-in-the-Middle' quantum attack on a 5G backbone.",
-      "insight": "The communication backbone must be quantum-proof."
+      "background": "Global mobile roaming relies on SS7 and Diameter protocols using legacy PKI.",
+      "technicalRisk": "Intercepting a 5G session key exchange allows real-time voice decryption.",
+      "mitigation": "Implementing Hybrid Diffie-Hellman with Kyber-768 for cell-link encryption.",
+      "experimentSetup": "Simulation of a quantum 'Stingray' device at a network exchange.",
+      "insight": "Telecom data is high-volume and long-term; it's a prime target for harvesting."
     },
-    "activity": "Check signal.",
-    "enterpriseInsight": "Backbone vulnerability"
+    "activity": "Check your phone's VPN settings.",
+    "enterpriseInsight": "Network backbones are the first place to implement PQC."
   },
   {
     "id": 26,
     "section": "SECTION 5: APPLICATIONS & IMPACT",
     "title": "Banking Systems",
-    "bullets": ["SWIFT forgery", "Ledger fraud"],
+    "bullets": ["SWIFT/IBAN integrity", "Digital Identity signatures"],
     "story": "CEO signing blank checks.",
     "caseStudy": {
-      "background": "Financial transfers rely on digital signatures for integrity.",
-      "technicalRisk": "Liquidity freeze due to loss of trust in signatures.",
-      "mitigation": "Transition to Hash-based signatures (XMSS) for ledgers.",
-      "experimentSetup": "Simulating fake multi-billion dollar SWIFT message injection.",
-      "insight": "Financial trust depends on mathematical finality."
+      "background": "High-value fund transfers require non-repudiation via RSA signatures.",
+      "technicalRisk": "Forgery of a $1B transfer message that appears perfectly authentic.",
+      "mitigation": "Hash-based signatures (LMS/XMSS) which are proven quantum-resistant.",
+      "experimentSetup": "Creating a fake digital signature that bypasses a bank's verification.",
+      "insight": "Banking is about trust; quantum forgery destroys the mathematical proof of intent."
     },
-    "activity": "Track funds.",
-    "enterpriseInsight": "Financial trust collapse"
+    "activity": "Look at the 'Signed by' info on your bank's PDF statements.",
+    "enterpriseInsight": "Transaction finality must be anchored in PQC immediately."
   },
   {
     "id": 27,
     "section": "SECTION 5: APPLICATIONS & IMPACT",
     "title": "Government Data",
-    "bullets": ["National secrets", "Classified leaks"],
+    "bullets": ["Classified silos", "Diplomatic cables"],
     "story": "Top secret becomes top trending.",
     "caseStudy": {
-      "background": "National defense uses encrypted burst transmissions.",
-      "technicalRisk": "Strategic blind spots if orders are decrypted in real-time.",
-      "mitigation": "One-Time-Pad and Lattice-based KEM deployment.",
-      "experimentSetup": "Intercepting encrypted 'Command & Control' telemetry.",
-      "insight": "National security is a game of crypto-longevity."
+      "background": "State secrets are protected by classified asymmetric algorithms (Suite B).",
+      "technicalRisk": "Decryption of decades of diplomatic cables, revealing global informants.",
+      "mitigation": "Quantum Key Distribution (QKD) using physical photons.",
+      "experimentSetup": "Intercepting a secure burst transmission from a satellite ground-station.",
+      "insight": "For governments, 'Safe Now' is not enough; 'Safe Forever' is the goal."
     },
-    "activity": "ID secrets.",
-    "enterpriseInsight": "National security threat"
+    "activity": "Research the 'CNSA' PQC recommendations.",
+    "enterpriseInsight": "Gov-contractors must comply with new PQC mandates (CSNA 2.0)."
   },
   {
     "id": 28,
     "section": "SECTION 5: APPLICATIONS & IMPACT",
     "title": "Supply Chain Systems",
-    "bullets": ["OTA poisoning", "Fake provenance"],
+    "bullets": ["OTA Poisoning", "Silicon Root-of-Trust"],
     "story": "Poison in the well.",
     "caseStudy": {
-      "background": "Chip factories use digital certs to sign microcode.",
-      "technicalRisk": "Silicon-level backdoors via forged root-of-trust.",
-      "mitigation": "Multi-signature PQC verification at the foundry.",
-      "experimentSetup": "Poisoning a firmware update chain with fake keys.",
-      "insight": "Hardware trust must be anchored in PQC."
+      "background": "OEMs sign driver and BIOS updates using global Root-CAs.",
+      "technicalRisk": "A quantum-armed actor signs a malicious BIOS that hides in the hardware.",
+      "mitigation": "Dual-Signature requirements: Classical + PQC (Dilithium).",
+      "experimentSetup": "Injecting a signed backdoor into a MICRO-CODE update.",
+      "insight": "Supply chain security is transitive; if your vendor is vulnerable, you are too."
     },
-    "activity": "Audit vendors.",
-    "enterpriseInsight": "Ecosystem risk"
+    "activity": "Check the publisher of your latest Windows update.",
+    "enterpriseInsight": "PQC must be a requirement in your next Vendor Risk Assessment."
   },
   {
     "id": 29,
     "section": "SECTION 6: SOLUTIONS",
     "title": "Post-Quantum Cryptography",
-    "bullets": ["Math quantum computers can't solve"],
+    "bullets": ["Algorithm-level defense", "NIST Competition (2016-2024)", "Software-only deployment possible"],
     "story": "Maze instead of straight path.",
-    "interactivity": { "type": "pulse", "prompt": "Switch to PQC Mode" },
-    "activity": "Learn new math.",
-    "enterpriseInsight": "Migration essential"
+    "interactivity": { "type": "pulse", "prompt": "Activate FIPS 203 Draft" },
+    "activity": "Compare PQC vs QKD (Math vs Physics).",
+    "enterpriseInsight": "PQC is the most cost-effective way to secure an enterprise today."
   },
   {
     "id": 30,
     "section": "SECTION 6: SOLUTIONS",
-    "title": "Lattice-Based Crypto (Kyber)",
-    "bullets": ["NIST winner", "Learning With Errors (LWE)"],
+    "title": "Lattice-Based Crypto (ML-KEM)",
+    "bullets": ["Kyber: Now NIST ML-KEM", "Shortest Vector Problem (SVP) complexity", "Small keys, high speed"],
     "story": "Finding a needle in a 500D haystack.",
-    "interactivity": { "type": "pulse", "prompt": "Visualize Lattice" },
-    "activity": "Visualize 500D.",
-    "enterpriseInsight": "Gold standard",
+    "interactivity": { "type": "pulse", "prompt": "Verify Lattice Proof" },
+    "activity": "Visualize a 2D Lattice vs 500D.",
+    "enterpriseInsight": "ML-KEM is the industry choice for general-purpose encryption.",
     "math": {
       "equation": "\\mathbf{t} = A\\mathbf{s} + \\mathbf{e} \\pmod{q}",
       "interpretations": [
-        { "term": "A, s, e", "meaning": "Public Matrix, Secret, and Noise" },
-        { "term": "t", "meaning": "The resulting Public Key" }
+        { "term": "A", "meaning": "Large Public Matrix (The Haystack)" },
+        { "term": "e", "meaning": "Error/Noise (The Needle's shadow)" }
       ]
     }
   },
@@ -423,100 +450,100 @@
     "id": 31,
     "section": "SECTION 6: SOLUTIONS",
     "title": "Hash-Based Crypto",
-    "bullets": ["SHA-256 roots", "Stateless signatures"],
+    "bullets": ["XMSS/LMS: Stateful signatures", "SLH-DSA: Stateless signatures (Sphincs+)", "Security derived from SHA-256/3"],
     "story": "One-way street with no U-turn.",
-    "interactivity": { "type": "text_toggle", "before": "DATA", "after": "93f2... (HASH)" },
-    "activity": "Compute hash.",
-    "enterpriseInsight": "Robust and proven"
+    "interactivity": { "type": "text_toggle", "before": "DOCUMENT_V1", "after": "93f2d1e... (MERKLE_ROOT)" },
+    "activity": "Visualize a Merkle Tree structure.",
+    "enterpriseInsight": "Hash-based crypto is the most conservative and safe PQC choice."
   },
   {
     "id": 32,
     "section": "SECTION 6: SOLUTIONS",
     "title": "Code-Based Crypto",
-    "bullets": ["McEliece system", "Error correction"],
+    "bullets": ["Classic McEliece: 40 years of no breaks", "Based on Error Correcting Codes", "Large keys but very fast decryption"],
     "story": "Fixing the radio static.",
-    "interactivity": { "type": "pulse", "prompt": "Correct Error bits" },
-    "activity": "Fix errors.",
-    "enterpriseInsight": "Strong history"
+    "interactivity": { "type": "pulse", "prompt": "Decode Syndrome" },
+    "activity": "Compare key size: RSA (256B) vs McEliece (256KB).",
+    "enterpriseInsight": "Best for high-security archival data where key size is not an issue."
   },
   {
     "id": 33,
     "section": "SECTION 6: SOLUTIONS",
     "title": "Crypto Agility",
-    "bullets": ["Swap algorithms fast"],
+    "bullets": ["Modular architecture", "Avoiding algorithm lock-in", "Automated rotation of keys"],
     "story": "Replacing tires mid-race.",
-    "interactivity": { "type": "pulse", "prompt": "Swap Algorithm Now" },
-    "activity": "Inventory crypto.",
-    "enterpriseInsight": "Essential design"
+    "interactivity": { "type": "pulse", "prompt": "Hot-Swap to ML-DSA" },
+    "activity": "Audit your app for hard-coded 'RSA' strings.",
+    "enterpriseInsight": "Agility is a feature, not a patch. Build it into your next dev cycle."
   },
   {
     "id": 34,
     "section": "SECTION 6: SOLUTIONS",
     "title": "Hybrid Cryptography",
-    "bullets": ["Classical + PQC"],
+    "bullets": ["Concatenating Classical + PQC", "Safe against both classical and quantum", "Compliance with transition standards"],
     "story": "Belt and suspenders.",
-    "interactivity": { "type": "pulse", "prompt": "Deploy Hybrid Protocol" },
-    "activity": "Dual test.",
-    "enterpriseInsight": "Safe migration"
+    "interactivity": { "type": "pulse", "prompt": "Merge RSA + Kyber" },
+    "activity": "Understand the 'OR' vs 'AND' security logic.",
+    "enterpriseInsight": "Hybrids are the 'Safe Zone' for early migration; they guarantee today's security."
   },
   {
     "id": 35,
     "section": "SECTION 7: ENTERPRISE READINESS",
     "title": "Risk Assessment",
-    "bullets": ["Impact vs Likelihood"],
+    "bullets": ["Inventory of Encrypted Assets", "Ranking by T-shelf-life", "Vendor Capability audit"],
     "story": "Renovating house before storm.",
-    "interactivity": { "type": "checklist", "items": ["Identify Assets", "Assess Value", "Map Exposure"] },
-    "activity": "Self-audit.",
-    "enterpriseInsight": "Strategic roadmap"
+    "interactivity": { "type": "checklist", "items": ["SNDL Risk Data?", "Public Facing PKI?", "Third-party dependency?"] },
+    "activity": "Assign a 'Quantum Risk Score' to your top 3 apps.",
+    "enterpriseInsight": "Not all data needs PQC today; focus on your 'Crown Jewels' first."
   },
   {
     "id": 36,
     "section": "SECTION 7: ENTERPRISE READINESS",
     "title": "Crypto Inventory",
-    "bullets": ["Knowing where keys are"],
+    "bullets": ["Identifying RSA/ECC usage", "Finding Shadow-IT crypto", "Mapping Internal vs External dependencies"],
     "story": "Audit your vault.",
-    "interactivity": { "type": "pulse", "prompt": "Scan All HSMs" },
-    "activity": "Map assets.",
-    "enterpriseInsight": "Visibility is key"
+    "interactivity": { "type": "pulse", "prompt": "Start Network Crypto-Scan" },
+    "activity": "Find one self-signed certificate in your network.",
+    "enterpriseInsight": "You cannot secure what you cannot see. Inventory is 50% of the work."
   },
   {
     "id": 37,
     "section": "SECTION 7: ENTERPRISE READINESS",
     "title": "Migration Strategy",
-    "bullets": ["Phased approach"],
+    "bullets": ["Phase 1: Hybrid mode", "Phase 2: PQC-Only", "Phase 3: Continuous Agility"],
     "story": "Moving a mountain.",
-    "interactivity": { "type": "step_thru", "steps": ["Inventory", "Pilot", "Full Deployment"] },
-    "activity": "Set dates.",
-    "enterpriseInsight": "Long term commitment"
+    "interactivity": { "type": "step_thru", "steps": ["Assess", "Inventory", "Pilot", "Scale"] },
+    "activity": "Set a target date for 'Quantum-Ready' status.",
+    "enterpriseInsight": "Migration is a marathon; consistency beats speed."
   },
   {
     "id": 38,
     "section": "SECTION 7: ENTERPRISE READINESS",
     "title": "Infrastructure Needs",
-    "bullets": ["Compute/Memory upgrades"],
+    "bullets": ["Memory for larger signatures", "Bandwidth for larger keys", "HSM/TPM hardware upgrades"],
     "story": "New engine for new fuel.",
-    "interactivity": { "type": "pulse", "prompt": "Estimate Budget Impact" },
-    "activity": "Hardware check.",
-    "enterpriseInsight": "Budgeting required"
+    "interactivity": { "type": "pulse", "prompt": "Allocate PQC Budget" },
+    "activity": "Estimate the packet overhead of a 1KB signature.",
+    "enterpriseInsight": "PQC has performance costs; benchmark before you deploy."
   },
   {
     "id": 39,
     "section": "SECTION 8: CLOSING",
     "title": "Final Quiz",
-    "bullets": ["5 questions recap"],
+    "bullets": ["Recap of the Quantum Threat", "The Path Forward", "Community & Standards"],
     "story": "Reflecting on the journey.",
-    "interactivity": { "type": "scenario", "question": "Biggest threat?", "options": ["SNDL", "RSA Break", "Legacy Tech"] },
-    "activity": "Reflect.",
-    "enterpriseInsight": "Immediate action required"
+    "interactivity": { "type": "scenario", "question": "The best time to start?", "options": ["Yesterday", "Today", "When it breaks"] },
+    "activity": "Discuss one thing you'll tell your CISO.",
+    "enterpriseInsight": "Knowledge is the first line of defense."
   },
   {
     "id": 40,
     "section": "SECTION 8: CLOSING",
     "title": "Call to Action",
-    "bullets": ["Start now", "Upgrade security"],
+    "bullets": ["Join the PQC working groups", "Demand PQC from vendors", "Stay Agile"],
     "story": "Upgrade lock before thief upgrades tools.",
-    "interactivity": { "type": "pulse", "prompt": "Commit to Upgrade" },
-    "activity": "Take first step.",
-    "enterpriseInsight": "Legacy is the enemy"
+    "interactivity": { "type": "pulse", "prompt": "Join the Quantum-Safe Future" },
+    "activity": "Follow Dr. Syed Muzamil Basha for updates.",
+    "enterpriseInsight": "The future is quantum; make sure your enterprise is ready to welcome it."
   }
 ]
