@@ -161,7 +161,7 @@ function InteractionRenderer({ type, data }: { type: string, data: any }) {
       return (
         <button 
           onClick={handleAction}
-          className={`px-8 py-4 rounded-full bg-indigo-600 text-white font-bold text-xl transition-all hover:scale-110 active:scale-95 shadow-lg shadow-indigo-500/50 ${clicked ? 'bg-green-500' : ''}`}
+          className={`px-8 py-4 rounded-full text-white font-bold text-xl transition-all hover:scale-110 active:scale-95 shadow-lg shadow-indigo-500/50 ${clicked ? 'bg-green-500' : 'bg-indigo-600'}`}
           style={{ background: clicked ? '#10b981' : '#6366f1', border: 'none', padding: '15px 30px', borderRadius: '30px', color: 'white', cursor: 'pointer' }}
         >
           {clicked ? <CheckCircle className="inline mr-2" /> : <Play className="inline mr-2" />}
@@ -173,20 +173,62 @@ function InteractionRenderer({ type, data }: { type: string, data: any }) {
       return (
         <div className="flex flex-col gap-3 w-full">
           <p className="text-lg font-semibold mb-4 text-center">{data.question}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: data.options.length > 5 ? 'repeat(5, 1fr)' : `repeat(${data.options.length}, 1fr)`, gap: '10px' }}>
             {data.options.map((opt: string) => (
               <button
                 key={opt}
-                onClick={() => setPollSelected(opt)}
+                onClick={() => { setPollSelected(opt); confetti({ particleCount: 40, spread: 30, origin: { y: 0.8 } }); }}
                 style={{ 
                   padding: '10px', 
                   borderRadius: '8px', 
                   border: '1px solid var(--glass-border)',
                   background: pollSelected === opt ? 'var(--accent)' : 'var(--glass)',
                   color: 'white',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
                 }}
               >
+                {opt}
+              </button>
+            ))}
+          </div>
+          {pollSelected && <p className="text-center mt-4 text-accent font-bold">You selected: {pollSelected}</p>}
+        </div>
+      );
+
+    case 'input_feedback':
+      return (
+        <div className="w-full max-w-md">
+          <p className="mb-4 text-center text-gray-400">{data.prompt}</p>
+          <input 
+            type="text" 
+            placeholder="Type here..."
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            style={{ width: '100%', padding: '15px', borderRadius: '12px', background: 'rgba(255,255,255,0.1)', border: '1px solid var(--glass-border)', color: 'white', marginBottom: '15px' }}
+          />
+          {inputValue && (
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="p-4 bg-red-900/30 border border-red-500/50 rounded-xl text-red-200 text-center">
+              <CheckCircle className="inline-block mr-2 mb-1" />
+              {data.feedback}
+            </motion.div>
+          )}
+        </div>
+      );
+
+    case 'scenario':
+      return (
+        <div className="w-full">
+          <p className="text-xl font-bold mb-6 text-center text-accent">{data.question}</p>
+          <div className="flex flex-col gap-4">
+            {data.options.map((opt: string) => (
+              <button
+                key={opt}
+                onClick={() => { setPollSelected(opt); confetti(); }}
+                className="p-4 rounded-xl border border-glass-border bg-glass hover:bg-accent/20 transition-all text-left flex items-center gap-4"
+                style={{ background: pollSelected === opt ? 'rgba(99, 102, 241, 0.3)' : 'rgba(255,255,255,0.05)', color: 'white', cursor: 'pointer', border: '1px solid var(--glass-border)', padding: '15px', width: '100%' }}
+              >
+                <div className={`w-6 h-6 rounded-full border-2 border-accent flex-shrink-0 ${pollSelected === opt ? 'bg-accent' : ''}`} />
                 {opt}
               </button>
             ))}
@@ -194,21 +236,48 @@ function InteractionRenderer({ type, data }: { type: string, data: any }) {
         </div>
       );
 
-    case 'input_feedback':
+    case 'text_toggle':
       return (
-        <div className="w-full max-w-md">
-          <input 
-            type="text" 
-            placeholder={data.prompt}
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            style={{ width: '100%', padding: '15px', borderRadius: '12px', background: 'rgba(255,255,255,0.1)', border: '1px solid var(--glass-border)', color: 'white', marginBottom: '15px' }}
-          />
-          {inputValue && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-4 bg-red-900/30 border border-red-500/50 rounded-xl text-red-200">
-              {data.feedback}
-            </motion.div>
-          )}
+        <div className="text-center">
+          <div className="mb-8 text-2xl font-mono tracking-widest text-gray-400">
+            {clicked ? data.after : data.before}
+          </div>
+          <button 
+            onClick={() => setClicked(!clicked)}
+            className="px-6 py-3 rounded-lg border border-accent text-accent font-bold hover:bg-accent hover:text-white transition-all"
+            style={{ background: 'transparent', color: 'var(--accent)', border: '1px solid var(--accent)', padding: '10px 20px', cursor: 'pointer' }}
+          >
+            {clicked ? 'REVEAL PLAIN TEXT' : 'ENCRYPT DATA'}
+          </button>
+        </div>
+      );
+
+    case 'step_thru':
+      return (
+        <div className="flex items-center gap-4">
+          {data.steps.map((step: string, i: number) => (
+            <React.Fragment key={step}>
+              <motion.div 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: i * 0.2 }}
+                className="flex flex-col items-center gap-2"
+              >
+                <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center font-bold">
+                  {i + 1}
+                </div>
+                <span className="text-xs uppercase tracking-tighter opacity-70">{step}</span>
+              </motion.div>
+              {i < data.steps.length - 1 && (
+                <motion.div 
+                  initial={{ width: 0 }}
+                  animate={{ width: 40 }}
+                  transition={{ delay: i * 0.2 + 0.1 }}
+                  className="h-1 bg-glass-border"
+                />
+              )}
+            </React.Fragment>
+          ))}
         </div>
       );
 
