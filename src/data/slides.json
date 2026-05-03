@@ -9,12 +9,12 @@
       "But future threats are evolving"
     ],
     "story": "Like locking your house with a lock that expires tomorrow.",
-    "interactivity": { "type": "pulse", "prompt": "Raise hands – Who trusts current encryption?" },
+    "interactivity": { "type": "pulse", "prompt": "Who trusts current encryption?" },
     "activity": "Think of one sensitive data you store.",
     "enterpriseInsight": "Long-term data = long-term risk",
     "math": {
-      "equation": "T_{safe} = T_{Qday} - T_{harvest}",
-      "interpretations": [{ "term": "T_{safe}", "meaning": "Safety window" }]
+      "equation": "P(t) = e^{-\\lambda t}",
+      "interpretations": [{ "term": "P(t)", "meaning": "Probability of data staying secure over time t" }]
     }
   },
   {
@@ -54,7 +54,7 @@
       "Quantum computers solve it faster"
     ],
     "story": "Solving a maze instantly vs walking through.",
-    "interactivity": { "type": "pulse", "prompt": "Guess time to break password" },
+    "interactivity": { "type": "pulse", "prompt": "Guess time to break RSA-2048" },
     "activity": "Use weak password mentally.",
     "enterpriseInsight": "Legacy systems vulnerable"
   },
@@ -66,7 +66,7 @@
       "Basics → Quantum → Risks → Solutions"
     ],
     "story": "Journey from lock to lock-breaker.",
-    "interactivity": { "type": "pulse", "prompt": "Choose what you want to learn" },
+    "interactivity": { "type": "step_thru", "steps": ["Basics", "Quantum", "Risks", "Solutions"] },
     "activity": "Set expectation.",
     "enterpriseInsight": "Strategic planning needed"
   },
@@ -79,7 +79,7 @@
       "Ensures confidentiality"
     ],
     "story": "Secret language between friends.",
-    "interactivity": { "type": "text_toggle", "before": "HELLO", "after": "SGVsbG8=" },
+    "interactivity": { "type": "text_toggle", "before": "SECRET_PLAN", "after": "x8f2d9a1..." },
     "activity": "Create your own code.",
     "enterpriseInsight": "Data protection backbone"
   },
@@ -92,7 +92,7 @@
       "Asymmetric (public/private)"
     ],
     "story": "Locker vs mailbox.",
-    "interactivity": { "type": "vault_reveal", "label": "Unlock Secret" },
+    "interactivity": { "type": "vault_reveal", "label": "Unlock AES-256 Vault" },
     "activity": "Identify example.",
     "enterpriseInsight": "Used in SSL/TLS"
   },
@@ -105,7 +105,7 @@
       "Only owner decrypts"
     ],
     "story": "Open mailbox, only owner opens letters.",
-    "interactivity": { "type": "pulse", "prompt": "Role-play encryption" },
+    "interactivity": { "type": "pulse", "prompt": "Role-play Encryption Handshake" },
     "activity": "Share vs protect info.",
     "enterpriseInsight": "Used in secure transactions"
   },
@@ -118,16 +118,14 @@
       "Hard problem for classical computers"
     ],
     "story": "Multiplying easy, reverse hard.",
-    "interactivity": { "type": "input_feedback", "prompt": "Try breaking 15 = ?" },
+    "interactivity": { "type": "input_feedback", "prompt": "Break 15 into primes", "feedback": "3 x 5 = 15. Easy for small numbers, impossible for 2048-bit!" },
     "activity": "Small number factorization.",
     "enterpriseInsight": "Widely used",
     "math": {
-      "equation": "\\begin{aligned} &\\textbf{1. Key Gen:} \\\\ &n = p \\times q \\\\ &\\phi(n) = (p-1)(q-1) \\\\ &d \\equiv e^{-1} \\pmod{\\phi(n)} \\\\ &\\textbf{2. Encrypt:} \\\\ &C = M^e \\bmod n \\\\ &\\textbf{3. Decrypt:} \\\\ &M = C^d \\bmod n \\end{aligned}",
+      "equation": "\\begin{aligned} &\\textbf{RSA Algorithm} \\\\ &n = p \\times q \\\\ &C = M^e \\bmod n \\\\ &M = C^d \\bmod n \\end{aligned}",
       "interpretations": [
         { "term": "p, q", "meaning": "Secret Large Primes" },
-        { "term": "e, n", "meaning": "Public Key" },
-        { "term": "d", "meaning": "Private Key (The Secret)" },
-        { "term": "C, M", "meaning": "Ciphertext and Message" }
+        { "term": "e, n", "meaning": "Public Key" }
       ]
     }
   },
@@ -139,7 +137,7 @@
       "Classical computers slow at factoring"
     ],
     "story": "Searching needle in haystack.",
-    "interactivity": { "type": "pulse", "prompt": "Estimate search time" },
+    "interactivity": { "type": "counter", "label": "Classical Brute Force (Years)" },
     "activity": "Compare brute force.",
     "enterpriseInsight": "Security assumption"
   },
@@ -164,7 +162,7 @@
       "0 and 1 simultaneously"
     ],
     "story": "Student attending two classes at once.",
-    "interactivity": { "type": "pulse", "prompt": "Choose correct analogy" },
+    "interactivity": { "type": "binary_shatter" },
     "activity": "Think dual states.",
     "enterpriseInsight": "Speed advantage"
   },
@@ -180,8 +178,8 @@
     "activity": "Compare classical.",
     "enterpriseInsight": "Exponential power",
     "math": {
-      "equation": "|\\psi\\rangle = a|0\\rangle + b|1\\rangle",
-      "interpretations": [{ "term": "|\\psi\\rangle", "meaning": "Quantum State" }]
+      "equation": "|\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle",
+      "interpretations": [{ "term": "|\\psi\\rangle", "meaning": "The Qubit state vector" }]
     }
   },
   {
@@ -204,7 +202,7 @@
       "Faster problem solving"
     ],
     "story": "Shortcut vs long road.",
-    "interactivity": { "type": "pulse", "prompt": "Time comparison" },
+    "interactivity": { "type": "comparison_slider", "left": "Classical", "right": "Quantum" },
     "activity": "Estimate difference.",
     "enterpriseInsight": "Threat to cryptography"
   },
@@ -216,7 +214,7 @@
       "Early stage but growing"
     ],
     "story": "Like early internet.",
-    "interactivity": { "type": "pulse", "prompt": "Predict timeline" },
+    "interactivity": { "type": "pulse", "prompt": "Predict Q-Day (Year)" },
     "activity": "Research company.",
     "enterpriseInsight": "Prepare early"
   },
@@ -228,7 +226,7 @@
       "Hard problems become easy"
     ],
     "story": "Puzzle solved instantly.",
-    "interactivity": { "type": "poll", "question": "Reaction poll", "options": ["Scared", "Excited", "Unsure"] },
+    "interactivity": { "type": "poll", "question": "Are you worried?", "options": ["Yes", "No", "Prepared"] },
     "activity": "Identify weak system.",
     "enterpriseInsight": "Security collapse"
   },
@@ -240,15 +238,12 @@
       "Breaks RSA efficiently"
     ],
     "story": "Cheat code in game.",
-    "interactivity": { "type": "pulse", "prompt": "Guess impact" },
+    "interactivity": { "type": "pulse", "prompt": "Run Shor's Simulation" },
     "activity": "Compare brute vs quantum.",
     "enterpriseInsight": "Major risk",
     "math": {
-      "equation": "\\begin{aligned} &\\textbf{Shor's Algorithm:} \\\\ &1. \\text{ Choose random } a < n \\\\ &2. \\text{ Find period } r \\text{ of } a^x \\bmod n \\\\ &3. \\text{ If } r \\text{ is even, compute:} \\\\ &\\quad p, q = \\gcd(a^{r/2} \\pm 1, n) \\\\ &4. \\text{ RSA Private Key recovered!} \\end{aligned}",
-      "interpretations": [
-        { "term": "r", "meaning": "The Quantum Period (Hard for classical)" },
-        { "term": "\\gcd", "meaning": "Greatest Common Divisor" }
-      ]
+      "equation": "\\begin{aligned} &\\textbf{Shor's Algorithm} \\\\ &1. \\text{ Random } a < n \\\\ &2. \\text{ Quantum: Find period } r \\\\ &3. \\text{ Factor } n = \\gcd(a^{r/2} \\pm 1, n) \\end{aligned}",
+      "interpretations": [{ "term": "r", "meaning": "The period (Exponentially faster)" }]
     }
   },
   {
@@ -259,7 +254,7 @@
       "Minutes vs years"
     ],
     "story": "Safe cracked instantly.",
-    "interactivity": { "type": "pulse", "prompt": "Estimate time" },
+    "interactivity": { "type": "comparison_slider", "left": "Year 1", "right": "Q-Day" },
     "activity": "Think future scenario.",
     "enterpriseInsight": "Urgency"
   },
@@ -272,7 +267,7 @@
       "Decrypted in future"
     ],
     "story": "Recording conversation for later decoding.",
-    "interactivity": { "type": "pulse", "prompt": "Case scenario" },
+    "interactivity": { "type": "timeline_thaw", "range": [2024, 2030] },
     "activity": "Identify sensitive data.",
     "enterpriseInsight": "Long-term risk"
   },
@@ -284,7 +279,7 @@
       "Banking, healthcare, defense"
     ],
     "story": "Hospital data leak.",
-    "interactivity": { "type": "pulse", "prompt": "Match industry-risk" },
+    "interactivity": { "type": "scenario", "question": "Which sector falls first?", "options": ["Banking", "Gov", "Healthcare"] },
     "activity": "Rank risk.",
     "enterpriseInsight": "Critical sectors"
   },
@@ -297,7 +292,7 @@
       "Weak migration"
     ],
     "story": "Old lock on new door.",
-    "interactivity": { "type": "pulse", "prompt": "Identify outdated systems" },
+    "interactivity": { "type": "pulse", "prompt": "Audit Legacy Roots" },
     "activity": "Audit mentally.",
     "enterpriseInsight": "Upgrade required"
   },
@@ -307,7 +302,13 @@
     "title": "Cloud Security Risk",
     "bullets": ["Virtualization collapse", "Data leakage"],
     "story": "Walls turning into glass.",
-    "interactivity": { "type": "pulse", "prompt": "Cloud test" },
+    "caseStudy": {
+      "background": "Cloud providers rely on HSMs and shared virtualization security.",
+      "technicalRisk": "Quantum break of hypervisor keys allows lateral movement.",
+      "mitigation": "Quantum-Safe HSMs and multi-tenant isolation audit.",
+      "experimentSetup": "Cross-tenant data extraction via simulated side-channel.",
+      "insight": "Cloud isolation is only as strong as its crypto."
+    },
     "activity": "Audit cloud deps.",
     "enterpriseInsight": "Cloud is shared risk"
   },
@@ -317,7 +318,13 @@
     "title": "IoT Vulnerability",
     "bullets": ["Smart home/factory hacks", "Device control"],
     "story": "Your coffee machine is a spy.",
-    "interactivity": { "type": "pulse", "prompt": "IoT scan" },
+    "caseStudy": {
+      "background": "Billions of low-power IoT devices use old ECC certs.",
+      "technicalRisk": "Massive firmware poisoning via forged signatures.",
+      "mitigation": "Stateless PQC signatures (Dilithium) for FOTA.",
+      "experimentSetup": "Fleet-wide malicious update injection simulation.",
+      "insight": "IoT devices are the new front-door for attackers."
+    },
     "activity": "List IoT devices.",
     "enterpriseInsight": "Unmanaged edge risk"
   },
@@ -327,7 +334,13 @@
     "title": "Telecom Infrastructure",
     "bullets": ["BGP/SS7 hijacking", "Call interception"],
     "story": "Tapping into every wire at once.",
-    "interactivity": { "type": "pulse", "prompt": "Network test" },
+    "caseStudy": {
+      "background": "Core telecom protocols use legacy PKI for signal routing.",
+      "technicalRisk": "Full interception of voice and SMS via broken exchange keys.",
+      "mitigation": "Hybrid (Classical+Lattice) key exchange for cell towers.",
+      "experimentSetup": "A 'Man-in-the-Middle' quantum attack on a 5G backbone.",
+      "insight": "The communication backbone must be quantum-proof."
+    },
     "activity": "Check signal.",
     "enterpriseInsight": "Backbone vulnerability"
   },
@@ -336,8 +349,14 @@
     "section": "SECTION 5: APPLICATIONS & IMPACT",
     "title": "Banking Systems",
     "bullets": ["SWIFT forgery", "Ledger fraud"],
-    "story": "Ceo signing blank checks.",
-    "interactivity": { "type": "pulse", "prompt": "Bank sim" },
+    "story": "CEO signing blank checks.",
+    "caseStudy": {
+      "background": "Financial transfers rely on digital signatures for integrity.",
+      "technicalRisk": "Liquidity freeze due to loss of trust in signatures.",
+      "mitigation": "Transition to Hash-based signatures (XMSS) for ledgers.",
+      "experimentSetup": "Simulating fake multi-billion dollar SWIFT message injection.",
+      "insight": "Financial trust depends on mathematical finality."
+    },
     "activity": "Track funds.",
     "enterpriseInsight": "Financial trust collapse"
   },
@@ -347,7 +366,13 @@
     "title": "Government Data",
     "bullets": ["National secrets", "Classified leaks"],
     "story": "Top secret becomes top trending.",
-    "interactivity": { "type": "pulse", "prompt": "Gov audit" },
+    "caseStudy": {
+      "background": "National defense uses encrypted burst transmissions.",
+      "technicalRisk": "Strategic blind spots if orders are decrypted in real-time.",
+      "mitigation": "One-Time-Pad and Lattice-based KEM deployment.",
+      "experimentSetup": "Intercepting encrypted 'Command & Control' telemetry.",
+      "insight": "National security is a game of crypto-longevity."
+    },
     "activity": "ID secrets.",
     "enterpriseInsight": "National security threat"
   },
@@ -357,7 +382,13 @@
     "title": "Supply Chain Systems",
     "bullets": ["OTA poisoning", "Fake provenance"],
     "story": "Poison in the well.",
-    "interactivity": { "type": "pulse", "prompt": "Chain test" },
+    "caseStudy": {
+      "background": "Chip factories use digital certs to sign microcode.",
+      "technicalRisk": "Silicon-level backdoors via forged root-of-trust.",
+      "mitigation": "Multi-signature PQC verification at the foundry.",
+      "experimentSetup": "Poisoning a firmware update chain with fake keys.",
+      "insight": "Hardware trust must be anchored in PQC."
+    },
     "activity": "Audit vendors.",
     "enterpriseInsight": "Ecosystem risk"
   },
@@ -367,25 +398,24 @@
     "title": "Post-Quantum Cryptography",
     "bullets": ["Math quantum computers can't solve"],
     "story": "Maze instead of straight path.",
-    "interactivity": { "type": "pulse", "prompt": "Compare RSA vs PQC" },
+    "interactivity": { "type": "pulse", "prompt": "Switch to PQC Mode" },
     "activity": "Learn new math.",
     "enterpriseInsight": "Migration essential"
   },
   {
     "id": 30,
     "section": "SECTION 6: SOLUTIONS",
-    "title": "Lattice-Based Crypto",
-    "bullets": ["NIST winner", "Shortest vector problem"],
+    "title": "Lattice-Based Crypto (Kyber)",
+    "bullets": ["NIST winner", "Learning With Errors (LWE)"],
     "story": "Finding a needle in a 500D haystack.",
-    "interactivity": { "type": "pulse", "prompt": "Lattice test" },
+    "interactivity": { "type": "pulse", "prompt": "Visualize Lattice" },
     "activity": "Visualize 500D.",
     "enterpriseInsight": "Gold standard",
     "math": {
-      "equation": "\\begin{aligned} &\\textbf{Kyber & LWE (Learning With Errors)} \\\\ &\\mathbf{t} = A\\mathbf{s} + \\mathbf{e} \\pmod{q} \\\\ &\\textbf{1. Encapsulate:} \\\\ &\\quad u = A^T r + e_1 \\\\ &\\quad v = t^T r + e_2 + m \\\\ &\\textbf{2. Decapsulate:} \\\\ &\\quad m' = v - s^T u \\approx m \\end{aligned}",
+      "equation": "\\mathbf{t} = A\\mathbf{s} + \\mathbf{e} \\pmod{q}",
       "interpretations": [
-        { "term": "A\\mathbf{s} + \\mathbf{e}", "meaning": "The LWE hard problem (Math bedrock)" },
-        { "term": "\\mathbf{e}", "meaning": "Small noise that hides the secret" },
-        { "term": "v - s^T u", "meaning": "Error correction to recover message" }
+        { "term": "A, s, e", "meaning": "Public Matrix, Secret, and Noise" },
+        { "term": "t", "meaning": "The resulting Public Key" }
       ]
     }
   },
@@ -395,7 +425,7 @@
     "title": "Hash-Based Crypto",
     "bullets": ["SHA-256 roots", "Stateless signatures"],
     "story": "One-way street with no U-turn.",
-    "interactivity": { "type": "pulse", "prompt": "Hash test" },
+    "interactivity": { "type": "text_toggle", "before": "DATA", "after": "93f2... (HASH)" },
     "activity": "Compute hash.",
     "enterpriseInsight": "Robust and proven"
   },
@@ -405,7 +435,7 @@
     "title": "Code-Based Crypto",
     "bullets": ["McEliece system", "Error correction"],
     "story": "Fixing the radio static.",
-    "interactivity": { "type": "pulse", "prompt": "Code test" },
+    "interactivity": { "type": "pulse", "prompt": "Correct Error bits" },
     "activity": "Fix errors.",
     "enterpriseInsight": "Strong history"
   },
@@ -415,7 +445,7 @@
     "title": "Crypto Agility",
     "bullets": ["Swap algorithms fast"],
     "story": "Replacing tires mid-race.",
-    "interactivity": { "type": "pulse", "prompt": "Swap test" },
+    "interactivity": { "type": "pulse", "prompt": "Swap Algorithm Now" },
     "activity": "Inventory crypto.",
     "enterpriseInsight": "Essential design"
   },
@@ -425,7 +455,7 @@
     "title": "Hybrid Cryptography",
     "bullets": ["Classical + PQC"],
     "story": "Belt and suspenders.",
-    "interactivity": { "type": "pulse", "prompt": "Combine modes" },
+    "interactivity": { "type": "pulse", "prompt": "Deploy Hybrid Protocol" },
     "activity": "Dual test.",
     "enterpriseInsight": "Safe migration"
   },
@@ -435,7 +465,7 @@
     "title": "Risk Assessment",
     "bullets": ["Impact vs Likelihood"],
     "story": "Renovating house before storm.",
-    "interactivity": { "type": "pulse", "prompt": "Checklist" },
+    "interactivity": { "type": "checklist", "items": ["Identify Assets", "Assess Value", "Map Exposure"] },
     "activity": "Self-audit.",
     "enterpriseInsight": "Strategic roadmap"
   },
@@ -445,7 +475,7 @@
     "title": "Crypto Inventory",
     "bullets": ["Knowing where keys are"],
     "story": "Audit your vault.",
-    "interactivity": { "type": "pulse", "prompt": "Search keys" },
+    "interactivity": { "type": "pulse", "prompt": "Scan All HSMs" },
     "activity": "Map assets.",
     "enterpriseInsight": "Visibility is key"
   },
@@ -455,7 +485,7 @@
     "title": "Migration Strategy",
     "bullets": ["Phased approach"],
     "story": "Moving a mountain.",
-    "interactivity": { "type": "pulse", "prompt": "Plan steps" },
+    "interactivity": { "type": "step_thru", "steps": ["Inventory", "Pilot", "Full Deployment"] },
     "activity": "Set dates.",
     "enterpriseInsight": "Long term commitment"
   },
@@ -465,7 +495,7 @@
     "title": "Infrastructure Needs",
     "bullets": ["Compute/Memory upgrades"],
     "story": "New engine for new fuel.",
-    "interactivity": { "type": "pulse", "prompt": "Upgrade sim" },
+    "interactivity": { "type": "pulse", "prompt": "Estimate Budget Impact" },
     "activity": "Hardware check.",
     "enterpriseInsight": "Budgeting required"
   },
@@ -475,7 +505,7 @@
     "title": "Final Quiz",
     "bullets": ["5 questions recap"],
     "story": "Reflecting on the journey.",
-    "interactivity": { "type": "scenario", "question": "Final Q: What is the biggest risk?", "options": ["SNDL", "RSA Break", "Hardware Cost"] },
+    "interactivity": { "type": "scenario", "question": "Biggest threat?", "options": ["SNDL", "RSA Break", "Legacy Tech"] },
     "activity": "Reflect.",
     "enterpriseInsight": "Immediate action required"
   },
@@ -485,7 +515,7 @@
     "title": "Call to Action",
     "bullets": ["Start now", "Upgrade security"],
     "story": "Upgrade lock before thief upgrades tools.",
-    "interactivity": { "type": "poll", "question": "What will you do tomorrow?", "options": ["Audit", "Training", "Wait"] },
+    "interactivity": { "type": "pulse", "prompt": "Commit to Upgrade" },
     "activity": "Take first step.",
     "enterpriseInsight": "Legacy is the enemy"
   }

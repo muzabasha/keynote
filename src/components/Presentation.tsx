@@ -80,17 +80,17 @@ export default function Presentation() {
 
       <div className="progress-bar" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%`, top: '56px' }} />
       
-      <div className="absolute top-20 right-8 z-50 flex items-center gap-4">
+      <div className="absolute top-20 right-4 sm:right-8 z-50 flex items-center gap-4 pointer-events-none">
         <a 
           href="https://scholar-sparkle-web.lovable.app/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-sm hover:bg-white/20 transition-all flex items-center gap-2 group"
+          className="px-3 sm:px-6 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-[10px] sm:text-sm hover:bg-white/20 transition-all flex items-center gap-2 group pointer-events-auto shadow-xl"
           style={{ textDecoration: 'none' }}
         >
-          <span className="opacity-70 group-hover:opacity-100 transition-opacity">Resource Person:</span>
-          <span className="text-accent">Dr. Syed Muzamil Basha</span>
-          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          <span className="opacity-70 group-hover:opacity-100 transition-opacity hidden xs:inline">Resource Person:</span>
+          <span className="text-accent truncate max-w-[120px] sm:max-w-none">Dr. Syed Muzamil Basha</span>
+          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform flex-shrink-0" />
         </a>
       </div>
 
@@ -153,7 +153,7 @@ export default function Presentation() {
                 </div>
 
                 <div className="right-pane">
-                  <div className="interactive-area flex-col !justify-start overflow-y-auto">
+                  <div className="interactive-area flex-col overflow-y-auto">
                     {slide.math ? (
                       <div className="w-full flex flex-col gap-8 py-4">
                         <div className="relative group">
