@@ -66,6 +66,20 @@ export default function Presentation() {
     <main className="presentation-container">
       <div className="progress-bar" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }} />
       
+      <div className="absolute top-8 right-8 z-50 flex items-center gap-4">
+        <a 
+          href="https://scholar-sparkle-web.lovable.app/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-sm hover:bg-white/20 transition-all flex items-center gap-2 group"
+          style={{ textDecoration: 'none' }}
+        >
+          <span className="opacity-70 group-hover:opacity-100 transition-opacity">Resource Person:</span>
+          <span className="text-accent">Dr. Syed Muzamil Basha</span>
+          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+
       <AnimatePresence initial={false} custom={direction} mode="wait">
         <motion.div
           key={currentSlide}
@@ -131,10 +145,10 @@ export default function Presentation() {
       </AnimatePresence>
 
       <div className="nav-controls">
-        <button onClick={prevSlide} className="nav-btn" disabled={currentSlide === 0}>
+        <button onClick={prevSlide} className="nav-btn" disabled={currentSlide === 0} style={{ opacity: currentSlide === 0 ? 0.3 : 1 }}>
           <ChevronLeft />
         </button>
-        <button onClick={nextSlide} className="nav-btn" disabled={currentSlide === slides.length - 1}>
+        <button onClick={nextSlide} className="nav-btn" disabled={currentSlide === slides.length - 1} style={{ opacity: currentSlide === slides.length - 1 ? 0.3 : 1 }}>
           <ChevronRight />
         </button>
       </div>
@@ -396,12 +410,195 @@ function InteractionRenderer({ type, data }: { type: string, data: any }) {
     case 'binary_shatter':
       return <BinaryShatter />;
 
+    case 'wave_interference':
+    case 'jump_animation':
+    case 'bubble_pop':
+    case 'lattice_grid':
+      return (
+        <div className="relative w-48 h-48 flex items-center justify-center">
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 180, 270, 360],
+              borderRadius: ["20%", "50%", "20%"]
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="w-full h-full bg-gradient-to-tr from-accent to-accent-secondary opacity-40 blur-xl"
+          />
+          <button 
+            onClick={() => { setClicked(!clicked); confetti(); }}
+            className="absolute z-10 p-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold hover:scale-110 transition-transform"
+            style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '20px', borderRadius: '50%', color: 'white', cursor: 'pointer' }}
+          >
+            {clicked ? <CheckCircle size={32} /> : <Play size={32} />}
+          </button>
+          <p className="absolute -bottom-12 text-xs uppercase tracking-widest text-accent font-bold">
+            {clicked ? 'INTERACTION_ACTIVE' : 'START_SIMULATION'}
+          </p>
+        </div>
+      );
+
+    case 'photo_gallery':
+    case 'logo_scroll':
+    case 'image_fade':
+      return (
+        <div className="grid grid-cols-2 gap-4 w-full">
+          {(data.images || data.items || ['Quantum-1', 'Quantum-2', 'Quantum-3', 'Quantum-4']).slice(0, 4).map((item: string, i: number) => (
+            <motion.div 
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className="aspect-video bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-[10px] font-mono text-gray-500 text-center p-2"
+            >
+              {item.replace(/_/g, ' ')}
+            </motion.div>
+          ))}
+        </div>
+      );
+
+    case 'drag_drop_sort':
+    case 'drag_drop_engine':
+    case 'roadmap_builder':
+    case 'domino_sim':
+      return (
+        <div className="flex flex-col gap-4 w-full">
+          {(data.items || data.steps || ['Step 1', 'Step 2', 'Step 3']).map((item: string, i: number) => (
+            <motion.div 
+              key={i}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              className="p-3 bg-white/5 border border-white/10 rounded-lg flex items-center justify-between cursor-grab active:cursor-grabbing"
+            >
+              <span className="text-sm font-medium">{item}</span>
+              <div className="w-2 h-2 bg-accent rounded-full" />
+            </motion.div>
+          ))}
+          <p className="text-[10px] text-center text-gray-500 uppercase tracking-widest mt-2 italic">Drag to reorder or interact</p>
+        </div>
+      );
+
+    case 'cheat_code_reveal':
+    case 'vault_reveal':
+    case 'check_signer':
+    case 'mask_overlay':
+    case 'burn_key':
+    case 'hack_sim':
+      return (
+        <div className="flex flex-col items-center gap-6">
+          <motion.div 
+            animate={clicked ? { scale: 1.1, filter: 'brightness(1.5)' } : { scale: 1 }}
+            className={`w-32 h-32 rounded-3xl flex items-center justify-center border-4 border-accent shadow-[0_0_30px_rgba(99,102,241,0.3)] ${clicked ? 'bg-accent/20' : 'bg-black'}`}
+          >
+            {clicked ? <CheckCircle size={48} className="text-accent" /> : <div className="text-4xl font-bold opacity-30 text-accent">?</div>}
+          </motion.div>
+          <button 
+            onClick={() => { setClicked(true); confetti(); }}
+            className="px-8 py-3 rounded-xl bg-accent text-white font-bold hover:scale-105 transition-transform"
+            style={{ background: 'var(--accent)', border: 'none', padding: '12px 24px', borderRadius: '12px', color: 'white', cursor: 'pointer' }}
+          >
+            {clicked ? 'ACCESS_GRANTED' : (data.label || 'AUTHORIZE')}
+          </button>
+        </div>
+      );
+
+    case 'cloud_selector':
+    case 'car_dashboard':
+    case 'gear_spinner':
+    case 'roi_calculator':
+      return (
+        <div className="w-full flex flex-col gap-6">
+          <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+            <motion.div 
+              animate={{ width: `${(inputValue ? parseInt(inputValue) : 50)}%` }}
+              className="h-full bg-accent"
+            />
+          </div>
+          <input 
+            type="range" min="0" max="100" defaultValue="50"
+            onChange={(e) => setInputValue(e.target.value)}
+            className="w-full accent-accent"
+          />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+              <div className="text-2xl font-bold text-accent">{inputValue || 50}%</div>
+              <div className="text-[10px] uppercase text-gray-500">Efficiency</div>
+            </div>
+            <div className="p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+              <div className="text-2xl font-bold text-accent-secondary">{100 - (inputValue ? parseInt(inputValue) : 50)}%</div>
+              <div className="text-[10px] uppercase text-gray-500">Risk</div>
+            </div>
+          </div>
+        </div>
+      );
+
+    case 'audio_clip':
+    case 'flight_sim':
+      return (
+        <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+          <div className="flex gap-1 h-12 items-center">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <motion.div 
+                key={i}
+                animate={clicked ? { height: [10, 40, 10] } : { height: 10 }}
+                transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.1 }}
+                className="w-1 bg-accent rounded-full"
+              />
+            ))}
+          </div>
+          <button 
+            onClick={() => setClicked(!clicked)}
+            style={{ background: 'white', color: 'black', padding: '10px 20px', borderRadius: '30px', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}
+          >
+            {clicked ? 'STOP_SIGNAL' : 'PLAY_SIGNAL'}
+          </button>
+        </div>
+      );
+
+    case 'checklist':
+    case 'email_template':
+      return (
+        <div className="flex flex-col gap-2 w-full">
+          {(data.items || ['Security Audit', 'Key Inventory', 'Vendor Policy', 'PQC Pilot']).map((item: string, i: number) => (
+            <div key={i} className="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/10">
+              <div className="w-4 h-4 rounded border border-accent flex items-center justify-center text-[10px]">
+                {i < 2 ? '✓' : ''}
+              </div>
+              <span className="text-sm opacity-80">{item}</span>
+            </div>
+          ))}
+          <p className="text-center text-[10px] text-accent mt-2 font-mono tracking-tighter cursor-pointer underline">Download Template.pdf</p>
+        </div>
+      );
+
+    case 'multi_quiz':
+    case 'branching_story':
+    case 'credits_roll':
+    case 'tool_evolution':
+      return (
+        <div className="w-full p-6 bg-accent/5 border border-accent/20 rounded-2xl flex flex-col items-center gap-6">
+          <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+             <motion.div initial={{ width: 0 }} animate={{ width: '100%' }} transition={{ duration: 10, repeat: Infinity }} className="h-full bg-accent" />
+          </div>
+          <div className="text-center">
+            <h4 className="text-lg font-bold mb-2">Simulation Engine 2.0</h4>
+            <p className="text-xs text-gray-500 italic">Processing real-time enterprise data...</p>
+          </div>
+          <button 
+            onClick={() => confetti()}
+            style={{ background: 'var(--accent)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer' }}
+          >
+            INTERACT
+          </button>
+        </div>
+      );
+
     default:
       return (
         <div className="text-center text-gray-400">
           <div className="mb-4 opacity-50"><ArrowRight size={48} className="mx-auto" /></div>
-          <p>{data.label || 'Interactive Component Pending...'}</p>
-          <p className="text-xs mt-2 uppercase tracking-widest">{type.replace(/_/g, ' ')}</p>
+          <p>{data.label || 'Interactive Simulation Active'}</p>
+          <div className="mt-4 px-4 py-2 bg-white/5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold text-accent border border-accent/20">
+             {type.replace(/_/g, ' ')}
+          </div>
         </div>
       );
   }
