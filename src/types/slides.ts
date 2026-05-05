@@ -35,4 +35,10 @@ export interface SlideData {
     experimentSetup: string;
     insight: string;
   };
+  mathFocus?: {
+    topic: string;
+    concept: string;
+    equations: { latex: string; label: string }[];
+    terms: { symbol: string; name: string; interpretation: string }[];
+  };
 }

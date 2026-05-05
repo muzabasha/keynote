@@ -18,6 +18,7 @@ import LatticeDemo from './interactions/LatticeDemo';
 import HashDemo from './interactions/HashDemo';
 import CodeDemo from './interactions/CodeDemo';
 import ComparisonTable from './interactions/ComparisonTable';
+import MathFocus from './interactions/MathFocus';
 
 import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
@@ -25,6 +26,7 @@ import { BlockMath, InlineMath } from 'react-katex';
 export default function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [showMath, setShowMath] = useState(false);
 
   const slides = slidesData as SlideData[];
 
@@ -32,6 +34,7 @@ export default function Presentation() {
     if (currentSlide < slides.length - 1) {
       setDirection(1);
       setCurrentSlide(prev => prev + 1);
+      setShowMath(false); // Reset math mode on slide change
     }
   };
 
@@ -39,6 +42,7 @@ export default function Presentation() {
     if (currentSlide > 0) {
       setDirection(-1);
       setCurrentSlide(prev => prev - 1);
+      setShowMath(false); // Reset math mode on slide change
     }
   };
 
@@ -158,11 +162,30 @@ export default function Presentation() {
                   >
                     {slide.story}
                   </motion.div>
+
+                  {slide.mathFocus && (
+                    <motion.button 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.8 }}
+                      onClick={() => setShowMath(!showMath)}
+                      className={`mt-4 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all border ${showMath ? 'bg-accent text-white border-accent' : 'bg-accent/20 text-accent border-accent/30 hover:bg-accent/30'}`}
+                    >
+                      {showMath ? '📱 BACK TO DEMO' : '📐 VIEW MATH FOCUS'}
+                    </motion.button>
+                  )}
                 </div>
 
                 <div className="right-pane">
                   <div className="interactive-area flex-col overflow-y-auto">
-                    {slide.math ? (
+                    {showMath && slide.mathFocus ? (
+                      <MathFocus 
+                        topic={slide.mathFocus.topic}
+                        concept={slide.mathFocus.concept}
+                        equations={slide.mathFocus.equations}
+                        terms={slide.mathFocus.terms}
+                      />
+                    ) : slide.math ? (
                       <div className="w-full flex flex-col gap-8 py-4">
                         <div className="relative group">
                           <div className="absolute -inset-1 bg-gradient-to-r from-accent to-accent-secondary rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
