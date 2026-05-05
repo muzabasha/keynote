@@ -10,6 +10,14 @@ import Superposition from './interactions/Superposition';
 import Entanglement from './interactions/Entanglement';
 import BlochSphere from './interactions/BlochSphere';
 import BinaryShatter from './interactions/BinaryShatter';
+import RSAInteractive from './interactions/RSAInteractive';
+import ECCInteractive from './interactions/ECCInteractive';
+import ShorThreat from './interactions/ShorThreat';
+import GroverThreat from './interactions/GroverThreat';
+import LatticeDemo from './interactions/LatticeDemo';
+import HashDemo from './interactions/HashDemo';
+import CodeDemo from './interactions/CodeDemo';
+import ComparisonTable from './interactions/ComparisonTable';
 
 import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
@@ -480,6 +488,30 @@ function InteractionRenderer({ type, data }: { type: string, data: any }) {
     
     case 'binary_shatter':
       return <BinaryShatter />;
+
+    case 'rsa_demo':
+      return <RSAInteractive />;
+    
+    case 'ecc_demo':
+      return <ECCInteractive />;
+    
+    case 'shor_threat':
+      return <ShorThreat />;
+    
+    case 'grover_threat':
+      return <GroverThreat />;
+
+    case 'lattice_demo':
+      return <LatticeDemo />;
+    
+    case 'hash_demo':
+      return <HashDemo />;
+    
+    case 'code_demo':
+      return <CodeDemo />;
+    
+    case 'comparison_table':
+      return <ComparisonTable />;
 
     case 'wave_interference':
     case 'jump_animation':
