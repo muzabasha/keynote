@@ -11,7 +11,19 @@
     "story": "Imagine a world where every digital secret is exposed overnight.",
     "interactivity": { "type": "pulse", "prompt": "Calculate T_mig" },
     "activity": "Evaluate your organization's migration time.",
-    "enterpriseInsight": "Quantum readiness is a national security mandate (NSM-10)."
+    "enterpriseInsight": "Quantum readiness is a national security mandate (NSM-10).",
+    "mathFocus": {
+      "topic": "Mosca's Theorem (Quantum Risk Inequality)",
+      "concept": "A decision-making framework to determine when an organization must start migrating to post-quantum cryptography.",
+      "equations": [
+        { "latex": "T_{exp} + T_{mig} > T_{qc}", "label": "The Inequality of Doom" }
+      ],
+      "terms": [
+        { "symbol": "T_{exp}", "name": "Shelf-life (Exposure)", "interpretation": "The number of years the data must remain confidential (e.g., 25 years for medical records)." },
+        { "symbol": "T_{mig}", "name": "Migration Time", "interpretation": "The number of years required to fully transition the infrastructure to PQC standards." },
+        { "symbol": "T_{qc}", "name": "Quantum Timeline", "interpretation": "The estimated number of years until a 'Cryptographically Relevant Quantum Computer' (CRQC) is available." }
+      ]
+    }
   },
   {
     "id": 2,
